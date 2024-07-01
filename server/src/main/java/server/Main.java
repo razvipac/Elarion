@@ -22,10 +22,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @SpringBootApplication
 @EntityScan(basePackages = { "commons", "server" })
 public class Main {
-    //hihihhi
+    //hihihhia
     public static void main(String[] args) {
-        System.out.println("Plm");
+        System.out.println("Andrei avram");
         SpringApplication.run(Main.class, args);
     }
-
 }
