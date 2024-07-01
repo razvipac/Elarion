@@ -1,0 +1,48 @@
+plugins {
+    id 'org.kordamp.gradle.jacoco' version '0.54.0'
+}
+
+allprojects {
+	repositories {
+		mavenCentral()
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'checkstyle'
+	apply plugin: 'jacoco'
+	
+	
+	group = 'oopp'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '11'
+	checkstyle {
+		toolVersion "9.2.1"
+
+		ignoreFailures = false
+		maxErrors = 0
+		maxWarnings = 0
+		configFile = '../checkstyle.xml' as File
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+		finalizedBy jacocoTestReport 
+	}
+	jacocoTestReport {
+		reports {
+			xml.required = false
+			csv.required = false
+			html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+		}
+	}
+	
+	dependencies {
+		implementation 'org.apache.commons:commons-lang3:3.12.0'
+		
+		testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+		testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+		testImplementation 'org.mockito:mockito-core:4.1.0'
+	}
+}
