@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\New folder\\GamingSuperMultiplayer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B001F997-CE9F-4E9A-9433-A6293DD987BA}|GamingSuperMultiplayer\\GamingSuperMultiplayer.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\New folder\\GamingSuperMultiplayer\\GamingSuperMultiplayer\\GamingSuperMultiplayer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B001F997-CE9F-4E9A-9433-A6293DD987BA}|GamingSuperMultiplayer\\GamingSuperMultiplayer.vcxproj|solutionrelative:GamingSuperMultiplayer\\GamingSuperMultiplayer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GamingSuperMultiplayer.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\New folder\\GamingSuperMultiplayer\\GamingSuperMultiplayer\\GamingSuperMultiplayer.cpp",
+              "RelativeDocumentMoniker": "GamingSuperMultiplayer\\GamingSuperMultiplayer.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\New folder\\GamingSuperMultiplayer\\GamingSuperMultiplayer\\GamingSuperMultiplayer.cpp",
+              "RelativeToolTip": "GamingSuperMultiplayer\\GamingSuperMultiplayer.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAABwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-06T09:22:26.798Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
