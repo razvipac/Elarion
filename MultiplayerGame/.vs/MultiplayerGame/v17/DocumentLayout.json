@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MultiplayerGame.cpp",
+              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp",
+              "RelativeDocumentMoniker": "MultiplayerGame\\MultiplayerGame.cpp",
+              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp",
+              "RelativeToolTip": "MultiplayerGame\\MultiplayerGame.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-06T09:27:29.052Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
