@@ -1,28 +1,17 @@
-#include <SFML/Graphics.hpp>
-
-using namespace std;
-using namespace sf;
+//#define SERVER
+#ifdef SERVER
+#include "Server.h"
+#else
+#include "Client.h"
+#endif
 
 int main()
 {
-    RenderWindow window(VideoMode(200, 200), "SFML works!");
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
-
-    while (window.isOpen())
-    {
-        Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
+    #ifdef SERVER
+        return serverMain();
+    #else
+        return clientMain();
+    #endif
 
     return 0;
 }

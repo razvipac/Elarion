@@ -1,2 +1,5 @@
-﻿  MultiplayerGame.cpp
-  MultiplayerGame.vcxproj -> D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\x64\Debug\MultiplayerGame.exe
+﻿  Client.cpp
+  MultiplayerGame.cpp
+  Server.cpp
+  Generating Code...
+  MultiplayerGame.vcxproj -> C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\x64\Debug\MultiplayerGame.exe
