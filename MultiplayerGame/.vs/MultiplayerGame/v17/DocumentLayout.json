@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Client.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,65 +26,39 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Server.h",
-              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Server.h",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Server.h",
-              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Server.h",
-              "RelativeToolTip": "MultiplayerGame\\Server.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-07T19:21:23.002Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Client.h",
-              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.h",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Client.h",
-              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.h",
-              "RelativeToolTip": "MultiplayerGame\\Client.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-07T19:21:22.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Server.cpp",
               "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Server.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\Server.cpp",
               "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Server.cpp",
               "RelativeToolTip": "MultiplayerGame\\Server.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
+              "ViewState": "AQIAACMAAAAAAAAAAAAIwCsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-07-07T19:21:20.947Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Client.cpp",
               "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\Client.cpp",
               "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
               "RelativeToolTip": "MultiplayerGame\\Client.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAWAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAAB0AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-07-07T19:21:20.119Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MultiplayerGame.cpp",
               "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\MultiplayerGame.cpp",
               "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp",
               "RelativeToolTip": "MultiplayerGame\\MultiplayerGame.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-07-06T09:27:29.052Z",
               "EditorCaption": ""
