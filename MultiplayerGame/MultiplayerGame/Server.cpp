@@ -2,48 +2,44 @@
 #include "Server.h"
 #include "enet/enet.h"
 #include <map>
-#include "ClientData.h"
+#include "Utility.h"
 
 using namespace std;
 
-map<int, ClientData*> ClientMap;
+map<int, int*> clientsMap;
 
-void broadcastPacket(ENetHost* server, const char* data) {
-	ENetPacket* packet = enet_packet_create(data, strlen(data) + 1, ENET_PACKET_FLAG_RELIABLE);
+void broadcastPacket(ENetHost* server, const char* data, bool reliable = true) {
+	ENetPacket* packet;
+	if (reliable)
+		packet = enet_packet_create(data, 13, ENET_PACKET_FLAG_RELIABLE);
+	else
+		packet = enet_packet_create(data, 13, 0);
 	enet_host_broadcast(server, 0, packet);
 }
 
-void SendPacket(ENetPeer* peer, const char* data) {
-	ENetPacket* packet = enet_packet_create(data, strlen(data) + 1, ENET_PACKET_FLAG_RELIABLE);
+void SendPacket(ENetPeer* peer, const char* data, bool reliable = true) {
+	ENetPacket* packet;
+	if (reliable)
+		packet = enet_packet_create(data, 13, ENET_PACKET_FLAG_RELIABLE);
+	else
+		packet = enet_packet_create(data, 13, 0);
 	enet_peer_send(peer, 0, packet);
 }
 
 void parseData(ENetHost* server, int id, char* data) {
 	cout << "Parse: " << data << "\n";
 
-	// to initialise dataType with -1
-	int dataType;
-	sscanf_s(data, "%d|", &dataType);
+	char dataType;
+	dataType = data[0];
 	cout << "Asta e dataType: " << dataType << "\n";
+	
 	switch (dataType) {
-	case 1: {
-		char msg[80];
-		sscanf_s(data, "%*d|%[^\n]", &msg);
-
-		char sendData[1024] = { '\0' };
-		sprintf_s(sendData, "1|%d|%s", id, msg);
-		broadcastPacket(server, sendData);
+	case '1': {
+		broadcastPacket(server, data);
 		break;
 	}
-	case 2: {
-		char name[80];
-		sscanf_s(data, "2|%[^\n]", &name);
-
-		char sendData[1024] = { '\0' };
-		sprintf_s(sendData, "2|%d|%s", id, name);
-
-		broadcastPacket(server, sendData);
-		ClientMap[id]->setUsername(name);
+	case '2': {
+		broadcastPacket(server, data);
 		break;
 	}
 	}
@@ -78,21 +74,44 @@ int serverMain() {
 		while (enet_host_service(server, &event, 1000) > 0) {
 			if (event.type == ENET_EVENT_TYPE_CONNECT) {
 				cout << "A new client connected from " << event.peer->address.host
-					<< ":" << event.peer->address.port;
+					<< ":" << event.peer->address.port << "\n";
 				
-				for (auto const& x : ClientMap) {
+				/*for (auto const& x : ClientMap) {
 					char sendData[1024] = { '\0' };
 					sprintf_s(sendData, "2|%d|%s", x.first, x.second -> getUsername().c_str());
 					broadcastPacket(server, sendData);
+				}*/
+
+				for (auto const& x : clientsMap) {
+					char message[13];
+					packData(message, '2', x.first, 50, 20);
+					int id;
+					float x1, y;
+					char c;
+					unpackData(message, c, id, x1, y);
+					cout << "Message: " << message << "\n";
+					cout << "x.first: " << x.first << "\n";
+					cout << "id: " << id << "\n";
+					cout << "x1: " << x1 << "\n";
+					cout << "y: " << y << "\n";
+
+					for (int i = 0; i < 13; i++)
+						cout << message[i] << " ";
+					cout << "\n";
+
+					SendPacket(event.peer, message);
 				}
 
 				newPlayerId++;
-				ClientMap[newPlayerId] = new ClientData(newPlayerId);
-				event.peer->data = ClientMap[newPlayerId];
+				clientsMap[newPlayerId] = new int(newPlayerId);
+				event.peer->data = clientsMap[newPlayerId];
 
-				char dataToSend[126] = { '\0' };
-				sprintf_s(dataToSend, "3|%d", newPlayerId);
-				SendPacket(event.peer, dataToSend);
+				char message[13];
+				packData(message, '3', newPlayerId, 0, 0);
+				SendPacket(event.peer, message);
+
+				packData(message, '2', newPlayerId, 50, 20);
+				broadcastPacket(server, message);
 
 			}
 			else if (event.type == ENET_EVENT_TYPE_RECEIVE) {
@@ -102,15 +121,18 @@ int serverMain() {
 					<< "on IP " << event.peer->address.host
 					<< ":" << event.peer->address.port
 					<< "on channel " << event.channelID << "\n";
-				parseData(server, static_cast<ClientData*>(event.peer->data)->getId(), (char*)event.packet->data);
+				parseData(server, *((int*) event.peer->data), (char*)event.packet->data);
 				enet_packet_destroy(event.packet);
 			}
 			else if (event.type == ENET_EVENT_TYPE_DISCONNECT) {
 				cout << event.peer->address.host << event.peer->address.port << " disconnected.\n";
-				char disconnectedData[126] = { '\0' };
-				sprintf_s(disconnectedData, "4|%d", static_cast<ClientData*>(event.peer->data)->getId());
-				broadcastPacket(server, disconnectedData);
-
+				char message[13];
+				int id = *((int*)event.peer->data);
+				packData(message, '4', id, 0, 0);
+				//char disconnectedData[126] = { '\0' };
+				//sprintf_s(disconnectedData, "4|%d", *((int*)event.peer->data));
+				broadcastPacket(server, message);
+				clientsMap.erase(id);
 				event.peer->data = NULL;
 			}
 		}
