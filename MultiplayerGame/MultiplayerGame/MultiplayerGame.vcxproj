@@ -143,6 +143,10 @@
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientData.h" />
+    <ClInclude Include="Interactable.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemSlot.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="Utility.h" />

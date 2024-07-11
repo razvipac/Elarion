@@ -50,5 +50,17 @@
     <ClInclude Include="Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
