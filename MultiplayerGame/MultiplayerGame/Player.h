@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "Inventory.h"
 class Player
 {
 private:
@@ -8,6 +9,7 @@ private:
 	int id;
 	sf::Vector2f targetPosition;
 	float timeSinceLastPacket;
+	Inventory inventory;
 public:
 	Player(int id);
 	void setPosition(sf::Vector2f position);
@@ -19,4 +21,7 @@ public:
 	void setColor(sf::Color color);
 	sf::Vector2f getPosition();
 	int getId();
+	void handleEvent(sf::Event event);
+	int getSelectedItemId();
+	void setSelectedItemId(int itemId);
 };

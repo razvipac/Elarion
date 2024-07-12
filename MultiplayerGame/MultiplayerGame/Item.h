@@ -11,7 +11,7 @@ private:
 public:
 	Item(std::string name, std::string texturePath, int maxStackSize, int maxDurability, int transformationId);
 	std::string getName();
-	sf::Texture getTexture();
+	sf::Texture* getTexture();
 	int getMaxStackSize();
 	int getMaxDurability();
 	int getTransformationId();

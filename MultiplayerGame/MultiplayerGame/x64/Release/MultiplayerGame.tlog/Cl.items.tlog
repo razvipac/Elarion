@@ -1,6 +1,10 @@
 C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Client.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\Client.obj
 C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\ClientData.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\ClientData.obj
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Inventory.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\Inventory.obj
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Item.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\Item.obj
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\ItemSlot.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\ItemSlot.obj
 C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\MultiplayerGame.obj
 C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\Player.obj
 C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Server.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\Server.obj
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Tile.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\Tile.obj
 C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Utility.cpp;C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\x64\Release\Utility.obj

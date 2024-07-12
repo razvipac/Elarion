@@ -6,6 +6,8 @@
 #include <cstring>
 #include <map>
 #include "Utility.h"
+#include "ItemSlot.h"
+#include "Tile.h"
 
 using namespace std;
 using namespace sf;
@@ -150,7 +152,7 @@ int clientMain() {
 	ENetPeer* peer;
 
 	// 127.0.0.1:8080
-	enet_address_set_host(&address, "172.205.150.168"); // 172.205.150.168
+	enet_address_set_host(&address, "127.0.0.1"); // 172.205.150.168
 	address.port = 8080;
 	peer = enet_host_connect(client, &address, 1, 0);
 	
@@ -172,13 +174,18 @@ int clientMain() {
 
 
 
-
+	ItemSlot::loadItems();
 
 	RenderWindow window(VideoMode(800, 600), "Client");
 	Player player(CLIENTID);
 	playerPointer = &player;
 	cout << CLIENTID << "\n";
 	
+	Tile waterTile(1, true, "Resources/Textures/WaterTile.png");
+	RectangleShape waterTileShape(Vector2f(50, 50));
+	waterTileShape.setTexture(waterTile.getTexture());
+	waterTileShape.setPosition(Vector2f(100, 100));
+
 	Clock deltaClock;
 	Time currentTime = deltaClock.getElapsedTime();
 	float packageTimeCounter = 0.0f;
@@ -189,6 +196,19 @@ int clientMain() {
 		while (window.pollEvent(event)) {
 			if (event.type == Event::Closed)
 				window.close();
+			player.handleEvent(event);
+			for(auto& p : playerMap) {
+				p.second->handleEvent(event);
+			}
+			if(event.type == Event::MouseButtonPressed) {
+				if(event.mouseButton.button == Mouse::Left) {
+					Vector2i mousePos = Mouse::getPosition(window);
+					Vector2f worldPos = window.mapPixelToCoords(mousePos);
+					if(waterTileShape.getGlobalBounds().contains(worldPos) && player.getSelectedItemId() == ItemNames::CUP_EMPTY) {
+						player.setSelectedItemId(ItemNames::CUP_WATER);
+					}
+				}
+			}
 		}
 
 		msgLoop(client);
@@ -207,6 +227,7 @@ int clientMain() {
 		}
 
 		window.clear();
+		window.draw(waterTileShape);
 		player.drawPlayer(window);
 		for(auto& p : playerMap) {
 			p.second->drawPlayer(window);

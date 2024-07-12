@@ -29,6 +29,10 @@ void Player::setId(int id) {
 
 void Player::drawPlayer(RenderWindow& window) {
 	window.draw(player);
+
+	if (id == CLIENTID) {
+		inventory.drawInventory(window);
+	}
 }
 
 void Player::update(float deltaTime) {
@@ -83,4 +87,18 @@ Vector2f Player::getPosition() {
 
 int Player::getId() {
 	return id;
+}
+
+void Player::handleEvent(Event event) {
+	if (id == CLIENTID) {
+		inventory.handleEvent(event);
+	}
+}
+
+int Player::getSelectedItemId() {
+	return inventory.getItemID(inventory.getSelectedSlot());
+}
+
+void Player::setSelectedItemId(int itemId) {
+	inventory.changeItem(inventory.getSelectedSlot(), itemId, 1);
 }
