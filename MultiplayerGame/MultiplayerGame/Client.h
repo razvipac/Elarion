@@ -1,4 +1,4 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+//#include "SFML/Graphics.hpp"
 extern int CLIENTID;
-int clientMain();
+//int clientMain();

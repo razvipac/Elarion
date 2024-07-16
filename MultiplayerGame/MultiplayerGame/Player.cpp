@@ -1,8 +1,9 @@
 #include "Player.h"
-#include "Client.h"
 #include <iostream>	
 using namespace sf;
 using namespace std;
+
+extern int CLIENTID;
 
 Player::Player(int id) {
 	player.setSize(Vector2f(50, 50));
