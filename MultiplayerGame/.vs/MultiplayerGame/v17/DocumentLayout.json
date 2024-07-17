@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\PerlinNoise.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\PerlinNoise.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\MultiplayerGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\TileMap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\TileMap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tilemap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Tilemap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\PerlinNoise.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -17,38 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Inventory.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Tile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Tile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Inventory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\ItemSlot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\ItemSlot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,33 +42,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "TileMap.cpp",
+              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\TileMap.cpp",
+              "RelativeDocumentMoniker": "MultiplayerGame\\TileMap.cpp",
+              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\TileMap.cpp",
+              "RelativeToolTip": "MultiplayerGame\\TileMap.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-17T14:15:28.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Tilemap.h",
+              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tilemap.h",
+              "RelativeDocumentMoniker": "MultiplayerGame\\Tilemap.h",
+              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tilemap.h",
+              "RelativeToolTip": "MultiplayerGame\\Tilemap.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-07-17T14:13:38.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PerlinNoise.cpp",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\PerlinNoise.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\PerlinNoise.cpp",
               "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\PerlinNoise.cpp",
               "RelativeToolTip": "MultiplayerGame\\PerlinNoise.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAG8AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-16T22:23:56.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T22:23:56.07Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "PerlinNoise.h",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\PerlinNoise.h",
               "RelativeDocumentMoniker": "MultiplayerGame\\PerlinNoise.h",
               "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\PerlinNoise.h",
               "RelativeToolTip": "MultiplayerGame\\PerlinNoise.h",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABoAAAAeAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAgwBwAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-16T22:23:50.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T22:23:50.315Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Inventory.cpp",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\Inventory.cpp",
@@ -100,124 +98,19 @@
               "RelativeToolTip": "MultiplayerGame\\Inventory.cpp",
               "ViewState": "AQIAAC0AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-16T21:33:20.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T21:33:20.205Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MultiplayerGame.cpp",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\MultiplayerGame.cpp",
               "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\MultiplayerGame.cpp",
               "RelativeToolTip": "MultiplayerGame\\MultiplayerGame.cpp",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAAAGgAAAABAAAA",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAAAMwAAAB1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-07-16T20:50:58.319Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Item.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Item.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Item.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Item.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Item.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-12T21:17:58.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ItemSlot.h",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\ItemSlot.h",
-              "RelativeDocumentMoniker": "MultiplayerGame\\ItemSlot.h",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\ItemSlot.h",
-              "RelativeToolTip": "MultiplayerGame\\ItemSlot.h",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-12T21:14:03.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Item.h",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Item.h",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Item.h",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Item.h",
-              "RelativeToolTip": "MultiplayerGame\\Item.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-12T21:13:59.978Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Inventory.h",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.h",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Inventory.h",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.h",
-              "RelativeToolTip": "MultiplayerGame\\Inventory.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-12T21:05:10.269Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Player.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Player.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-12T21:04:41.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Player.h",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.h",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Player.h",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.h",
-              "RelativeToolTip": "MultiplayerGame\\Player.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-12T21:04:07.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Tile.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tile.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Tile.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tile.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Tile.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-12T20:59:59.769Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Tile.h",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tile.h",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Tile.h",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Tile.h",
-              "RelativeToolTip": "MultiplayerGame\\Tile.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-12T20:50:54.698Z",
               "EditorCaption": ""
             }
           ]

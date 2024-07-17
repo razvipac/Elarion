@@ -1,7 +1,134 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (MultiplayerGame.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  PerlinNoise.cpp
+  MultiplayerGame.cpp
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(99,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,93): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(200,62): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,71): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(201,59): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,68): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(203,45): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,91): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(212,60): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,69): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(213,57): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,90): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(215,71): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,85): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:         with
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:             T=int
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:         ]
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:         and
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:         [
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:             T=float
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\MultiplayerGame.cpp(219,54): warning C4244:         ]
   Generating code
-  2 of 390 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+  2 of 152 functions ( 1.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

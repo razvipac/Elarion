@@ -1,6 +1,5 @@
 #pragma once
-#include "SFML/Graphics.hpp"
-
+#include <iostream>
 class PerlinNoise {
 private:
 	int octaves;
@@ -26,4 +25,17 @@ public:
 	void changePerlinNoise2DSeed();
 	void generatePerlinNoise2D();
 	void saveNoise2D(std::string path);
+	void saveNoise2DColored(std::string path);
+	void get2DNoiseColored(int* level);
+
+	void increaseOctaves();
+	void decreaseOctaves();
+
+	void increaseScale();
+	void decreaseScale();
+
+	void increaseBias();
+	void decreaseBias();
+
+	~PerlinNoise();
 };

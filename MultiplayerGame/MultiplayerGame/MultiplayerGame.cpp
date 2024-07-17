@@ -9,6 +9,7 @@
 #include "ItemSlot.h"
 #include "Tile.h"
 #include "PerlinNoise.h"
+#include "TileMap.h"
 
 using namespace std;
 using namespace sf;
@@ -24,12 +25,6 @@ void sendPacket(ENetPeer* peer, const char* data, bool reliable = true) {
 	else
 		packet = enet_packet_create(data, 13, 0);
 	enet_peer_send(peer, 0, packet);
-}
-
-float charArrayToFloat(const char* data) {
-	float result;
-	memcpy(&result, data, sizeof(float)); // Copy the first 4 bytes into result
-	return result;
 }
 
 void parseData(char* data) {
@@ -100,11 +95,139 @@ void msgLoop(ENetHost* client) {
 }
 
 int main() {
+	cout<<"Starting\n";
+	srand(time(NULL));
 
 	PerlinNoise noise;
-	noise.changePerlinNoise2DSeed();
-	noise.saveNoise2D("Resources/Textures/PerlinNoise.png");
+	noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
 
+	RenderWindow window2(VideoMode(1024, 1024), "Noise");
+
+	//Texture noiseTexture;
+	//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
+	//Sprite noiseSprite(noiseTexture);
+
+	//get the default view
+	View defaultView = window2.getDefaultView();
+	Vector2f lastMousePos;
+
+	/*Tile waterTile(0, true, "Resources/Textures/WaterTile.png");
+	Tile sandTile(1, false, "Resources/Textures/SandTile.png");
+	Tile grassTile(2, false, "Resources/Textures/GrassTile.png");
+	Tile snowTile(3, false, "Resources/Textures/SnowTile.png");*/
+
+	const int width = 256;
+	const int height = 256;
+	int tileSize = 62;
+	cout<<"Creating noise\n";
+	int level[width * height];
+	noise.get2DNoiseColored(level);
+	/*for (int i = 0; i < width * height; i++) {
+		cout<<level[i]<<" ";
+		if(i % width == 0)
+			cout<<"\n";
+	}*/
+	cout<<"Got noise\n";
+	TileMap map;
+	if (!map.load("Resources/Textures/TileSet.png", Vector2u(tileSize, tileSize), level, width, height)) {
+		cout<<"Failed to load map\n";
+		return EXIT_FAILURE;
+	}
+
+	cout<<"Loaded everything\n";
+
+
+	while (window2.isOpen()) {
+		Event event;
+		while (window2.pollEvent(event)) {
+			if (event.type == Event::Closed)
+				window2.close();
+
+			if (event.type == Event::KeyPressed) {
+				if (event.key.code == Keyboard::Space) {
+					noise.changePerlinNoise2DSeed();
+					noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
+					noise.get2DNoiseColored(level);
+					map.update(level, Vector2u(tileSize, tileSize), width, height);
+					//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
+					//noiseSprite.setTexture(noiseTexture);
+				}
+				else if (event.key.code == Keyboard::Up) {
+					noise.increaseOctaves();
+					noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
+					noise.get2DNoiseColored(level);
+					map.update(level, Vector2u(tileSize, tileSize), width, height);
+					//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
+					//noiseSprite.setTexture(noiseTexture);
+				}
+				else if (event.key.code == Keyboard::Down) {
+					noise.decreaseOctaves();
+					noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
+					noise.get2DNoiseColored(level);
+					map.update(level, Vector2u(tileSize, tileSize), width, height);
+					//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
+					//noiseSprite.setTexture(noiseTexture);
+				}
+				else if (event.key.code == Keyboard::B) {
+					noise.increaseBias();
+					noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
+					noise.get2DNoiseColored(level);
+					map.update(level, Vector2u(tileSize, tileSize), width, height);
+					//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
+					//noiseSprite.setTexture(noiseTexture);
+				}
+				else if (event.key.code == Keyboard::N) {
+					noise.decreaseBias();
+					noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
+					noise.get2DNoiseColored(level);
+					map.update(level, Vector2u(tileSize, tileSize), width, height);
+					//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
+					//noiseSprite.setTexture(noiseTexture);
+				}
+			}
+			else if (event.type == Event::MouseWheelScrolled) {
+				if (event.mouseWheelScroll.delta > 0) {
+					defaultView.zoom(0.9f);
+					window2.setView(defaultView);
+				}
+				else {
+					defaultView.zoom(1.1f);
+					window2.setView(defaultView);
+				}
+			}
+			else if (event.type == Event::MouseButtonPressed) {
+				if (event.mouseButton.button == Mouse::Left) {
+					Vector2f mousePos = Vector2f(Mouse::getPosition(window2).x, Mouse::getPosition(window2).y);
+					mousePos = window2.mapPixelToCoords(Vector2i(mousePos.x, mousePos.y), defaultView);
+					//cout<<"Mouse position: "<<mousePos.x<<" "<<mousePos.y<<"\n";
+					Vector2i tilePos = Vector2i(mousePos.x / tileSize, mousePos.y / tileSize);
+					if(tilePos.x >= 0 && tilePos.x < width && tilePos.y >= 0 && tilePos.y < height)
+						cout<<"Tile position: "<<tilePos.x<<" "<<tilePos.y<<" Tile type: "<<level[tilePos.y * width + tilePos.x]<<"\n";
+				}
+			}
+		}
+
+
+		if (Mouse::isButtonPressed(Mouse::Right)) {
+			Vector2f mousePos = Vector2f(Mouse::getPosition(window2).x, Mouse::getPosition(window2).y);
+			mousePos = window2.mapPixelToCoords(Vector2i(mousePos.x, mousePos.y), defaultView);
+			Vector2f lastMousePosCpy = lastMousePos;
+			lastMousePosCpy = window2.mapPixelToCoords(Vector2i(lastMousePosCpy.x, lastMousePosCpy.y), defaultView);
+			defaultView.move(lastMousePosCpy - mousePos);
+			window2.setView(defaultView);
+		}
+		lastMousePos = Vector2f(Mouse::getPosition(window2).x, Mouse::getPosition(window2).y);
+
+
+
+		window2.clear();
+		//window2.draw(noiseSprite);
+		window2.draw(map);
+		window2.display();
+	}
+
+	return 0;
+	/*
 	if (enet_initialize()) {
 		cout << "An error occured while initializing ENet!\n";
 		return EXIT_FAILURE;
@@ -221,4 +344,5 @@ int main() {
 	cout << "popa";
 
 	return EXIT_SUCCESS;
+	*/
 }

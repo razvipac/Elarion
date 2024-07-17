@@ -1,5 +1,5 @@
 #include "PerlinNoise.h"
-#include <iostream>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 using namespace sf;
@@ -11,15 +11,15 @@ PerlinNoise::PerlinNoise() {
 	perlinNoise1D = new float[size];
 
 	// Set the number of octaves and the scale
-	octaves = 10;
+	octaves = 6;
 	scale = 2.0f;
 	bias = 0.7f;
 
 	changePerlinNoise1DSeed();
 
 	// Initialize the noiseSeed2D array with random values
-	width = 1024;
-	height = 1024;
+	width = 256;
+	height = 256;
 	noiseSeed2D = new float[width * height];
 	perlinNoise2D = new float[width * height];
 
@@ -123,4 +123,107 @@ void PerlinNoise::saveNoise2D(string path) {
 	}
 
 	image.saveToFile(path);
+}
+void PerlinNoise::saveNoise2DColored(string path) {
+	//Save the perlin noise values as an image to the specified path
+	Image image;
+	image.create(width, height, Color::White);
+
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < height; j++) {
+			int value = (int)(perlinNoise2D[j * width + i] * 255);
+			Color color;
+			Color corruptColor(150, 50, 150);
+			Color blendedColor;
+
+			if (value < 50)
+				color = Color(0, 0, 255); //water
+			else if (value < 100)
+				color = Color(255, 255, 0); //sand
+			else if (value < 150)
+				color = Color(0, 255, 0); //grass
+			else if (value < 200)
+				color = Color(139, 69, 19); //dirt
+			else
+				color = Color(255, 255, 255); //snow
+
+			if(i < width / 2)
+				blendedColor = color;
+			else {
+				float fraction = (float)(i - width / 2) / (width / 2);
+				blendedColor.r = (1.0f - fraction) * color.r + fraction * corruptColor.r;
+				blendedColor.g = (1.0f - fraction) * color.g + fraction * corruptColor.g;
+				blendedColor.b = (1.0f - fraction) * color.b + fraction * corruptColor.b;
+			}
+
+			image.setPixel(i, j, blendedColor);
+		}
+	}
+
+	image.saveToFile(path);
+}
+void PerlinNoise::get2DNoiseColored(int* level) {
+	//Save the perlin noise values as an image to the specified path
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < height; j++) {
+			int value = (int)(perlinNoise2D[j * width + i] * 255);
+			int index = j * width + i;
+			if (value < 70)
+				level[index] = 0; //water
+			else if (value < 100)
+				level[index] = 2; //sand
+			else if (value < 150)
+				level[index] = 1; //grass
+			else if (value < 200)
+				level[index] = 4; //dirt (does not exist yet)
+			else
+				level[index] = 3; //snow
+		}
+	}
+}
+
+void PerlinNoise::increaseOctaves() {
+	octaves++;
+	generatePerlinNoise1D();
+	generatePerlinNoise2D();
+}
+void PerlinNoise::decreaseOctaves() {
+	if (octaves > 1) {
+		octaves--;
+		generatePerlinNoise1D();
+		generatePerlinNoise2D();
+	}
+}
+
+void PerlinNoise::increaseScale() {
+	scale += 0.1f;
+	generatePerlinNoise1D();
+	generatePerlinNoise2D();
+}
+void PerlinNoise::decreaseScale() {
+	if (scale > 0.1f) {
+		scale -= 0.1f;
+		generatePerlinNoise1D();
+		generatePerlinNoise2D();
+	}
+}
+
+void PerlinNoise::increaseBias() {
+	bias += 0.1f;
+	generatePerlinNoise1D();
+	generatePerlinNoise2D();
+}
+void PerlinNoise::decreaseBias() {
+	if (bias > 0.1f) {
+		bias -= 0.1f;
+		generatePerlinNoise1D();
+		generatePerlinNoise2D();
+	}
+}
+
+PerlinNoise::~PerlinNoise() {
+	delete[] noiseSeed1D;
+	delete[] perlinNoise1D;
+	delete[] noiseSeed2D;
+	delete[] perlinNoise2D;
 }
