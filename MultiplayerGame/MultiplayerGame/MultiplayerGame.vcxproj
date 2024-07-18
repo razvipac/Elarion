@@ -134,24 +134,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemSlot.cpp" />
-    <ClCompile Include="MultiplayerGame.cpp" />
+    <ClCompile Include="Client.cpp" />
     <ClCompile Include="PerlinNoise.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Client.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Interactable.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemSlot.h" />
     <ClInclude Include="PerlinNoise.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="Utility.h" />
