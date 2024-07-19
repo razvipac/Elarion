@@ -8,7 +8,6 @@ Button::Button(const Vector2f& size, const Vector2f& position, const string& tex
 	shape.setFillColor(Color::White);
 	shape.setOutlineColor(Color::Black);
 	shape.setOutlineThickness(1);
-	font.loadFromFile("Resources/Roboto-Black.ttf");
 	this->text.setFont(font);
 	this->text.setString(text);
 	this->text.setCharacterSize(20);

@@ -1,14 +1,17 @@
 // AnimatorApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include "Animator.h"
+#include "StateMenu.h"
 #include <iostream>
 
 using namespace std;
 using namespace sf;
 
+Font font;
+bool clickUsed = false;
+
 int main()
 {
-	Font font;
 	if(!font.loadFromFile("Resources/Roboto-Black.ttf"))
 	{
 		cout << "Error loading font" << endl;
@@ -16,8 +19,11 @@ int main()
 
 	RenderWindow window(VideoMode(800, 600), "Window");
 	Animator animator;
+	StateMenu& stateMenu = StateMenu::getInstance();
+
 	while (window.isOpen())
 	{
+		clickUsed = false;
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -25,10 +31,12 @@ int main()
 			{
 				window.close();
 			}
+			stateMenu.handleEvent(event);
 			animator.handleEvent(event);
 		}
 		window.clear();
 		animator.draw(window);
+		stateMenu.draw(window);
 		window.display();
 	}
 

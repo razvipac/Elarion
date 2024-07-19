@@ -1,4 +1,6 @@
 #pragma once
+extern bool clickUsed;
+
 class State;
 class Transition
 {

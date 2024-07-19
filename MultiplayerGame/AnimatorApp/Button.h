@@ -3,11 +3,14 @@
 #include <functional>
 #include <iostream>
 
+extern bool clickUsed;
+
+extern sf::Font font;
+
 class Button
 {
 private:
 	sf::RectangleShape shape;
-	sf::Font font;
 	sf::Text text;
 	std::function<void()> onClick;
 public:

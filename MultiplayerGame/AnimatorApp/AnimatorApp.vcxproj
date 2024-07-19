@@ -138,6 +138,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="InputField.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMenu.cpp" />
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="InputField.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="StateMenu.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

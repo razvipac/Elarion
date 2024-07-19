@@ -3,6 +3,11 @@
 #include <vector>
 #include <iostream>
 #include "SFML/Graphics.hpp"
+
+extern sf::Font font;
+extern bool clickUsed;
+
+
 class State
 {
 private:
@@ -11,7 +16,9 @@ private:
 	std::string path;
 	sf::RectangleShape shape;
 	sf::Text text;
-	sf::Font font;
+	bool isDragging;
+	bool isSelected;
+	sf::Vector2f lastMousePosition;
 public:
 	State();
 	void addTransition(const State& arrivalState);
@@ -22,4 +29,8 @@ public:
 	const std::string& getPath() const;
 	void draw(sf::RenderWindow& window) const;
 	void setPosition(const sf::Vector2f& position);
+	void handleEvent(const sf::Event& event);
+	void update();
+	bool getIsSelected() const;
+	void deselect();
 };

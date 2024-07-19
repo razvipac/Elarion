@@ -1,14 +1,13 @@
 #include "InputField.h"
 using namespace std;
 using namespace sf;
-InputField::InputField(const Vector2f& size, const Vector2f& position, const string& text, const function<void(const string&)>& onTextChange) : onTextChange(onTextChange)
+InputField::InputField(const Vector2f& size, const Vector2f& position, const string& text)
 {
 	shape.setSize(size);
 	shape.setPosition(position);
 	shape.setFillColor(Color::White);
 	shape.setOutlineColor(Color::Black);
 	shape.setOutlineThickness(1);
-	font.loadFromFile("Resources/Roboto-Black.ttf");
 	this->text.setFont(font);
 	this->text.setString(text);
 	this->text.setCharacterSize(20);
@@ -26,13 +25,16 @@ void InputField::handleEvent(const Event& event)
 	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
 	{
 		Vector2f mousePosition = Vector2f(event.mouseButton.x, event.mouseButton.y);
-		if (shape.getGlobalBounds().contains(mousePosition))
+		if (shape.getGlobalBounds().contains(mousePosition) && !clickUsed)
 		{
+			clickUsed = true;
 			isSelected = true;
 		}
-		else
+		else if (isSelected)
 		{
 			isSelected = false;
+			if(onFinishEdit != nullptr)
+				onFinishEdit(text.getString());
 		}
 	}
 	else if (event.type == Event::TextEntered && isSelected)
@@ -42,18 +44,30 @@ void InputField::handleEvent(const Event& event)
 			string currentText = text.getString();
 			currentText.pop_back();
 			text.setString(currentText);
-			onTextChange(currentText);
 		}
 		else if (event.text.unicode >= 32 && event.text.unicode <= 126)
 		{
 			string currentText = text.getString();
 			currentText += event.text.unicode;
 			text.setString(currentText);
-			onTextChange(currentText);
 		}
+	}
+	else if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter && isSelected)
+	{
+		isSelected = false;
+		if(onFinishEdit != nullptr)
+			onFinishEdit(text.getString());
 	}
 }
 void InputField::setText(const string& text)
 {
 	this->text.setString(text);
+}
+const Text& InputField::getText() const
+{
+	return text;
+}
+void InputField::setOnFinishEdit(const function<void(const std::string&)>& onFinishEdit)
+{
+	this->onFinishEdit = onFinishEdit;
 }
