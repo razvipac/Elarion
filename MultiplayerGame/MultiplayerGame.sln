@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "MultiplayerGame\M
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{69CBF44B-C2FB-4634-976D-8C4F9E3354F1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AnimatorApp", "AnimatorApp\AnimatorApp.vcxproj", "{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{69CBF44B-C2FB-4634-976D-8C4F9E3354F1}.Release|x64.Build.0 = Release|x64
 		{69CBF44B-C2FB-4634-976D-8C4F9E3354F1}.Release|x86.ActiveCfg = Release|Win32
 		{69CBF44B-C2FB-4634-976D-8C4F9E3354F1}.Release|x86.Build.0 = Release|Win32
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Debug|x64.ActiveCfg = Debug|x64
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Debug|x64.Build.0 = Debug|x64
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Debug|x86.ActiveCfg = Debug|Win32
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Debug|x86.Build.0 = Debug|Win32
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Release|x64.ActiveCfg = Release|x64
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Release|x64.Build.0 = Release|x64
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Release|x86.ActiveCfg = Release|Win32
+		{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
