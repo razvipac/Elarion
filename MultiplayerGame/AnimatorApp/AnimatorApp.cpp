@@ -9,6 +9,7 @@ Font font;
 bool clickUsed = false;
 Vector2f mousePositionInWorld;
 Vector2f mousePositionInUI;
+bool isAddingTransition = false;
 
 int main()
 {

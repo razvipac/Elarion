@@ -5,6 +5,7 @@ State::State(const string& name, const string& path) {
 	this->name = name;
 	this->path = path;
 	shape.setSize(sf::Vector2f(150, 50));
+	shape.setOrigin(75, 25); //center the origin (for rotation)
 	setPosition(sf::Vector2f(200, 200));
 	shape.setFillColor(sf::Color::White);
 	shape.setOutlineColor(sf::Color::Black);
@@ -13,15 +14,20 @@ State::State(const string& name, const string& path) {
 	text.setString(name);
 	text.setCharacterSize(15);
 	text.setPosition(shape.getPosition().x + 10, shape.getPosition().y + 10);
+	text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2);
 	text.setFillColor(sf::Color::Black);
 	isSelected = false;
 }
 
-void State::addTransition(const State& arrivalState)
+void State::addTransition(State& arrivalState)
 {
-	transitions.push_back(Transition(arrivalState));
+	for(int i = 0; i < transitions.size(); i++)
+		if (&transitions[i]->getArrivalState() == &arrivalState)
+			return;
+	transitions.push_back(new Transition(*this, arrivalState));
+	arrivalState.incomingTransitions.push_back(transitions[transitions.size() - 1]);
 }
-const vector<Transition>& State::getTransitions() const
+const vector<Transition*> State::getTransitions() const
 {
 	return transitions;
 }
@@ -51,10 +57,21 @@ void State::draw(sf::RenderWindow& window) const
 	window.draw(text);
 }
 
+void State::drawTransitions(sf::RenderWindow& window) const
+{
+	for (int i = 0; i < transitions.size(); i++)
+		transitions[i]->draw(window);
+}
+
 void State::setPosition(const sf::Vector2f& position)
 {
 	shape.setPosition(position);
 	text.setPosition(position.x + 10, position.y + 10);
+}
+
+const sf::Vector2f& State::getPosition() const
+{
+	return shape.getPosition();
 }
 
 void State::handleEvent(const sf::Event& event)
@@ -84,7 +101,22 @@ void State::handleEvent(const sf::Event& event)
 		shape.setPosition(shape.getPosition() + offset);
 		text.setPosition(text.getPosition() + offset);
 		lastMousePosition = mousePositionInWorld;
+		for (int i = 0; i < transitions.size(); i++)
+			transitions[i]->updatePositionAndRotation();
+		for (int i = 0; i < incomingTransitions.size(); i++)
+			incomingTransitions[i]->updatePositionAndRotation();
 	}
+}
+
+void State::handleTransitionEvent(const sf::Event& event)
+{
+	for (int i = 0; i < transitions.size(); i++)
+		transitions[i]->handleEvent(event);
+}
+
+const sf::RectangleShape& State::getShape() const
+{
+	return shape;
 }
 
 bool State::getIsSelected() const
@@ -114,8 +146,37 @@ void State::saveState(std::ofstream& file) const
 	file.write((char*)&size, sizeof(int));
 	for (int i = 0; i < size; i++)
 	{
-		int nameSize = transitions[i].getArrivalState().getName().size();
+		int nameSize = transitions[i]->getArrivalState().getName().size();
 		file.write((char*)&nameSize, sizeof(int));
-		file.write(transitions[i].getArrivalState().getName().c_str(), nameSize);
+		file.write(transitions[i]->getArrivalState().getName().c_str(), nameSize);
 	}
+}
+
+void State::eraseTransition(Transition* transition)
+{
+	for (int i = 0; i < transitions.size(); i++)
+	{
+		if (transitions[i] == transition)
+		{
+			transitions.erase(transitions.begin() + i);
+			break;
+		}
+	}
+	for (int i = 0; i < incomingTransitions.size(); i++)
+	{
+		if (incomingTransitions[i] == transition)
+		{
+			incomingTransitions.erase(incomingTransitions.begin() + i);
+			break;
+		}
+	}
+}
+
+State::~State()
+{
+	// delete transitions
+	for (int i = 0; i < transitions.size(); i++)
+		delete transitions[i];
+	for (int i = incomingTransitions.size() - 1; i >= 0; i--)
+		delete incomingTransitions[i];
 }

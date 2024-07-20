@@ -14,6 +14,7 @@ private:
 	//InputField inputField;
 	Button addStateButton;
 	Animator* animator;
+	Button addTransitionButton;
 	StateMenu(const sf::Vector2f& size, const sf::Vector2f& position);
 public:
 	StateMenu& operator=(const StateMenu&) = delete;

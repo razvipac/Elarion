@@ -11,6 +11,14 @@ Animator::Animator()
 
 void Animator::addState(const string& name, const string& path)
 {
+	for(int i=0; i<states.size(); i++)
+	{
+		if(states[i]->getPath() == path)
+		{
+			cout << "State with that name already exists" << endl;
+			return;
+		}
+	}
 	states.push_back(new State(name, path));
 	cout << "State added" << endl;
 }
@@ -31,14 +39,14 @@ const vector<State*>& Animator::getStates() const
 void Animator::draw(sf::RenderWindow& window) const
 {
 	for (int i = 0; i < states.size(); i++)
-	{
+		states[i]->drawTransitions(window);
+	for (int i = 0; i < states.size(); i++)
 		states[i]->draw(window);
-	}
 }
 void Animator::handleEvent(const sf::Event& event)
 {
 	//If we pressed delete and a state is selected, delete it
-	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Delete && selectedState != nullptr)
+	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Delete && selectedState != nullptr && !isAddingTransition)
 	{
 		for (int i = 0; i < states.size(); i++)
 		{
@@ -52,9 +60,34 @@ void Animator::handleEvent(const sf::Event& event)
 		}
 	}
 
+	if (isAddingTransition) {
+		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left && !clickUsed)
+		{
+			int found = -1;
+			for (int i = states.size() - 1; i >= 0; i--)
+			{
+				if (states[i]->getShape().getGlobalBounds().contains(mousePositionInWorld) && states[i] != selectedState)
+				{
+					found = i;
+					break;
+				}
+			}
+			if(found != -1)
+				selectedState->addTransition(*states[found]);
+			
+			isAddingTransition = false;
+			clickUsed = true;
+		}
+	}
+	
+
 	for (int i=states.size()-1; i>=0; i--)
 	{
 		states[i]->handleEvent(event);
+	}
+	for(int i=0; i<states.size(); i++)
+	{
+		states[i]->handleTransitionEvent(event);
 	}
 }
 
@@ -93,4 +126,12 @@ void Animator::saveAnimator(const string& path) const
 		file.write(states[i]->getPath().c_str(), pathSize);
 	}
 	file.close();
+}
+
+Animator::~Animator()
+{
+	for (int i = 0; i < states.size(); i++)
+	{
+		delete states[i];
+	}
 }

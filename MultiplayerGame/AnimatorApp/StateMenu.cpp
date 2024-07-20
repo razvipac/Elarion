@@ -5,7 +5,7 @@ using namespace std;
 using namespace sf;
 //	InputField(const sf::Vector2f& size, const sf::Vector2f& position, const std::string& text, const std::function<void(const std::string&)>& onTextChange);
 
-StateMenu::StateMenu(const Vector2f& size, const Vector2f& position) : /*inputField(Vector2f(120, 40), Vector2f(position.x + 10, position.y + 40), ""),*/ addStateButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 600), "Add State", [this]() {})
+StateMenu::StateMenu(const Vector2f& size, const Vector2f& position) : /*inputField(Vector2f(120, 40), Vector2f(position.x + 10, position.y + 40), ""),*/ addStateButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 600), "Add State", [this]() {}), addTransitionButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 125), "Add Transition", [this]() {})
 {
 	shape.setSize(size);
 	shape.setPosition(position);
@@ -36,12 +36,14 @@ void StateMenu::draw(RenderWindow& window) const
 	window.draw(text);
 	//inputField.draw(window);
 	addStateButton.draw(window);
+	addTransitionButton.draw(window);
 }
 
 void StateMenu::handleEvent(const Event& event)
 {
 	//inputField.handleEvent(event);
 	addStateButton.handleEvent(event);
+	addTransitionButton.handleEvent(event);
 }
 
 void StateMenu::setText(const string& text)
@@ -69,5 +71,13 @@ void StateMenu::setAnimator(Animator* animator) {
 		string name = nameWithExtension.substr(0, nameWithExtension.find_last_of(".")); // Remove the extension
 
 		animator->addState(name, path);
+	});
+
+	addTransitionButton.setOnClick([animator]() {
+		if(animator->getSelectedState() == nullptr)
+			return;
+		isAddingTransition = true;
+		cout << "Adding transition" << endl;
+		//animator->addTransition();
 	});
 }

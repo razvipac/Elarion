@@ -22,4 +22,5 @@ public:
 	static State* getSelectedState();
 	static void setSelectedState(State* selectedState);
 	void saveAnimator(const std::string& path) const;
+	~Animator();
 };
