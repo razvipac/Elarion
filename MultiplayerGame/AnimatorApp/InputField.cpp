@@ -10,9 +10,9 @@ InputField::InputField(const Vector2f& size, const Vector2f& position, const str
 	shape.setOutlineThickness(1);
 	this->text.setFont(font);
 	this->text.setString(text);
-	this->text.setCharacterSize(20);
+	this->text.setCharacterSize(17);
 	this->text.setFillColor(Color::Black);
-	this->text.setPosition(position.x + 5, position.y + 5);
+	this->text.setPosition(position.x + 6, position.y + 6);
 	isSelected = false;
 }
 void InputField::draw(RenderWindow& window) const
@@ -24,15 +24,16 @@ void InputField::handleEvent(const Event& event)
 {
 	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
 	{
-		Vector2f mousePosition = Vector2f(event.mouseButton.x, event.mouseButton.y);
-		if (shape.getGlobalBounds().contains(mousePosition) && !clickUsed)
+		if (shape.getGlobalBounds().contains(mousePositionInUI) && !clickUsed)
 		{
 			clickUsed = true;
 			isSelected = true;
+			shape.setOutlineColor(Color::Green);
 		}
 		else if (isSelected)
 		{
 			isSelected = false;
+			shape.setOutlineColor(Color::Black);
 			if(onFinishEdit != nullptr)
 				onFinishEdit(text.getString());
 		}
@@ -55,6 +56,7 @@ void InputField::handleEvent(const Event& event)
 	else if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter && isSelected)
 	{
 		isSelected = false;
+		shape.setOutlineColor(Color::Black);
 		if(onFinishEdit != nullptr)
 			onFinishEdit(text.getString());
 	}

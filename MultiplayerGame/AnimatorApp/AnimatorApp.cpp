@@ -1,5 +1,3 @@
-// AnimatorApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include "Animator.h"
 #include "StateMenu.h"
 #include <iostream>
@@ -9,6 +7,8 @@ using namespace sf;
 
 Font font;
 bool clickUsed = false;
+Vector2f mousePositionInWorld;
+Vector2f mousePositionInUI;
 
 int main()
 {
@@ -17,12 +17,22 @@ int main()
 		cout << "Error loading font" << endl;
 	}
 
-	RenderWindow window(VideoMode(800, 600), "Window");
+	RenderWindow window(VideoMode(1280, 720), "[Multiplayer Java Game] Animator Tool");
 	Animator animator;
 	StateMenu& stateMenu = StateMenu::getInstance();
+	stateMenu.setAnimator(&animator);
+
+	View worldView = window.getDefaultView();
+	View uiView = window.getDefaultView();
+
+	Vector2f lastMousePos;
+
+	Color backgroundColor(89, 89, 89);
 
 	while (window.isOpen())
 	{
+		mousePositionInWorld = window.mapPixelToCoords(Mouse::getPosition(window), worldView);
+		mousePositionInUI = window.mapPixelToCoords(Mouse::getPosition(window), uiView);
 		clickUsed = false;
 		Event event;
 		while (window.pollEvent(event))
@@ -31,24 +41,34 @@ int main()
 			{
 				window.close();
 			}
+			else if (event.type == Event::MouseWheelScrolled) { // Controls zooming in and out of the 2D world view
+				if (event.mouseWheelScroll.delta > 0) {
+					worldView.zoom(0.9f);
+				}
+				else {
+					worldView.zoom(1.1f);
+				}
+			}
 			stateMenu.handleEvent(event);
 			animator.handleEvent(event);
 		}
-		window.clear();
+
+		//Controls panning the camera in the 2D world view
+		if (Mouse::isButtonPressed(Mouse::Right)) {
+			lastMousePos = window.mapPixelToCoords(Vector2i(lastMousePos.x, lastMousePos.y), worldView);
+			worldView.move(lastMousePos - mousePositionInWorld);
+		}
+		lastMousePos = Vector2f(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
+
+
+
+
+		window.clear(backgroundColor);
+		window.setView(worldView);
 		animator.draw(window);
+		window.setView(uiView);
 		stateMenu.draw(window);
 		window.display();
 	}
 
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

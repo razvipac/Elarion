@@ -4,14 +4,14 @@
 using namespace sf;
 using namespace std;
 State* Animator::selectedState = nullptr;
-Animator::Animator() : button(Vector2f(100, 50), Vector2f(0, 0), "Add State", [this]() { addState(); })
+Animator::Animator()
 {
 	defaultStateIndex = -1;
 }
 
-void Animator::addState()
+void Animator::addState(const string& name, const string& path)
 {
-	states.push_back(State());
+	states.push_back(new State(name, path));
 	cout << "State added" << endl;
 }
 
@@ -24,25 +24,38 @@ int Animator::getDefaultStateIndex() const
 	return defaultStateIndex;
 }
 
-const vector<State>& Animator::getStates() const
+const vector<State*>& Animator::getStates() const
 {
 	return states;
 }
 void Animator::draw(sf::RenderWindow& window) const
 {
-	for (const State& state : states)
+	for (int i = 0; i < states.size(); i++)
 	{
-		state.draw(window);
+		states[i]->draw(window);
 	}
-	button.draw(window);
 }
 void Animator::handleEvent(const sf::Event& event)
 {
+	//If we pressed delete and a state is selected, delete it
+	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Delete && selectedState != nullptr)
+	{
+		for (int i = 0; i < states.size(); i++)
+		{
+			if (states[i] == selectedState)
+			{
+				states.erase(states.begin() + i);
+				delete selectedState;
+				setSelectedState(nullptr);
+				break;
+			}
+		}
+	}
+
 	for (int i=states.size()-1; i>=0; i--)
 	{
-		states[i].handleEvent(event);
+		states[i]->handleEvent(event);
 	}
-	button.handleEvent(event);
 }
 
 State* Animator::getSelectedState()
@@ -58,4 +71,26 @@ void Animator::setSelectedState(State* selectedState)
 		StateMenu::getInstance().setText(selectedState->getName());
 	else
 		StateMenu::getInstance().setText("");
+}
+
+void Animator::saveAnimator(const string& path) const
+{
+	ofstream file(path, ios::binary);
+	if (!file.is_open())
+	{
+		cout << "Failed to open file for writing" << endl;
+		return;
+	}
+	int size = states.size();
+	file.write((char*)&size, sizeof(int));
+	for (int i = 0; i < size; i++)
+	{
+		int nameSize = states[i]->getName().size();
+		file.write((char*)&nameSize, sizeof(int));
+		file.write(states[i]->getName().c_str(), nameSize);
+		int pathSize = states[i]->getPath().size();
+		file.write((char*)&pathSize, sizeof(int));
+		file.write(states[i]->getPath().c_str(), pathSize);
+	}
+	file.close();
 }

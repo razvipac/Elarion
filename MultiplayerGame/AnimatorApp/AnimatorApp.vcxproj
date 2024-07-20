@@ -122,6 +122,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +137,7 @@
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AnimatorApp.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="FileSelection.cpp" />
     <ClCompile Include="InputField.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMenu.cpp" />
@@ -144,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Animator.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="FileSelection.h" />
     <ClInclude Include="InputField.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMenu.h" />

@@ -7,6 +7,8 @@ extern bool clickUsed;
 
 extern sf::Font font;
 
+extern sf::Vector2f mousePositionInUI;
+
 class Button
 {
 private:
@@ -18,4 +20,5 @@ public:
 	void draw(sf::RenderWindow& window) const;
 	void handleEvent(const sf::Event& event);
 	void setText(const std::string& text);
+	void setOnClick(const std::function<void()>& onClick);
 };

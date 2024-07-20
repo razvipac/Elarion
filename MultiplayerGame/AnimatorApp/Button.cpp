@@ -21,11 +21,11 @@ void Button::draw(RenderWindow& window) const
 }
 void Button::handleEvent(const Event& event)
 {
-	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
+	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left && !clickUsed)
 	{
-		Vector2f mousePosition = Vector2f(event.mouseButton.x, event.mouseButton.y);
-		if (shape.getGlobalBounds().contains(mousePosition))
+		if (shape.getGlobalBounds().contains(mousePositionInUI))
 		{
+			clickUsed = true;
 			onClick();
 		}
 	}
@@ -33,4 +33,9 @@ void Button::handleEvent(const Event& event)
 void Button::setText(const string& text)
 {
 	this->text.setString(text);
+}
+
+void Button::setOnClick(const function<void()>& onClick)
+{
+	this->onClick = onClick;
 }

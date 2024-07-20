@@ -7,6 +7,8 @@ extern bool clickUsed;
 
 extern sf::Font font;
 
+extern sf::Vector2f mousePositionInUI;
+
 class InputField
 {
 private:

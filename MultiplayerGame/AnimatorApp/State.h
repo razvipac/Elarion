@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "SFML/Graphics.hpp"
+#include <fstream>
 
 extern sf::Font font;
 extern bool clickUsed;
@@ -20,7 +21,7 @@ private:
 	bool isSelected;
 	sf::Vector2f lastMousePosition;
 public:
-	State();
+	State(const std::string& name, const std::string& path);
 	void addTransition(const State& arrivalState);
 	const std::vector<Transition>& getTransitions() const;
 	void setName(const std::string& name);
@@ -33,4 +34,5 @@ public:
 	void update();
 	bool getIsSelected() const;
 	void deselect();
+	void saveState(std::ofstream& file) const;
 };
