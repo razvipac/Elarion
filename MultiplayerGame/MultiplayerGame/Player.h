@@ -14,6 +14,7 @@ private:
 	Inventory inventory;
 	Animation idleAnimation;
 	Animation walkAnimation;
+	Animation runAnimation;
 public:
 	Player(int id);
 	void setPosition(sf::Vector2f position);

@@ -20,6 +20,34 @@ const State& Transition::getArrivalState() const
 void Transition::draw(sf::RenderWindow& window) const
 {
 	window.draw(shape);
+	//// Calculate the midpoint for the arrow
+	//sf::Vector2f startPosition = startingState.getPosition() - offset;
+	//sf::Vector2f endPosition = arrivalState.getPosition() + offset;
+	//sf::Vector2f midpoint = (startPosition + endPosition) / 2.0f;
+
+	//// Calculate direction from start to end
+	//sf::Vector2f direction = endPosition - startPosition;
+	//sf::Vector2f unitDirection = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
+	//sf::Vector2f unitPerpendicular(-unitDirection.y, unitDirection.x);
+
+	//// Adjusted arrow properties for larger size
+	//const float arrowLength = 30.0f;
+	//const float arrowWidth = 20.0f;
+
+	//// Calculate arrow points
+	//sf::Vector2f arrowPoint = midpoint;
+	//sf::Vector2f arrowBaseLeft = arrowPoint - arrowLength * unitDirection + arrowWidth * unitPerpendicular / 2.f;
+	//sf::Vector2f arrowBaseRight = arrowPoint - arrowLength * unitDirection - arrowWidth * unitPerpendicular / 2.f;
+
+	//// Create and draw the arrow
+	//sf::ConvexShape arrow;
+	//arrow.setPointCount(3);
+	//arrow.setPoint(0, arrowPoint);
+	//arrow.setPoint(1, arrowBaseLeft);
+	//arrow.setPoint(2, arrowBaseRight);
+	//arrow.setFillColor(sf::Color::White);
+
+	//window.draw(arrow);
 }
 void Transition::setPosition(const sf::Vector2f& position)
 {

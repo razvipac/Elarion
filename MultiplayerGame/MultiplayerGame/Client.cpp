@@ -101,6 +101,7 @@ int main() {
 
 	TextureManager::getInstance().loadTexture("PlayerIdle", "Resources/Sunnyside_World_Assets/Characters/Human/IDLE/base_idle_strip9.png");
 	TextureManager::getInstance().loadTexture("PlayerWalk", "Resources/Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png");
+	TextureManager::getInstance().loadTexture("PlayerRun", "Resources/Sunnyside_World_Assets/Characters/Human/RUN/base_run_strip8.png");
 	Player p(-1);
 
 	PerlinNoise noise;
