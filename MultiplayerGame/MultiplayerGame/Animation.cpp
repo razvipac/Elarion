@@ -91,6 +91,15 @@ void Animation::loadAnimation(const string& filename) {
 		}
 		file.close();
 
+		cout<<filename<<":\n";
+		cout<<size<<" "<<duration<<" "<<loop<<"\n";
+
+		//if this is the running animation, change the duration to 0.5 and save
+		/*if (filename == "Resources/Animations/PlayerRun.anim") {
+			duration = 0.5;
+			saveAnimation("Resources/Animations/PlayerRun.anim");
+		}*/
+
 		for(int i=0; i<frames.size(); i++)
 			cout << frames[i].left << " " << frames[i].top << " " << frames[i].width << " " << frames[i].height << "\n";
 	}

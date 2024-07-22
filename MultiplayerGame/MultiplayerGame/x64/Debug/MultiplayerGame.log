@@ -1,3 +1,5 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MultiplayerGame.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Player.cpp
-  MultiplayerGame.vcxproj -> C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\x64\Debug\Client.exe
+  Animation.cpp
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\Animation.cpp(40,20): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\MultiplayerGame\Animation.cpp(65,21): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  MultiplayerGame.vcxproj -> D:\C++ Codes\Visual Studio\MultiplayerGame\Multiplayer-Java-Game\MultiplayerGame\x64\Debug\Client.exe

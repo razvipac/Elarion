@@ -13,12 +13,12 @@ private:
 	State& arrivalState;
 	sf::Vector2f offset;
 	sf::RectangleShape shape;
+	sf::ConvexShape arrow;
 	bool mouseIntersectsLine() const;
 public:
 	Transition(State& startingState, State& arrivalState);
 	const State& getArrivalState() const;
 	void draw(sf::RenderWindow& window) const;
-	void setPosition(const sf::Vector2f& position);
 	void handleEvent(const sf::Event& event);
 	void updatePositionAndRotation();
 	~Transition();
