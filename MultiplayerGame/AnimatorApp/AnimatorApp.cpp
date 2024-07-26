@@ -1,5 +1,6 @@
 #include "Animator.h"
 #include "StateMenu.h"
+#include "TransitionMenu.h"
 #include <iostream>
 
 using namespace std;
@@ -21,7 +22,9 @@ int main()
 	RenderWindow window(VideoMode(1280, 720), "[Multiplayer Java Game] Animator Tool");
 	Animator animator;
 	StateMenu& stateMenu = StateMenu::getInstance();
+	TransitionMenu& transitionMenu = TransitionMenu::getInstance();
 	stateMenu.setAnimator(&animator);
+	transitionMenu.setAnimator(&animator);
 
 	View worldView = window.getDefaultView();
 	View uiView = window.getDefaultView();
@@ -51,6 +54,7 @@ int main()
 				}
 			}
 			stateMenu.handleEvent(event);
+			transitionMenu.handleEvent(event);
 			animator.handleEvent(event);
 		}
 
@@ -69,6 +73,7 @@ int main()
 		animator.draw(window);
 		window.setView(uiView);
 		stateMenu.draw(window);
+		transitionMenu.draw(window);
 		window.display();
 	}
 

@@ -137,20 +137,24 @@
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AnimatorApp.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ConditionUI.cpp" />
     <ClCompile Include="FileSelection.cpp" />
     <ClCompile Include="InputField.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMenu.cpp" />
     <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="TransitionMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animator.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ConditionUI.h" />
     <ClInclude Include="FileSelection.h" />
     <ClInclude Include="InputField.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMenu.h" />
     <ClInclude Include="Transition.h" />
+    <ClInclude Include="TransitionMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -39,3 +39,9 @@ void Button::setOnClick(const function<void()>& onClick)
 {
 	this->onClick = onClick;
 }
+
+void Button::setPosition(const Vector2f& position)
+{
+	shape.setPosition(position);
+	text.setPosition(position.x + 10, position.y + 10);
+}

@@ -21,4 +21,5 @@ public:
 	void handleEvent(const sf::Event& event);
 	void setText(const std::string& text);
 	void setOnClick(const std::function<void()>& onClick);
+	void setPosition(const sf::Vector2f& position);
 };

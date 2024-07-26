@@ -1,4 +1,5 @@
 #include "Transition.h"
+#include "TransitionMenu.h"
 #include "State.h"
 #include <iostream>
 
@@ -16,6 +17,7 @@ Transition::Transition(State& startingState, State& arrivalState) : startingStat
 	arrow.setPoint(2, sf::Vector2f(20, -10));
 	arrow.setFillColor(sf::Color::Black);
 	arrow.setOrigin(10, 0);
+	arrow.setOutlineColor(sf::Color::White);
 }
 const State& Transition::getArrivalState() const
 {
@@ -33,9 +35,19 @@ void Transition::handleEvent(const sf::Event& event)
 		if (arrow.getGlobalBounds().contains(mousePositionInWorld))
 		{
 			cout << "Transition clicked" << endl;
+			TransitionMenu::getInstance().setCurrentTransition(this);
 			clickUsed = true;
+
 		}
 	}
+}
+
+void Transition::setOutline(bool outline)
+{
+	if (outline)
+		arrow.setOutlineThickness(2);
+	else
+		arrow.setOutlineThickness(0);
 }
 
 void Transition::updatePositionAndRotation()
@@ -73,9 +85,36 @@ bool Transition::mouseIntersectsLine() const //Method is currently not used anym
 	return distanceFromLine < 2.5 && distanceFromStart + distanceFromEnd - distance < 2.5;
 }
 
+void Transition::addCondition(const std::string& name, int operatorIndex, const FloatingBool& value)
+{
+	names.push_back(name);
+	operators.push_back(operatorIndex);
+	values.push_back(value);
+}
+
+void Transition::modifyCondition(int index, const std::string& name, int operatorIndex, const FloatingBool& value)
+{
+	names[index] = name;
+	operators[index] = operatorIndex;
+	values[index] = value;
+}
+
+void Transition::removeCondition(int index)
+{
+	names.erase(names.begin() + index);
+	operators.erase(operators.begin() + index);
+	values.erase(values.begin() + index);
+}
+
+int Transition::getConditionsCount() const
+{
+	return names.size();
+}
 
 Transition::~Transition()
 {
 	startingState.eraseTransition(this);
 	arrivalState.eraseTransition(this);
+	if(TransitionMenu::getCurrentTransition() == this)
+		TransitionMenu::setCurrentTransition(nullptr);
 }

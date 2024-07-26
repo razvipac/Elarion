@@ -73,3 +73,13 @@ void InputField::setOnFinishEdit(const function<void(const std::string&)>& onFin
 {
 	this->onFinishEdit = onFinishEdit;
 }
+
+void InputField::setPosition(const Vector2f& position)
+{
+	shape.setPosition(position);
+	text.setPosition(position.x + 6, position.y + 6);
+}
+
+const std::string& InputField::getValue() const {
+	return text.getString();
+}
