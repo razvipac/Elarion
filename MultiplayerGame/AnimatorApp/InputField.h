@@ -24,5 +24,5 @@ public:
 	const sf::Text& getText() const;
 	void setOnFinishEdit(const std::function<void(const std::string&)>& onFinishEdit);
 	void setPosition(const sf::Vector2f& position);
-	const std::string& getValue() const;
+	std::string getValue() const;
 };

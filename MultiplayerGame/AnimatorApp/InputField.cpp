@@ -80,6 +80,11 @@ void InputField::setPosition(const Vector2f& position)
 	text.setPosition(position.x + 6, position.y + 6);
 }
 
-const std::string& InputField::getValue() const {
+std::string InputField::getValue() const {
+	cout << "hihi" << this << "hiha" << "\n";
+	cout << isSelected << "\n";
+	string str = "1sngffgbndsf";
+	String str2 = text.getString();
+	cout << text.getString().toAnsiString() << "\n";
 	return text.getString();
 }

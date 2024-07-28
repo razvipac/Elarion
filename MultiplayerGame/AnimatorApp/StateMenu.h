@@ -23,6 +23,6 @@ public:
 	void draw(sf::RenderWindow& window) const;
 	void handleEvent(const sf::Event& event);
 	void setText(const std::string& text);
-	const std::string& getText() const;
+	std::string getText() const;
 	void setAnimator(Animator* animator);
 };

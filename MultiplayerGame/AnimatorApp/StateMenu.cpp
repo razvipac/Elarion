@@ -55,7 +55,7 @@ void StateMenu::setText(const string& text)
 		this->text.setString("No state selected.");
 }
 
-const string& StateMenu::getText() const
+string StateMenu::getText() const
 {
 	return text.getString();
 }

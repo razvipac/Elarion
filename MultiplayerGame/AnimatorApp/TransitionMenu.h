@@ -15,7 +15,7 @@ private:
 	Animator* animator;
 	Button addConditionButton;
 	static Transition* currentTransition;
-	std::vector<ConditionUI> conditionUIs;
+	std::vector<ConditionUI*> conditionUIs;
 	TransitionMenu(const sf::Vector2f& size, const sf::Vector2f& position);
 public:
 	TransitionMenu& operator=(const TransitionMenu&) = delete;

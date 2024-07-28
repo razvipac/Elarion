@@ -13,6 +13,14 @@ struct FloatingBool {
 	float floatValue;
 	FloatingBool(bool value) : isFloat(false), boolValue(value) {}
 	FloatingBool(float value) : isFloat(true), floatValue(value) {}
+	std::string toStringLmao() const {
+		if (isFloat) {
+			return std::to_string(floatValue);
+		}
+		else {
+			return boolValue ? "true" : "false";
+		}
+	}
 };
 
 class State;
@@ -40,5 +48,8 @@ public:
 	void modifyCondition(int index, const std::string& name, int operatorIndex, const FloatingBool& value);
 	void removeCondition(int index);
 	int getConditionsCount() const;
+	const std::string& getConditionName(int index) const;
+	int getConditionOperator(int index) const;
+	const FloatingBool& getConditionValue(int index) const;
 	~Transition();
 };

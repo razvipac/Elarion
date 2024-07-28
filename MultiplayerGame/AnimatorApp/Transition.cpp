@@ -94,9 +94,11 @@ void Transition::addCondition(const std::string& name, int operatorIndex, const 
 
 void Transition::modifyCondition(int index, const std::string& name, int operatorIndex, const FloatingBool& value)
 {
+	cout << "yes" << "\n";
 	names[index] = name;
 	operators[index] = operatorIndex;
 	values[index] = value;
+	cout << "no" << "\n";
 }
 
 void Transition::removeCondition(int index)
@@ -109,6 +111,21 @@ void Transition::removeCondition(int index)
 int Transition::getConditionsCount() const
 {
 	return names.size();
+}
+
+const string& Transition::getConditionName(int index) const
+{
+	return names[index];
+}
+
+int Transition::getConditionOperator(int index) const
+{
+	return operators[index];
+}
+
+const FloatingBool& Transition::getConditionValue(int index) const
+{
+	return values[index];
 }
 
 Transition::~Transition()

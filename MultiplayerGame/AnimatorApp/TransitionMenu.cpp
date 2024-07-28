@@ -18,11 +18,12 @@ TransitionMenu::TransitionMenu(const Vector2f& size, const Vector2f& position) :
 	{
 		if (currentTransition != nullptr)
 		{
-			currentTransition->addCondition("hatz", 0, FloatingBool(true));
-			conditionUIs.push_back(ConditionUI(Vector2f(1080, 70 + (currentTransition->getConditionsCount() - 1) * 300), currentTransition->getConditionsCount() - 1));
+			currentTransition->addCondition("Variable Name", 0, FloatingBool(true));
+			conditionUIs.push_back(new ConditionUI(Vector2f(1080, 70 + (currentTransition->getConditionsCount() - 1) * 300), currentTransition->getConditionsCount() - 1));
 		}
 	});
 	
+	animator = nullptr;
 }
 
 TransitionMenu& TransitionMenu::getInstance()
@@ -35,17 +36,17 @@ void TransitionMenu::draw(RenderWindow& window) const
 {
 	window.draw(shape);
 	addConditionButton.draw(window);
-	for (const ConditionUI& conditionUI : conditionUIs)
+	for (int i = 0; i < conditionUIs.size(); i++)
 	{
-		conditionUI.draw(window);
+		conditionUIs[i]->draw(window);
 	}
 }
 
 void TransitionMenu::handleEvent(const Event& event)
 {
-	for (ConditionUI& conditionUI : conditionUIs)
+	for (int i = 0; i < conditionUIs.size(); i++)
 	{
-		conditionUI.handleEvent(event);
+		conditionUIs[i]->handleEvent(event);
 	}
 	addConditionButton.handleEvent(event);
 }
@@ -64,7 +65,8 @@ void TransitionMenu::setCurrentTransition(Transition* transition)
 	if (currentTransition != nullptr) {
 		for (int i = 0; i < currentTransition->getConditionsCount(); i++)
 		{
-			getInstance().conditionUIs.push_back(ConditionUI(Vector2f(1080, 70 + i * 300), i));
+			getInstance().conditionUIs.push_back(new ConditionUI(Vector2f(1080, 70 + i * 300), i));
+			getInstance().conditionUIs.back()->setValues(currentTransition->getConditionName(i), currentTransition->getConditionOperator(i), currentTransition->getConditionValue(i).toStringLmao(), currentTransition->getConditionValue(i).isFloat);
 		}
 		currentTransition->setOutline(true);
 	}
@@ -77,10 +79,11 @@ Transition* TransitionMenu::getCurrentTransition()
 
 void TransitionMenu::removeConditionUI(int index)
 {
+	delete conditionUIs[index];
 	conditionUIs.erase(conditionUIs.begin() + index);
 	for(int i = index; i < conditionUIs.size(); i++)
 	{
-		conditionUIs[i].setPosition(Vector2f(1080, 70 + i * 300));
-		conditionUIs[i].setIndex(i);
+		conditionUIs[i]->setPosition(Vector2f(1080, 70 + (i-1) * 300));
+		conditionUIs[i]->setIndex(i-1);
 	}
 }
