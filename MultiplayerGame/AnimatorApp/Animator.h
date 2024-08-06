@@ -15,6 +15,7 @@ public:
 	Animator();
 	void addState(const std::string& name, const std::string& path);
 	void setDefaultStateIndex(int defaultStateIndex);
+	void setDefaultStateIndex(State* state);
 	int getDefaultStateIndex() const;
 	const std::vector<State*>& getStates() const;
 	void draw(sf::RenderWindow& window) const;
@@ -22,5 +23,6 @@ public:
 	static State* getSelectedState();
 	static void setSelectedState(State* selectedState);
 	void saveAnimator(const std::string& path) const;
+	void loadAnimator(const std::string& path);
 	~Animator();
 };

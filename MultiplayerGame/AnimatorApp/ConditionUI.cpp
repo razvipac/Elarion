@@ -61,8 +61,6 @@ ConditionUI::ConditionUI(const Vector2f& position, int index) : position(positio
 }
 
 int ConditionUI::getTypeFromOperator(const string& operatorString) const {
-	if (operatorString == "==")
-		return 0;
 	if (operatorString == "!=")
 		return 1;
 	if (operatorString == "<")
@@ -73,12 +71,10 @@ int ConditionUI::getTypeFromOperator(const string& operatorString) const {
 		return 4;
 	if (operatorString == ">=")
 		return 5;
-	return -1;
+	return 0;
 }
 
 string getOperatorFromType(int type) {
-	if (type == 0)
-		return "==";
 	if (type == 1)
 		return "!=";
 	if (type == 2)
@@ -89,7 +85,7 @@ string getOperatorFromType(int type) {
 		return "<=";
 	if (type == 5)
 		return ">=";
-	return "";
+	return "==";
 }
 
 void ConditionUI::draw(RenderWindow& window) const
@@ -128,6 +124,10 @@ void ConditionUI::setPosition(const Vector2f& position)
 	type.setPosition(position.x + 10, position.y + 250);
 	typeInputField.setPosition(Vector2f(position.x + 10, position.y + 270));
 	removeButton.setPosition(Vector2f(position.x + 10, position.y + 320));
+}
+const Vector2f& ConditionUI::getPosition() const
+{
+	return position;
 }
 
 void ConditionUI::setIndex(int index)

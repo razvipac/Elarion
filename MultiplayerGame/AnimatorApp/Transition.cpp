@@ -128,6 +128,92 @@ const FloatingBool& Transition::getConditionValue(int index) const
 	return values[index];
 }
 
+void Transition::saveTransition(std::ofstream& file) const
+{
+	//File is in binary mode
+	//Save the path of the starting state (not needed since we get can it because we know how many transitions each state has)
+	//size_t size = startingState.getPath().size();
+	//file.write((char*)&size, sizeof(size_t)); //write the size of the path
+	//file.write(startingState.getPath().c_str(), size); //write the path of the starting state
+
+	//Save the path of the arrival state
+	size_t size = arrivalState.getPath().size();
+	file.write((char*)&size, sizeof(size_t)); //write the size of the path
+	file.write(arrivalState.getPath().c_str(), size); //write the path of the arrival state
+
+	//Save the amount of conditions
+	int conditionsCount = names.size();
+	file.write((char*)&conditionsCount, sizeof(int)); //write the amount of conditions
+
+	//Save the conditions
+	for (int i = 0; i < conditionsCount; i++)
+	{
+		//Save the size of the name
+		size = names[i].size();
+		file.write((char*)&size, sizeof(size_t)); //write the size of the name
+		//Save the name
+		file.write(names[i].c_str(), size); //write the name
+
+		//Save the operator
+		file.write((char*)&operators[i], sizeof(int)); //write the operator
+
+		//Save the type of the value
+		file.write((char*)&values[i].isFloat, sizeof(bool)); //write the type of the value
+
+		//Save the value
+		if (values[i].isFloat)
+		{
+			file.write((char*)&values[i].floatValue, sizeof(float)); //write the float value
+		}
+		else
+		{
+			file.write((char*)&values[i].boolValue, sizeof(bool)); //write the bool value
+		}
+	}
+}
+
+void Transition::loadTransitionConditions(std::ifstream& file)
+{
+	//Load the amount of conditions
+	int conditionsCount;
+	file.read((char*)&conditionsCount, sizeof(int)); //read the amount of conditions
+
+	//Load the conditions
+	for (int i = 0; i < conditionsCount; i++)
+	{
+		//Load the size of the name
+		size_t size;
+		file.read((char*)&size, sizeof(size_t)); //read the size of the name
+		char* buffer = new char[size + 1];
+		file.read(buffer, size); //read the name
+		buffer[size] = '\0';
+		string name = buffer;
+		delete[] buffer;
+
+		//Load the operator
+		int op;
+		file.read((char*)&op, sizeof(int)); //read the operator
+
+		//Load the type of the value
+		bool isFloat;
+		file.read((char*)&isFloat, sizeof(bool)); //read the type of the value
+
+		//Load the value
+		if (isFloat)
+		{
+			float value;
+			file.read((char*)&value, sizeof(float)); //read the float value
+			addCondition(name, op, FloatingBool(value));
+		}
+		else
+		{
+			bool value;
+			file.read((char*)&value, sizeof(bool)); //read the bool value
+			addCondition(name, op, FloatingBool(value));
+		}
+	}
+}
+
 Transition::~Transition()
 {
 	startingState.eraseTransition(this);

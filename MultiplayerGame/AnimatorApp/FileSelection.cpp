@@ -1,6 +1,6 @@
 #include "FileSelection.h"
 
-std::string OpenFileDialog() {
+std::string OpenFileDialog(bool isAnim) {
 	OPENFILENAMEW ofn;       // Note the 'W' at the end for wide char version
 	WCHAR szFile[260];       // buffer for file name, using wide char
 	HWND hwnd = NULL;        // owner window
@@ -15,7 +15,10 @@ std::string OpenFileDialog() {
 	// use the contents of szFile to initialize itself.
 	ofn.lpstrFile[0] = L'\0';
 	ofn.nMaxFile = sizeof(szFile) / sizeof(WCHAR);
-	ofn.lpstrFilter = L"Animation Files\0*.ANIM\0";
+	if(isAnim)
+		ofn.lpstrFilter = L"Animation Files\0*.ANIM\0";
+	else
+		ofn.lpstrFilter = L"Animator Files\0*.ANIMATOR\0";
 	ofn.nFilterIndex = 1;
 	ofn.lpstrFileTitle = NULL;
 	ofn.nMaxFileTitle = 0;

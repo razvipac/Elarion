@@ -45,7 +45,7 @@ int main()
 			{
 				window.close();
 			}
-			else if (event.type == Event::MouseWheelScrolled) { // Controls zooming in and out of the 2D world view
+			else if (event.type == Event::MouseWheelScrolled && !transitionMenu.getShape().getGlobalBounds().contains(mousePositionInUI)) { // Controls zooming in and out of the 2D world view
 				if (event.mouseWheelScroll.delta > 0) {
 					worldView.zoom(0.9f);
 				}

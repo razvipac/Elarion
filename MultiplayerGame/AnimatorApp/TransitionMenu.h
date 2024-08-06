@@ -27,5 +27,5 @@ public:
 	static void setCurrentTransition(Transition* transition);
 	static Transition* getCurrentTransition();
 	void removeConditionUI(int index);
-}
-;
+	const sf::RectangleShape& getShape() const;
+};

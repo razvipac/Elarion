@@ -13,7 +13,6 @@ State::State(const string& name, const string& path) {
 	text.setFont(font);
 	text.setString(name);
 	text.setCharacterSize(15);
-	text.setPosition(shape.getPosition().x + 10, shape.getPosition().y + 10);
 	text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2);
 	text.setFillColor(sf::Color::Black);
 	isSelected = false;
@@ -66,7 +65,7 @@ void State::drawTransitions(sf::RenderWindow& window) const
 void State::setPosition(const sf::Vector2f& position)
 {
 	shape.setPosition(position);
-	text.setPosition(position.x + 10, position.y + 10);
+	text.setPosition(position.x, position.y);
 }
 
 const sf::Vector2f& State::getPosition() const
@@ -98,8 +97,9 @@ void State::handleEvent(const sf::Event& event)
 	else if (event.type == sf::Event::MouseMoved && isDragging)
 	{
 		sf::Vector2f offset = mousePositionInWorld - lastMousePosition;
-		shape.setPosition(shape.getPosition() + offset);
-		text.setPosition(text.getPosition() + offset);
+		//shape.setPosition(shape.getPosition() + offset);
+		//text.setPosition(text.getPosition() + offset);
+		setPosition(shape.getPosition() + offset);
 		lastMousePosition = mousePositionInWorld;
 		for (int i = 0; i < transitions.size(); i++)
 			transitions[i]->updatePositionAndRotation();
@@ -138,18 +138,62 @@ void State::deselect()
 void State::saveState(std::ofstream& file) const
 {
 	//file is binary
-	file.write((char*)name.size(), sizeof(size_t));
-	file.write(name.c_str(), name.size());
-	file.write((char*)path.size(), sizeof(size_t));
-	file.write(path.c_str(), path.size());
+	size_t size = name.size();
+	file.write((char*)&size, sizeof(size_t)); //write the size of the name
+	file.write(name.c_str(), name.size()); //write name
+	size = path.size();
+	file.write((char*)&size, sizeof(size_t)); //write the size of the path
+	file.write(path.c_str(), path.size()); //write path
+	sf::Vector2f position = shape.getPosition();
+	file.write((char*)&position.x, sizeof(float)); //write x position
+	file.write((char*)&position.y, sizeof(float)); //write y position
+	//size = transitions.size();
+	//file.write((char*)&size, sizeof(int)); //write the amount of transitions
+	//for (int i = 0; i < size; i++)
+	//{
+	//	/*int nameSize = transitions[i]->getArrivalState().getName().size();
+	//	file.write((char*)&nameSize, sizeof(int));
+	//	file.write(transitions[i]->getArrivalState().getName().c_str(), nameSize);*/
+	//	transitions[i]->saveTransition(file); //save transition
+	//}
+}
+
+void State::saveTransitions(std::ofstream& file) const
+{
+	//file is binary
 	int size = transitions.size();
-	file.write((char*)&size, sizeof(int));
+	file.write((char*)&size, sizeof(int)); //write the amount of transitions
 	for (int i = 0; i < size; i++)
 	{
-		int nameSize = transitions[i]->getArrivalState().getName().size();
-		file.write((char*)&nameSize, sizeof(int));
-		file.write(transitions[i]->getArrivalState().getName().c_str(), nameSize);
+		transitions[i]->saveTransition(file); //save transition
 	}
+}
+
+void State::loadState(std::ifstream& file)
+{
+	//file is binary
+	size_t size;
+	file.read((char*)&size, sizeof(size_t)); //read the size of the name
+	cout<<"Size of name: "<<size<<endl;
+	char* name = new char[size + 1];
+	file.read(name, size); //read name
+	name[size] = '\0';
+	setName(name);
+	delete[] name;
+	cout<<"Name: "<<getName()<<endl;
+	file.read((char*)&size, sizeof(size_t)); //read the size of the path
+	cout<<"Size of path: "<<size<<endl;
+	char* path = new char[size + 1];
+	file.read(path, size); //read path
+	path[size] = '\0';
+	setPath(path);
+	delete[] path;
+	cout<<"Path: "<<getPath()<<endl;
+	float x, y;
+	file.read((char*)&x, sizeof(float)); //read x position
+	file.read((char*)&y, sizeof(float)); //read y position
+	setPosition(sf::Vector2f(x, y));
+	text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2);
 }
 
 void State::eraseTransition(Transition* transition)
@@ -170,6 +214,11 @@ void State::eraseTransition(Transition* transition)
 			break;
 		}
 	}
+}
+
+void State::setColor(const sf::Color& color)
+{
+	shape.setFillColor(color);
 }
 
 State::~State()

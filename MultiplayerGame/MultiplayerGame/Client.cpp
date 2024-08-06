@@ -102,19 +102,19 @@ int main() {
 	TextureManager::getInstance().loadTexture("PlayerIdle", "Resources/Sunnyside_World_Assets/Characters/Human/IDLE/base_idle_strip9.png");
 	TextureManager::getInstance().loadTexture("PlayerWalk", "Resources/Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png");
 	TextureManager::getInstance().loadTexture("PlayerRun", "Resources/Sunnyside_World_Assets/Characters/Human/RUN/base_run_strip8.png");
-	Player p(-1);
+	//Player p(-1);
 
 	PerlinNoise noise;
 	noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
 
-	RenderWindow window2(VideoMode(1024, 1024), "Noise");
+	//RenderWindow window2(VideoMode(1024, 1024), "Noise");
 
 	//Texture noiseTexture;
 	//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
 	//Sprite noiseSprite(noiseTexture);
 
 	//get the default view
-	View defaultView = window2.getDefaultView();
+	//View defaultView = window2.getDefaultView();
 	Vector2f lastMousePos;
 
 	/*Tile waterTile(0, true, "Resources/Textures/WaterTile.png");
@@ -140,7 +140,7 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-	cout<<"Loaded everything\n";
+	/*cout << "Loaded everything\n";
 
 	Clock deltaClock;
 	Time currentTime = deltaClock.getElapsedTime();
@@ -240,7 +240,8 @@ int main() {
 	}
 
 	return 0;
-	/*
+	*/
+
 	if (enet_initialize()) {
 		cout << "An error occured while initializing ENet!\n";
 		return EXIT_FAILURE;
@@ -335,6 +336,7 @@ int main() {
 		}
 
 		window.clear();
+		window.draw(map);
 		window.draw(waterTileShape);
 		player.drawPlayer(window);
 		for (auto& p : playerMap) {
@@ -357,5 +359,4 @@ int main() {
 	cout << "popa";
 
 	return EXIT_SUCCESS;
-	*/
 }

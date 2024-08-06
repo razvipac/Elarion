@@ -1,11 +1,12 @@
 #include "StateMenu.h"
 #include "FileSelection.h"
+#include <filesystem>
 
 using namespace std;
 using namespace sf;
 //	InputField(const sf::Vector2f& size, const sf::Vector2f& position, const std::string& text, const std::function<void(const std::string&)>& onTextChange);
 
-StateMenu::StateMenu(const Vector2f& size, const Vector2f& position) : /*inputField(Vector2f(120, 40), Vector2f(position.x + 10, position.y + 40), ""),*/ addStateButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 600), "Add State", [this]() {}), addTransitionButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 125), "Add Transition", [this]() {})
+StateMenu::StateMenu(const Vector2f& size, const Vector2f& position) : /*inputField(Vector2f(120, 40), Vector2f(position.x + 10, position.y + 40), ""),*/ addStateButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 600), "Add State", [this]() {}), addTransitionButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 200), "Add Transition", [this]() {}), saveButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 50), "Save", [this]() {}), loadButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 125), "Load", [this]() {}), setDefaultButton(Vector2f(175, 50), Vector2f(position.x + 10, position.y + 275), "Set Default", [this]() {})
 {
 	shape.setSize(size);
 	shape.setPosition(position);
@@ -22,6 +23,24 @@ StateMenu::StateMenu(const Vector2f& size, const Vector2f& position) : /*inputFi
 			Animator::getSelectedState()->setName(text);
 		});*/
 	animator = nullptr;
+	saveButton.setOnClick([this]() {
+		string path = SaveFileDialog();
+		if (path == "")
+			return;
+		animator->saveAnimator(path);
+	});
+	loadButton.setOnClick([this]() {
+		string path = OpenFileDialog(false);
+		if (path == "")
+			return;
+		animator->loadAnimator(path);
+	});
+
+	setDefaultButton.setOnClick([this]() {
+		if (animator->getSelectedState() == nullptr)
+			return;
+		animator->setDefaultStateIndex(animator->getSelectedState());
+	});
 }
 
 StateMenu& StateMenu::getInstance()
@@ -35,15 +54,21 @@ void StateMenu::draw(RenderWindow& window) const
 	window.draw(shape);
 	window.draw(text);
 	//inputField.draw(window);
+	loadButton.draw(window);
+	saveButton.draw(window);
 	addStateButton.draw(window);
 	addTransitionButton.draw(window);
+	setDefaultButton.draw(window);
 }
 
 void StateMenu::handleEvent(const Event& event)
 {
 	//inputField.handleEvent(event);
+	setDefaultButton.handleEvent(event);
 	addStateButton.handleEvent(event);
 	addTransitionButton.handleEvent(event);
+	saveButton.handleEvent(event);
+	loadButton.handleEvent(event);
 }
 
 void StateMenu::setText(const string& text)
@@ -66,18 +91,28 @@ void StateMenu::setAnimator(Animator* animator) {
 		string path = OpenFileDialog();
 		if (path == "")
 			return;
-		string nameWithExtension = path.substr(path.find_last_of("\\")); // Get the name of the file
-		nameWithExtension = nameWithExtension.substr(1); // Remove the backslash
+
+		// Convert absolute path to relative path
+		filesystem::path absolutePath(path);
+		filesystem::path relativePath = filesystem::relative(absolutePath);
+
+		string nameWithExtension = relativePath.filename().string(); // Get the name of the file
 		string name = nameWithExtension.substr(0, nameWithExtension.find_last_of(".")); // Remove the extension
 
-		animator->addState(name, path);
-	});
+		cout << "Adding state " << name << " with path " << relativePath.string() << endl;
+		if(filesystem::exists(relativePath.string()) == false)
+			cout << "File does not exist" << endl;
+		else
+			cout << "File exists" << endl;
+
+		animator->addState(name, relativePath.string());
+		});
 
 	addTransitionButton.setOnClick([animator]() {
-		if(animator->getSelectedState() == nullptr)
+		if (animator->getSelectedState() == nullptr)
 			return;
 		isAddingTransition = true;
 		cout << "Adding transition" << endl;
 		//animator->addTransition();
-	});
+		});
 }

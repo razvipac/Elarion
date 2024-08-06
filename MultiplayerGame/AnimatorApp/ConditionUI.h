@@ -27,6 +27,7 @@ public:
 	void draw(sf::RenderWindow& window) const;
 	void handleEvent(const sf::Event& event);
 	void setPosition(const sf::Vector2f& position);
+	const sf::Vector2f& getPosition() const;
 	void setIndex(int index);
 	void setValues(const std::string& variableName, int operatorIndex, const std::string& value, bool isFloat);
 	int getTypeFromOperator(const std::string& operatorString) const;

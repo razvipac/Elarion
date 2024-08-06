@@ -19,7 +19,10 @@ TransitionMenu::TransitionMenu(const Vector2f& size, const Vector2f& position) :
 		if (currentTransition != nullptr)
 		{
 			currentTransition->addCondition("Variable Name", 0, FloatingBool(true));
-			conditionUIs.push_back(new ConditionUI(Vector2f(1080, 70 + (currentTransition->getConditionsCount() - 1) * 300), currentTransition->getConditionsCount() - 1));
+			float y = 20;
+			if(conditionUIs.size() > 0)
+				y = conditionUIs[conditionUIs.size() - 1]->getPosition().y + 300;
+			conditionUIs.push_back(new ConditionUI(Vector2f(1080, y), currentTransition->getConditionsCount() - 1));
 		}
 	});
 	
@@ -35,20 +38,36 @@ TransitionMenu& TransitionMenu::getInstance()
 void TransitionMenu::draw(RenderWindow& window) const
 {
 	window.draw(shape);
-	addConditionButton.draw(window);
 	for (int i = 0; i < conditionUIs.size(); i++)
 	{
 		conditionUIs[i]->draw(window);
 	}
+	addConditionButton.draw(window);
 }
 
 void TransitionMenu::handleEvent(const Event& event)
 {
+	//if we are scrolling, move the conditions (using setposition)
+	if (event.type == Event::MouseWheelScrolled && shape.getGlobalBounds().contains(mousePositionInUI) && conditionUIs.size() > 1)
+	{
+		bool ok = true;
+		if(event.mouseWheelScroll.delta > 0 && conditionUIs[0]->getPosition().y > 20)
+			ok = false;
+		if (event.mouseWheelScroll.delta < 0 && conditionUIs[conditionUIs.size() - 1]->getPosition().y < 300)
+			ok = false;
+		if (ok) {
+			for (int i = 0; i < conditionUIs.size(); i++)
+			{
+				conditionUIs[i]->setPosition(Vector2f(1080, conditionUIs[i]->getPosition().y + event.mouseWheelScroll.delta * 10));
+			}
+		}
+	}
+
+	addConditionButton.handleEvent(event);
 	for (int i = 0; i < conditionUIs.size(); i++)
 	{
 		conditionUIs[i]->handleEvent(event);
 	}
-	addConditionButton.handleEvent(event);
 }
 
 void TransitionMenu::setAnimator(Animator* animator)
@@ -86,4 +105,9 @@ void TransitionMenu::removeConditionUI(int index)
 		conditionUIs[i]->setPosition(Vector2f(1080, 70 + (i-1) * 300));
 		conditionUIs[i]->setIndex(i-1);
 	}
+}
+
+const RectangleShape& TransitionMenu::getShape() const
+{
+	return shape;
 }

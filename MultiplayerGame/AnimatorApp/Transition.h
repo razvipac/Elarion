@@ -51,5 +51,9 @@ public:
 	const std::string& getConditionName(int index) const;
 	int getConditionOperator(int index) const;
 	const FloatingBool& getConditionValue(int index) const;
+
+	void saveTransition(std::ofstream& file) const;
+	void loadTransitionConditions(std::ifstream& file);
+
 	~Transition();
 };

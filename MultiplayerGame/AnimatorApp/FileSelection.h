@@ -6,6 +6,6 @@
 
 #pragma comment(lib, "Comdlg32.lib")
 
-std::string OpenFileDialog();
+std::string OpenFileDialog(bool isAnim = true);
 
 std::string SaveFileDialog();

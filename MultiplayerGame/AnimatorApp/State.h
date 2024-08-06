@@ -40,6 +40,9 @@ public:
 	bool getIsSelected() const;
 	void deselect();
 	void saveState(std::ofstream& file) const;
+	void saveTransitions(std::ofstream& file) const;
+	void loadState(std::ifstream& file);
 	void eraseTransition(Transition* transition);
+	void setColor(const sf::Color& color);
 	~State();
 };
