@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "Inventory.h"
 #include "Animation.h"
+#include "Animator.h"
 
 class Player
 {
@@ -12,9 +13,10 @@ private:
 	sf::Vector2f targetPosition;
 	float timeSinceLastPacket;
 	Inventory inventory;
-	Animation idleAnimation;
+	/*Animation idleAnimation;
 	Animation walkAnimation;
-	Animation runAnimation;
+	Animation runAnimation;*/
+	Animator playerAnimator;
 public:
 	Player(int id);
 	void setPosition(sf::Vector2f position);

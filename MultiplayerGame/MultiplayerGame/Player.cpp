@@ -7,7 +7,7 @@ using namespace std;
 
 extern int CLIENTID;
 
-Player::Player(int id) {
+Player::Player(int id) : playerAnimator(player) {
 	player.setSize(Vector2f(16, 16));
 	player.setScale(3, 3);
 	//player.setFillColor(Color::Red);
@@ -21,15 +21,17 @@ Player::Player(int id) {
 	//	player.setFillColor(Color::Green);
 	timeSinceLastPacket = 0;
 
+    //Load animator
+    playerAnimator.loadAnimator("Resources/Animations/Player.animator");
 
-	idleAnimation.loadAnimation("Resources/Animations/PlayerIdle.anim");
-	player.setTextureRect(idleAnimation.getCurrentFrame());
+	//idleAnimation.loadAnimation("Resources/Animations/PlayerIdle.anim");
+	player.setTextureRect(playerAnimator.getFrame());
 	player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));
 
-	walkAnimation.loadAnimation("Resources/Animations/PlayerWalk.anim");
+	//walkAnimation.loadAnimation("Resources/Animations/PlayerWalk.anim");
 
 	// I want to load and save another animation for the player
-	runAnimation.loadAnimation("Resources/Animations/PlayerRun.anim");
+	//runAnimation.loadAnimation("Resources/Animations/PlayerRun.anim");
 	
 }
 
@@ -56,39 +58,45 @@ void Player::handleEvent(Event event) {
 }
 
 void Player::update(float deltaTime) {
-    bool walking = false;
-    bool running = false;
+    //bool walking = false;
+    //bool running = false;
 
     float currentSpeed = speed;
+    float animatorSpeed = 0.0f;
 
     // Movement logic
     if (id == CLIENTID) {
         // Determine if the player is running based on Shift key being held
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
-            running = true;
+            //running = true;
+            currentSpeed *= 1.5f;
         }
 
-        if (running) {
-            currentSpeed *= 1.5; // Double the speed when running
-        }
+        //if (running) {
+        //    currentSpeed *= 1.5; // Double the speed when running
+        //}
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
             player.move(0, -currentSpeed * deltaTime);
-            walking = true;
+            animatorSpeed = currentSpeed;
+            //walking = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
             player.move(0, currentSpeed * deltaTime);
-            walking = true;
+            animatorSpeed = currentSpeed;
+            //walking = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             player.move(-currentSpeed * deltaTime, 0);
-            walking = true;
+            animatorSpeed = currentSpeed;
+            //walking = true;
             if (player.getScale().x > 0)
                 player.setScale(-player.getScale().x, player.getScale().y);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             player.move(currentSpeed * deltaTime, 0);
-            walking = true;
+            animatorSpeed = currentSpeed;
+            //walking = true;
             if (player.getScale().x < 0)
                 player.setScale(-player.getScale().x, player.getScale().y);
         }
@@ -103,7 +111,7 @@ void Player::update(float deltaTime) {
             timeSinceLastPacket = 0;
         }
         else {
-			walking = true;
+			//walking = true;
 			Vector2f unitVector = direction / distance;
 			Vector2f movement = unitVector * currentSpeed * deltaTime;
 			if (movement.x > 0 && currentPosition.x + movement.x > targetPosition.x)
@@ -127,35 +135,41 @@ void Player::update(float deltaTime) {
     }
 
     // Update animations based on movement state
-    if (running && walking) {
-        if (runAnimation.update(deltaTime)) {
-            player.setTextureRect(runAnimation.getCurrentFrame());
-        }
-        if (player.getTexture() != &TextureManager::getInstance().getRef("PlayerRun")) {
-            player.setTexture(&TextureManager::getInstance().getRef("PlayerRun"));
-            walkAnimation.resetTime(); // Reset walk animation time if switching to run
-            idleAnimation.resetTime(); // Reset idle animation time if switching to run
-        }
-    }
-    else if (walking) {
-        if (walkAnimation.update(deltaTime)) {
-            player.setTextureRect(walkAnimation.getCurrentFrame());
-        }
-        if (player.getTexture() != &TextureManager::getInstance().getRef("PlayerWalk")) {
-            player.setTexture(&TextureManager::getInstance().getRef("PlayerWalk"));
-            idleAnimation.resetTime(); // Reset idle animation time if switching to walk
-        }
-    }
-    else {
-        if (idleAnimation.update(deltaTime)) {
-            player.setTextureRect(idleAnimation.getCurrentFrame());
-        }
-        if (player.getTexture() != &TextureManager::getInstance().getRef("PlayerIdle")) {
-            player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));
-            walkAnimation.resetTime(); // Reset walk animation time if switching to idle
-            runAnimation.resetTime(); // Reset run animation time if switching to idle
-        }
-    }
+    //if (running && walking) {
+    //    if (runAnimation.update(deltaTime)) {
+    //        player.setTextureRect(runAnimation.getCurrentFrame());
+    //    }
+    //    if (player.getTexture() != &TextureManager::getInstance().getRef("PlayerRun")) {
+    //        player.setTexture(&TextureManager::getInstance().getRef("PlayerRun"));
+    //        walkAnimation.resetTime(); // Reset walk animation time if switching to run
+    //        idleAnimation.resetTime(); // Reset idle animation time if switching to run
+    //    }
+    //}
+    //else if (walking) {
+    //    if (walkAnimation.update(deltaTime)) {
+    //        player.setTextureRect(walkAnimation.getCurrentFrame());
+    //    }
+    //    if (player.getTexture() != &TextureManager::getInstance().getRef("PlayerWalk")) {
+    //        player.setTexture(&TextureManager::getInstance().getRef("PlayerWalk"));
+    //        idleAnimation.resetTime(); // Reset idle animation time if switching to walk
+    //    }
+    //}
+    //else {
+    //    if (idleAnimation.update(deltaTime)) {
+    //        player.setTextureRect(idleAnimation.getCurrentFrame());
+    //    }
+    //    if (player.getTexture() != &TextureManager::getInstance().getRef("PlayerIdle")) {
+    //        player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));
+    //        walkAnimation.resetTime(); // Reset walk animation time if switching to idle
+    //        runAnimation.resetTime(); // Reset run animation time if switching to idle
+    //    }
+    //}
+
+    // Update the player's animator
+    //cout << "Speed: " << animatorSpeed << '\n';
+    playerAnimator.setFloat("Speed", animatorSpeed);
+    playerAnimator.update(deltaTime);
+    player.setTextureRect(playerAnimator.getFrame());
 }
 
 

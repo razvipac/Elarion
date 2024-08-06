@@ -76,7 +76,8 @@ void Animation::saveAnimation(const string& filename) const {
 	}
 }
 void Animation::loadAnimation(const string& filename) {
-	ifstream file(filename, ios::binary);
+	string path = "Resources/Animations/" + filename;
+	ifstream file(path, ios::binary);
 	if (file.is_open()) {
 		unsigned int size;
 		file.read((char*)&size, sizeof(size));
@@ -91,6 +92,8 @@ void Animation::loadAnimation(const string& filename) {
 		}
 		file.close();
 
+		cout << "HHIHAIDHASDH\n";
+
 		cout<<filename<<":\n";
 		cout<<size<<" "<<duration<<" "<<loop<<"\n";
 
@@ -102,5 +105,9 @@ void Animation::loadAnimation(const string& filename) {
 
 		for(int i=0; i<frames.size(); i++)
 			cout << frames[i].left << " " << frames[i].top << " " << frames[i].width << " " << frames[i].height << "\n";
+	}
+	else {
+		cout<<"Failed to open file for reading\n";
+		cout<<filename<<"\n";
 	}
 }
