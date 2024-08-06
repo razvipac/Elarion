@@ -41,6 +41,7 @@ void parseData(char* data) {
 		cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 		if (id != CLIENTID && playerMap.find(id) != playerMap.end()) {
 			playerMap[id]->setTargetPosition(Vector2f(x, y));
+			cout << "Moving the player\n";
 		}
 	}
 	else if (messageType == '2') {
@@ -261,7 +262,7 @@ int main() {
 	ENetPeer* peer;
 
 	// 127.0.0.1:8080
-	enet_address_set_host(&address, "127.0.0.1"); // 172.205.150.168
+	enet_address_set_host(&address, "172.205.150.168"); // 172.205.150.168
 	address.port = 8080;
 	peer = enet_host_connect(client, &address, 1, 0);
 

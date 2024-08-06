@@ -59,18 +59,19 @@ void Player::update(float deltaTime) {
     bool walking = false;
     bool running = false;
 
-    // Determine if the player is running based on Shift key being held
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
-        running = true;
-    }
-
     float currentSpeed = speed;
-    if (running) {
-        currentSpeed *= 1.5; // Double the speed when running
-    }
 
     // Movement logic
     if (id == CLIENTID) {
+        // Determine if the player is running based on Shift key being held
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
+            running = true;
+        }
+
+        if (running) {
+            currentSpeed *= 1.5; // Double the speed when running
+        }
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
             player.move(0, -currentSpeed * deltaTime);
             walking = true;
@@ -101,6 +102,28 @@ void Player::update(float deltaTime) {
             player.setPosition(targetPosition);
             timeSinceLastPacket = 0;
         }
+        else {
+			walking = true;
+			Vector2f unitVector = direction / distance;
+			Vector2f movement = unitVector * currentSpeed * deltaTime;
+			if (movement.x > 0 && currentPosition.x + movement.x > targetPosition.x)
+				player.setPosition(targetPosition);
+			else if (movement.x < 0 && currentPosition.x + movement.x < targetPosition.x)
+				player.setPosition(targetPosition);
+			else if (movement.y > 0 && currentPosition.y + movement.y > targetPosition.y)
+				player.setPosition(targetPosition);
+			else if (movement.y < 0 && currentPosition.y + movement.y < targetPosition.y)
+				player.setPosition(targetPosition);
+			else
+				player.move(movement);
+
+            //if the player moved to the right and the player's scale is negative, flip the player
+            if (movement.x > 0 && player.getScale().x < 0)
+				player.setScale(-player.getScale().x, player.getScale().y);
+            //if the player moved to the left and the player's scale is positive, flip the player
+			else if (movement.x < 0 && player.getScale().x > 0)
+                player.setScale(-player.getScale().x, player.getScale().y);
+		}
     }
 
     // Update animations based on movement state
