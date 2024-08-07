@@ -29,6 +29,9 @@ Player::Player(int id) : playerAnimator(player) {
 	player.setTextureRect(playerAnimator.getFrame());
 	player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));
 
+    player.setOutlineColor(Color::Red);
+    player.setOutlineThickness(3);
+
 	//walkAnimation.loadAnimation("Resources/Animations/PlayerWalk.anim");
 
 	// I want to load and save another animation for the player
@@ -41,6 +44,10 @@ void Player::setPosition(Vector2f position) {
 }
 void Player::setTargetPosition(Vector2f position) {
 	targetPosition = position;
+    timeSinceLastPacket = 0;
+    // if the target position is within one unit of the player's position, set the animator's speed to 0
+    if (abs(targetPosition.x - player.getPosition().x) < 1 && abs(targetPosition.y - player.getPosition().y) < 1)
+		playerAnimator.setFloat("Speed", 0.0f);
 }
 void Player::setId(int id) {
 	this->id = id;
@@ -77,30 +84,43 @@ void Player::update(float deltaTime) {
         //    currentSpeed *= 1.5; // Double the speed when running
         //}
 
+        Vector2f movementVector(0, 0);
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-            player.move(0, -currentSpeed * deltaTime);
+            //player.move(0, -currentSpeed * deltaTime);
+            movementVector.y -= currentSpeed * deltaTime;
             animatorSpeed = currentSpeed;
             //walking = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            player.move(0, currentSpeed * deltaTime);
+            //player.move(0, currentSpeed * deltaTime);
+            movementVector.y += currentSpeed * deltaTime;
             animatorSpeed = currentSpeed;
             //walking = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            player.move(-currentSpeed * deltaTime, 0);
+            //player.move(-currentSpeed * deltaTime, 0);
+            movementVector.x -= currentSpeed * deltaTime;
             animatorSpeed = currentSpeed;
             //walking = true;
             if (player.getScale().x > 0)
                 player.setScale(-player.getScale().x, player.getScale().y);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            player.move(currentSpeed * deltaTime, 0);
+            //player.move(currentSpeed * deltaTime, 0);
+            movementVector.x += currentSpeed * deltaTime;
             animatorSpeed = currentSpeed;
             //walking = true;
             if (player.getScale().x < 0)
                 player.setScale(-player.getScale().x, player.getScale().y);
         }
+        if(movementVector.x != 0 || movementVector.y != 0)
+        {
+            float distance = sqrt(movementVector.x * movementVector.x + movementVector.y * movementVector.y);
+            movementVector = movementVector / distance;
+            player.move(movementVector * currentSpeed * deltaTime);
+        }
+        playerAnimator.setFloat("Speed", animatorSpeed);
     }
     else {
         // when time since last packet is 1 / tps, the player will be at the target position
@@ -109,7 +129,7 @@ void Player::update(float deltaTime) {
 			player.setPosition(targetPosition);
 			timeSinceLastPacket = 0;
 		}
-		else {
+		else if (!(abs(targetPosition.x - player.getPosition().x) < 1 && abs(targetPosition.y - player.getPosition().y) < 1)) {
 			Vector2f currentPosition = player.getPosition();
 			Vector2f direction = targetPosition - currentPosition;
             Vector2f directionPerSecond = direction / timeLeft;
@@ -118,6 +138,14 @@ void Player::update(float deltaTime) {
             timeSinceLastPacket += deltaTime;
             currentSpeed = sqrt(directionPerSecond.x * directionPerSecond.x + directionPerSecond.y * directionPerSecond.y);
             animatorSpeed = currentSpeed;
+            // if we move the player to the right and the player's scale is negative, flip the player
+            if (directionPerSecond.x > 0 && player.getScale().x < 0)
+				player.setScale(-player.getScale().x, player.getScale().y);
+            // if we move the player to the left and the player's scale is positive, flip the player
+            else if (directionPerSecond.x < 0 && player.getScale().x > 0)
+				player.setScale(-player.getScale().x, player.getScale().y);
+            playerAnimator.setFloat("Speed", animatorSpeed);
+            //cout << "Speed: " << animatorSpeed << '\n';
         }
         //timeSinceLastPacket += deltaTime;
         
@@ -186,7 +214,6 @@ void Player::update(float deltaTime) {
 
     // Update the player's animator
     //cout << "Speed: " << animatorSpeed << '\n';
-    playerAnimator.setFloat("Speed", animatorSpeed);
     playerAnimator.update(deltaTime);
     player.setTextureRect(playerAnimator.getFrame());
 }

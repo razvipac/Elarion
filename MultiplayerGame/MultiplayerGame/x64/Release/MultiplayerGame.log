@@ -1,19 +1,9 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (MultiplayerGame.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Animation.cpp
-C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Animation.cpp(40,20): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Animation.cpp(65,21): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Animator.cpp
-  Client.cpp
-C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Client.cpp(102,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Player.cpp
-  State.cpp
-  Transition.cpp
-C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Transition.cpp(13,19): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Generating code
-C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Animator.cpp(202): warning C4172: returning address of local variable or temporary
-  667 of 1029 functions (64.8%) were compiled, the rest were copied from previous compilation.
-    409 functions were new in current compilation
-    50 functions had inline decision re-evaluated but remain unchanged
+  2 of 1032 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 Inventory.obj : warning LNK4099: PDB '' was not found with 'Inventory.obj' or at ''; linking object as if no debug info
 Item.obj : warning LNK4099: PDB '' was not found with 'Item.obj' or at ''; linking object as if no debug info
@@ -22,11 +12,11 @@ PerlinNoise.obj : warning LNK4099: PDB '' was not found with 'PerlinNoise.obj' o
 Tile.obj : warning LNK4099: PDB '' was not found with 'Tile.obj' or at ''; linking object as if no debug info
 TileMap.obj : warning LNK4099: PDB '' was not found with 'TileMap.obj' or at ''; linking object as if no debug info
 Utility.obj : warning LNK4099: PDB '' was not found with 'Utility.obj' or at ''; linking object as if no debug info
-Client.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-TextureManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 Player.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-Client.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-TextureManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+Player.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+Transition.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+Inventory.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+TileMap.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 TileMap.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 sfml-graphics.lib(sfml-graphics-2.dll) : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
   MultiplayerGame.vcxproj -> C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\x64\Release\Client.exe

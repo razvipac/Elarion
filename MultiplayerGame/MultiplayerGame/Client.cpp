@@ -264,7 +264,7 @@ int main() {
 	ENetPeer* peer;
 
 	// 127.0.0.1:8080
-	enet_address_set_host(&address, "127.0.0.1"); // 172.205.150.168
+	enet_address_set_host(&address, "172.205.150.168"); // 172.205.150.168
 	address.port = 8080;
 	peer = enet_host_connect(client, &address, 1, 0);
 
