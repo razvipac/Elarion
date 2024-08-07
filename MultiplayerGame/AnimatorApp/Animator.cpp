@@ -3,19 +3,21 @@
 #include <iostream>
 #include <fstream>
 #include "Transition.h"
+
 using namespace sf;
 using namespace std;
+
 State* Animator::selectedState = nullptr;
+
 Animator::Animator()
 {
 	defaultStateIndex = -1;
 }
-
 void Animator::addState(const string& name, const string& path)
 {
-	for(int i=0; i<states.size(); i++)
+	for (int i = 0; i < states.size(); i++)
 	{
-		if(states[i]->getPath() == path)
+		if (states[i]->getPath() == path)
 		{
 			cout << "State with that name already exists" << endl;
 			return;
@@ -24,18 +26,16 @@ void Animator::addState(const string& name, const string& path)
 	states.push_back(new State(name, path));
 	cout << "State added" << endl;
 }
-
 void Animator::setDefaultStateIndex(int defaultStateIndex)
 {
-	if(this->defaultStateIndex != -1)
+	if (this->defaultStateIndex != -1)
 		states[this->defaultStateIndex]->setColor(Color::White);
 	this->defaultStateIndex = defaultStateIndex;
 	states[defaultStateIndex]->setColor(Color::Green);
 }
-
 void Animator::setDefaultStateIndex(State* state)
 {
-	if(this->defaultStateIndex != -1)
+	if (this->defaultStateIndex != -1)
 		states[this->defaultStateIndex]->setColor(Color::White);
 	for (int i = 0; i < states.size(); i++)
 	{
@@ -47,12 +47,10 @@ void Animator::setDefaultStateIndex(State* state)
 		}
 	}
 }
-
 int Animator::getDefaultStateIndex() const
 {
 	return defaultStateIndex;
 }
-
 const vector<State*>& Animator::getStates() const
 {
 	return states;
@@ -76,7 +74,7 @@ void Animator::handleEvent(const sf::Event& event)
 				states.erase(states.begin() + i);
 				delete selectedState;
 				setSelectedState(nullptr);
-				if(i >= defaultStateIndex)
+				if (i >= defaultStateIndex)
 					defaultStateIndex--;
 				break;
 			}
@@ -95,40 +93,38 @@ void Animator::handleEvent(const sf::Event& event)
 					break;
 				}
 			}
-			if(found != -1)
+			if (found != -1)
 				selectedState->addTransition(*states[found]);
-			
+
 			isAddingTransition = false;
 			clickUsed = true;
 		}
 	}
-	
 
-	for (int i=states.size()-1; i>=0; i--)
+
+	for (int i = states.size() - 1; i >= 0; i--)
 	{
 		states[i]->handleEvent(event);
 	}
-	for(int i=0; i<states.size(); i++)
+	for (int i = 0; i < states.size(); i++)
 	{
 		states[i]->handleTransitionEvent(event);
 	}
 }
-
 State* Animator::getSelectedState()
 {
 	return selectedState;
 }
 void Animator::setSelectedState(State* selectedState)
 {
-	if(Animator::selectedState != nullptr && Animator::selectedState != selectedState)
+	if (Animator::selectedState != nullptr && Animator::selectedState != selectedState)
 		Animator::selectedState->deselect();
 	Animator::selectedState = selectedState;
-	if(selectedState != nullptr)
+	if (selectedState != nullptr)
 		StateMenu::getInstance().setText(selectedState->getName());
 	else
 		StateMenu::getInstance().setText("");
 }
-
 void Animator::saveAnimator(const string& path) const
 {
 	ofstream file(path, ios::binary);
@@ -166,7 +162,6 @@ void Animator::saveAnimator(const string& path) const
 
 	file.close();
 }
-
 void Animator::loadAnimator(const string& path)
 {
 	//Clear the current states
@@ -234,7 +229,6 @@ void Animator::loadAnimator(const string& path)
 
 	file.close();
 }
-
 Animator::~Animator()
 {
 	for (int i = 0; i < states.size(); i++)

@@ -41,7 +41,6 @@ void Transition::handleEvent(const sf::Event& event)
 		}
 	}
 }
-
 void Transition::setOutline(bool outline)
 {
 	if (outline)
@@ -49,7 +48,6 @@ void Transition::setOutline(bool outline)
 	else
 		arrow.setOutlineThickness(0);
 }
-
 void Transition::updatePositionAndRotation()
 {
 	// Assuming offset() is a method that returns a sf::Vector2f representing the offset
@@ -69,8 +67,6 @@ void Transition::updatePositionAndRotation()
 	float angle = atan2(arrivalPositionOffset.y - startingPositionOffset.y, arrivalPositionOffset.x - startingPositionOffset.x);
 	arrow.setRotation(angle * 180 / 3.14159265 + 180);
 }
-
-
 bool Transition::mouseIntersectsLine() const //Method is currently not used anymore
 {
 	sf::Vector2f startingPositionOffset = startingState.getPosition() - offset;
@@ -84,58 +80,42 @@ bool Transition::mouseIntersectsLine() const //Method is currently not used anym
 
 	return distanceFromLine < 2.5 && distanceFromStart + distanceFromEnd - distance < 2.5;
 }
-
 void Transition::addCondition(const std::string& name, int operatorIndex, const FloatingBool& value)
 {
 	names.push_back(name);
 	operators.push_back(operatorIndex);
 	values.push_back(value);
 }
-
 void Transition::modifyCondition(int index, const std::string& name, int operatorIndex, const FloatingBool& value)
 {
-	cout << "yes" << "\n";
 	names[index] = name;
 	operators[index] = operatorIndex;
 	values[index] = value;
-	cout << "no" << "\n";
 }
-
 void Transition::removeCondition(int index)
 {
 	names.erase(names.begin() + index);
 	operators.erase(operators.begin() + index);
 	values.erase(values.begin() + index);
 }
-
 int Transition::getConditionsCount() const
 {
 	return names.size();
 }
-
 const string& Transition::getConditionName(int index) const
 {
 	return names[index];
 }
-
 int Transition::getConditionOperator(int index) const
 {
 	return operators[index];
 }
-
 const FloatingBool& Transition::getConditionValue(int index) const
 {
 	return values[index];
 }
-
 void Transition::saveTransition(std::ofstream& file) const
 {
-	//File is in binary mode
-	//Save the path of the starting state (not needed since we get can it because we know how many transitions each state has)
-	//size_t size = startingState.getPath().size();
-	//file.write((char*)&size, sizeof(size_t)); //write the size of the path
-	//file.write(startingState.getPath().c_str(), size); //write the path of the starting state
-
 	//Save the path of the arrival state
 	size_t size = arrivalState.getPath().size();
 	file.write((char*)&size, sizeof(size_t)); //write the size of the path
@@ -162,16 +142,11 @@ void Transition::saveTransition(std::ofstream& file) const
 
 		//Save the value
 		if (values[i].isFloat)
-		{
 			file.write((char*)&values[i].floatValue, sizeof(float)); //write the float value
-		}
 		else
-		{
 			file.write((char*)&values[i].boolValue, sizeof(bool)); //write the bool value
-		}
 	}
 }
-
 void Transition::loadTransitionConditions(std::ifstream& file)
 {
 	//Load the amount of conditions
@@ -213,11 +188,10 @@ void Transition::loadTransitionConditions(std::ifstream& file)
 		}
 	}
 }
-
 Transition::~Transition()
 {
 	startingState.eraseTransition(this);
 	arrivalState.eraseTransition(this);
-	if(TransitionMenu::getCurrentTransition() == this)
+	if (TransitionMenu::getCurrentTransition() == this)
 		TransitionMenu::setCurrentTransition(nullptr);
 }

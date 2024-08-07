@@ -4,31 +4,25 @@
 using namespace std;
 
 Transition::Transition(State& departureState, State& arrivalState) : startingState(departureState), arrivalState(arrivalState) {}
-
 State& Transition::getArrivalState() const {
 	return arrivalState;
 }
-
 int Transition::getConditionsCount() const {
 	return names.size();
 }
-
 const string& Transition::getConditionName(int index) const {
 	return names[index];
 }
-
 int Transition::getConditionOperator(int index) const {
 	return operators[index];
 }
-
 const FloatingBool& Transition::getConditionValue(int index) const {
 	return values[index];
 }
-
 void Transition::loadTransitionConditions(ifstream& file) {
 	//Load the amount of conditions
 	int conditionsCount;
-	file.read((char*)&conditionsCount, sizeof(int)); //read the amount of conditions
+	file.read((char*)&conditionsCount, sizeof(int));
 
 	//Load the conditions
 	for (int i = 0; i < conditionsCount; i++)
@@ -69,5 +63,4 @@ void Transition::loadTransitionConditions(ifstream& file) {
 		}
 	}
 }
-
 Transition::~Transition() {}

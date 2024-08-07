@@ -1,4 +1,5 @@
 #pragma once
+
 #include "SFML/Graphics.hpp"
 #include "Inventory.h"
 #include "Animation.h"
@@ -13,9 +14,6 @@ private:
 	sf::Vector2f targetPosition;
 	float timeSinceLastPacket;
 	Inventory inventory;
-	/*Animation idleAnimation;
-	Animation walkAnimation;
-	Animation runAnimation;*/
 	Animator playerAnimator;
 public:
 	Player(int id);

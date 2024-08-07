@@ -19,7 +19,7 @@ ConditionUI::ConditionUI(const Vector2f& position, int index) : position(positio
 	text.setCharacterSize(15);
 	text.setFillColor(Color::Black);
 	text.setPosition(position.x + 10, position.y + 70);
-	
+
 	variableName.setFont(font);
 	variableName.setString("Variable Name");
 	variableName.setCharacterSize(15);
@@ -31,13 +31,13 @@ ConditionUI::ConditionUI(const Vector2f& position, int index) : position(positio
 	operatorText.setCharacterSize(15);
 	operatorText.setFillColor(Color::Black);
 	operatorText.setPosition(position.x + 10, position.y + 150);
-	
+
 	valueText.setFont(font);
 	valueText.setString("Value");
 	valueText.setCharacterSize(15);
 	valueText.setFillColor(Color::Black);
 	valueText.setPosition(position.x + 10, position.y + 200);
-	
+
 	type.setFont(font);
 	type.setString("Type");
 	type.setCharacterSize(15);
@@ -47,19 +47,18 @@ ConditionUI::ConditionUI(const Vector2f& position, int index) : position(positio
 	variableNameInputField.setOnFinishEdit([this](const string& name) {
 		nameString = name;
 		updateCondition();
-	});
+		});
 
 	operatorInputField.setOnFinishEdit([this](const string& operatorr) {
 		operatorString = operatorr;
 		updateCondition();
-	});
+		});
 
 	valueInputField.setOnFinishEdit([this](const string& value) {
 		valueString = value;
 		updateCondition();
-	});
+		});
 }
-
 int ConditionUI::getTypeFromOperator(const string& operatorString) const {
 	if (operatorString == "!=")
 		return 1;
@@ -73,7 +72,6 @@ int ConditionUI::getTypeFromOperator(const string& operatorString) const {
 		return 5;
 	return 0;
 }
-
 string getOperatorFromType(int type) {
 	if (type == 1)
 		return "!=";
@@ -87,7 +85,6 @@ string getOperatorFromType(int type) {
 		return ">=";
 	return "==";
 }
-
 void ConditionUI::draw(RenderWindow& window) const
 {
 	window.draw(text);
@@ -101,7 +98,6 @@ void ConditionUI::draw(RenderWindow& window) const
 	typeInputField.draw(window);
 	removeButton.draw(window);
 }
-
 void ConditionUI::handleEvent(const Event& event)
 {
 	variableNameInputField.handleEvent(event);
@@ -110,7 +106,6 @@ void ConditionUI::handleEvent(const Event& event)
 	typeInputField.handleEvent(event);
 	removeButton.handleEvent(event);
 }
-
 void ConditionUI::setPosition(const Vector2f& position)
 {
 	this->position = position;
@@ -129,7 +124,6 @@ const Vector2f& ConditionUI::getPosition() const
 {
 	return position;
 }
-
 void ConditionUI::setIndex(int index)
 {
 	text.setString("Condition " + to_string(index + 1));
@@ -139,9 +133,8 @@ void ConditionUI::setIndex(int index)
 			TransitionMenu::getCurrentTransition()->removeCondition(index);
 			TransitionMenu::getInstance().removeConditionUI(index);
 		}
-	});
+		});
 }
-
 void ConditionUI::setValues(const string& variableName, int operatorIndex, const string& value, bool isFloat)
 {
 	variableNameInputField.setText(variableName);
@@ -156,7 +149,6 @@ void ConditionUI::setValues(const string& variableName, int operatorIndex, const
 	operatorString = getOperatorFromType(operatorIndex);
 	valueString = value;
 }
-
 void ConditionUI::updateCondition() const
 {
 	if (TransitionMenu::getCurrentTransition() != nullptr)
@@ -169,13 +161,12 @@ void ConditionUI::updateCondition() const
 		}
 		catch (...) {
 			bool value = false;
-			if(valueString == "true")
+			if (valueString == "true")
 				value = true;
 			TransitionMenu::getCurrentTransition()->modifyCondition(0, nameString, type, FloatingBool(value));
 		}
 	}
 }
-
 ConditionUI::~ConditionUI()
 {
 	cout << "ConditionUI destroyed" << endl;

@@ -15,7 +15,7 @@ std::string OpenFileDialog(bool isAnim) {
 	// use the contents of szFile to initialize itself.
 	ofn.lpstrFile[0] = L'\0';
 	ofn.nMaxFile = sizeof(szFile) / sizeof(WCHAR);
-	if(isAnim)
+	if (isAnim)
 		ofn.lpstrFilter = L"Animation Files\0*.ANIM\0";
 	else
 		ofn.lpstrFilter = L"Animator Files\0*.ANIMATOR\0";
@@ -44,7 +44,6 @@ std::string OpenFileDialog(bool isAnim) {
 	}
 	return "";
 }
-
 std::string SaveFileDialog() {
 	OPENFILENAMEW ofn;       // common dialog box structure
 	WCHAR szFile[260];       // buffer for file name, using wide char

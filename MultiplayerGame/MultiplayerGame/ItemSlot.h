@@ -14,19 +14,23 @@ private:
 	int itemID;
 	int quantity;
 	int durability;
+
 	static std::vector<Item> items;
 	sf::RectangleShape slot;
 	sf::RectangleShape itemIcon;
 public:
 	ItemSlot(sf::Vector2f position);
-	void setItem(int itemID);
-	void setQuantity(int quantity);
-	void setDurability(int durability);
-	int getItemID();
-	int getQuantity();
-	int getDurability();
-	void drawSlot(sf::RenderWindow& window);
-	static void loadItems();
 	static Item& getItem(int itemID);
+	int getItemID();
+	void setItem(int itemID);
+	static void loadItems();
+
+	int getQuantity();
+	void setQuantity(int quantity);
+	
+	int getDurability();
+	void setDurability(int durability);
+
+	void drawSlot(sf::RenderWindow& window);
 	void changeSlotOutlineColor(sf::Color color);
 };

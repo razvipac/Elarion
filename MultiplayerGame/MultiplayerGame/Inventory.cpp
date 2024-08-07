@@ -14,14 +14,10 @@ Inventory::Inventory() {
 	slots[selectedSlot].changeSlotOutlineColor(Color::Green);
 
 }
-
 int Inventory::getSelectedSlot() {
 	return selectedSlot;
 }
-
 void Inventory::addItem(int itemID, int quantity) {
-	//slots[itemID].setItem(itemID);
-	//slots[itemID].setQuantity(quantity);
 	for (int i = 0; i < slots.size(); i++) {
 		if (slots[i].getItemID() == itemID) {
 			if (slots[i].getQuantity() + quantity <= ItemSlot::getItem(itemID).getMaxStackSize()) {
@@ -51,14 +47,12 @@ void Inventory::addItem(int itemID, int quantity) {
 	}
 	// de tratat cazul in care nu mai sunt sloturi disponibile
 }
-
 void Inventory::changeItem(int slot, int itemID, int quantity) {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	slots[slot].setItem(itemID);
 	slots[slot].setQuantity(quantity);
 }
-
 void Inventory::removeItem(int itemID, int quantity) {
 	for (int i = 0; i < slots.size(); i++) {
 		if (slots[i].getItemID() == itemID) {
@@ -77,37 +71,31 @@ void Inventory::removeItem(int itemID, int quantity) {
 
 	// de tratat cazul in care nu exista suficiente iteme in inventar
 }
-
 void Inventory::setQuantity(int slot, int quantity) {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	slots[slot].setQuantity(quantity);
 }
-
 int Inventory::getQuantity(int slot) {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	return slots[slot].getQuantity();
 }
-
 int Inventory::getItemID(int slot) {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	return slots[slot].getItemID();
 }
-
 void Inventory::setDurability(int slot, int durability) {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	slots[slot].setDurability(durability);
 }
-
 int Inventory::getDurability(int slot) {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	return slots[slot].getDurability();
 }
-
 void Inventory::setSelectedSlot(int slot) {
 	if (slot < 0 || slot >= 10)
 		slot = 0;
@@ -115,14 +103,12 @@ void Inventory::setSelectedSlot(int slot) {
 	selectedSlot = slot;
 	slots[selectedSlot].changeSlotOutlineColor(Color::Green);
 }
-
 void Inventory::drawInventory(RenderWindow& window) {
 	//window.draw(inventory);
 	for (int i = 0; i < slots.size(); i++) {
 		slots[i].drawSlot(window);
 	}
 }
-
 void Inventory::handleEvent(Event event) {
 	if (event.type == Event::KeyPressed) {
 		if (event.key.code == Keyboard::Num1)
@@ -145,15 +131,15 @@ void Inventory::handleEvent(Event event) {
 			setSelectedSlot(8);
 		if (event.key.code == Keyboard::Num0)
 			setSelectedSlot(9);
-		
+
 		// if we pressed t change the selected item to an empty cup
 		if (event.key.code == Keyboard::T)
-			changeItem(selectedSlot,1, 1);
+			changeItem(selectedSlot, 1, 1);
 		// if we pressed y change the selected item to a full cup
 		if (event.key.code == Keyboard::Y)
 			changeItem(selectedSlot, 2, 1);
 	}
-	if(event.type == Event::MouseWheelScrolled) {
+	if (event.type == Event::MouseWheelScrolled) {
 		if (event.mouseWheelScroll.delta > 0) {
 			if (selectedSlot == 0)
 				setSelectedSlot(9);

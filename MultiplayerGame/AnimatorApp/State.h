@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Transition.h"
 #include <vector>
 #include <iostream>

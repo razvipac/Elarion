@@ -25,7 +25,6 @@ PerlinNoise::PerlinNoise() {
 
 	changePerlinNoise2DSeed();
 }
-
 void PerlinNoise::changePerlinNoise1DSeed() {
 	// Change the seed of the perlin noise
 	for (int i = 0; i < size; i++)
@@ -71,7 +70,6 @@ void PerlinNoise::saveNoise1D(string path) {
 
 	image.saveToFile(path);
 }
-
 void PerlinNoise::changePerlinNoise2DSeed() {
 	// Change the seed of the perlin noise
 	for (int i = 0; i < width * height; i++)
@@ -147,7 +145,7 @@ void PerlinNoise::saveNoise2DColored(string path) {
 			else
 				color = Color(255, 255, 255); //snow
 
-			if(i < width / 2)
+			if (i < width / 2)
 				blendedColor = color;
 			else {
 				float fraction = (float)(i - width / 2) / (width / 2);
@@ -181,7 +179,6 @@ void PerlinNoise::get2DNoiseColored(int* level) {
 		}
 	}
 }
-
 void PerlinNoise::increaseOctaves() {
 	octaves++;
 	generatePerlinNoise1D();
@@ -194,7 +191,6 @@ void PerlinNoise::decreaseOctaves() {
 		generatePerlinNoise2D();
 	}
 }
-
 void PerlinNoise::increaseScale() {
 	scale += 0.1f;
 	generatePerlinNoise1D();
@@ -207,7 +203,6 @@ void PerlinNoise::decreaseScale() {
 		generatePerlinNoise2D();
 	}
 }
-
 void PerlinNoise::increaseBias() {
 	bias += 0.1f;
 	generatePerlinNoise1D();
@@ -220,7 +215,6 @@ void PerlinNoise::decreaseBias() {
 		generatePerlinNoise2D();
 	}
 }
-
 PerlinNoise::~PerlinNoise() {
 	delete[] noiseSeed1D;
 	delete[] perlinNoise1D;

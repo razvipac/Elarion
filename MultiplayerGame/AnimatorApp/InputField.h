@@ -1,12 +1,11 @@
 #pragma once
+
 #include "SFML/Graphics.hpp"
 #include <functional>
 #include <iostream>
 
 extern bool clickUsed;
-
 extern sf::Font font;
-
 extern sf::Vector2f mousePositionInUI;
 
 class InputField

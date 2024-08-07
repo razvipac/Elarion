@@ -1,4 +1,5 @@
 #pragma once
+
 #include "SFML/Graphics.hpp"
 #include "InputField.h"
 #include "Button.h"

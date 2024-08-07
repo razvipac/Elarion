@@ -14,11 +14,6 @@ bool isAddingTransition = false;
 
 int main()
 {
-	if(!font.loadFromFile("Resources/Roboto-Black.ttf"))
-	{
-		cout << "Error loading font" << endl;
-	}
-
 	RenderWindow window(VideoMode(1280, 720), "[Multiplayer Java Game] Animator Tool");
 	Animator animator;
 	StateMenu& stateMenu = StateMenu::getInstance();
@@ -39,6 +34,7 @@ int main()
 		mousePositionInUI = window.mapPixelToCoords(Mouse::getPosition(window), uiView);
 		clickUsed = false;
 		Event event;
+
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed)
@@ -53,6 +49,7 @@ int main()
 					worldView.zoom(1.1f);
 				}
 			}
+
 			stateMenu.handleEvent(event);
 			transitionMenu.handleEvent(event);
 			animator.handleEvent(event);
@@ -65,9 +62,6 @@ int main()
 		}
 		lastMousePos = Vector2f(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
 
-
-
-
 		window.clear(backgroundColor);
 		window.setView(worldView);
 		animator.draw(window);
@@ -76,5 +70,4 @@ int main()
 		transitionMenu.draw(window);
 		window.display();
 	}
-
 }

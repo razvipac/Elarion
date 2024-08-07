@@ -6,19 +6,15 @@ using namespace std;
 using namespace sf;
 
 Animator::Animator(Shape& shape) : defaultStateIndex(0), currentState(nullptr), shape(shape) {}
-
 int Animator::getDefaultStateIndex() const {
 	return defaultStateIndex;
 }
-
 const vector<State*>& Animator::getStates() const {
 	return states;
 }
-
 State* Animator::getCurrentState() {
 	return currentState;
 }
-
 void Animator::checkTransitions() {
 	if (currentState) {
 		for (int i = 0; i < currentState->getTransitions().size(); i++)
@@ -152,8 +148,8 @@ void Animator::checkTransitions() {
 			}
 			if (canTransition)
 			{
-				cout<<"Transitioning to "<<transition->getArrivalState().getPath()<<endl;
-				currentState = & transition->getArrivalState();
+				cout << "Transitioning to " << transition->getArrivalState().getPath() << endl;
+				currentState = &transition->getArrivalState();
 				currentState->resetAnimation();
 				string name = currentState->getPath();
 				name = name.substr(0, name.size() - 5);
@@ -171,44 +167,38 @@ void Animator::checkTransitions() {
 		shape.setTexture(&TextureManager::getInstance().getRef(name));
 	}
 }
-
 void Animator::setVariable(const string& name, const FloatingBool& value) {
 	variables[name] = value;
 	checkTransitions();
 }
-
 void Animator::setFloat(const string& name, float value) {
 	variables[name] = FloatingBool(value);
 	checkTransitions();
 }
-
 void Animator::setBool(const string& name, bool value) {
 	variables[name] = FloatingBool(value);
 	checkTransitions();
 }
-
 void Animator::update(float deltaTime) {
 	if (currentState) {
 		currentState->update(deltaTime);
 	}
 }
-
 const IntRect& Animator::getFrame() const {
 	if (currentState) {
-		//cout<<"Getting frame from "<<currentState->getPath()<<endl;
 		return currentState->getFrame();
 	}
 	else {
 		return IntRect();
 	}
 }
-
 void Animator::loadAnimator(const string& path) {
 	//Clear the current states
 	for (int i = 0; i < states.size(); i++)
 	{
 		delete states[i];
 	}
+
 	states.clear();
 	currentState = nullptr;
 
@@ -218,8 +208,10 @@ void Animator::loadAnimator(const string& path) {
 		cout << "Failed to open file for reading" << endl;
 		return;
 	}
+
 	int size;
 	file.read((char*)&size, sizeof(int)); //read the amount of states
+
 	for (int i = 0; i < size; i++)
 	{
 		states.push_back(new State(""));
@@ -248,14 +240,11 @@ void Animator::loadAnimator(const string& path) {
 			//Find the arrival state
 			State* arrivalState = nullptr;
 			for (int k = 0; k < states.size(); k++)
-			{
 				if (states[k]->getPath() == path)
 				{
 					arrivalState = states[k];
 					break;
 				}
-			}
-
 			//Create the transition
 			states[i]->addTransition(*arrivalState);
 			Transition* transition = states[i]->getTransitions()[states[i]->getTransitions().size() - 1];
@@ -263,17 +252,13 @@ void Animator::loadAnimator(const string& path) {
 			transition->loadTransitionConditions(file); //load the transition conditions
 		}
 	}
-
 	file.read((char*)&defaultStateIndex, sizeof(int));
 
-	cout<<"Default state index: "<<defaultStateIndex<<endl;
+	cout << "Default state index: " << defaultStateIndex << endl;
 
 	file.close();
 }
-
 Animator::~Animator() {
 	for (int i = 0; i < states.size(); i++)
-	{
 		delete states[i];
-	}
 }

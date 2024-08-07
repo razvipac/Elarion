@@ -1,10 +1,11 @@
 #include "Item.h"
+
 using namespace std;
 using namespace sf;
 
 Item::Item(string name, string texturePath, int maxStackSize, int maxDurability, int transformationId) {
 	this->name = name;
-	if(texturePath != "")
+	if (texturePath != "")
 		this->texture.loadFromFile(texturePath);
 	this->maxStackSize = maxStackSize;
 	this->maxDurability = maxDurability;

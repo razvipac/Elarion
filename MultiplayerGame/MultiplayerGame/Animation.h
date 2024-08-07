@@ -5,29 +5,31 @@
 class Animation {
 private:
 	std::vector<sf::IntRect> frames;
+
 	float duration;
 	bool loop;
 	float time;
 public:
 	Animation();
 	Animation(const std::vector<sf::IntRect>& frames, float duration, bool loop);
-	void setFrames(const std::vector<sf::IntRect>& frames);
-	void setDuration(float duration);
-	void setLoop(bool loop);
-
-	int getCurrentFrameIndex() const;
 	const sf::IntRect& getFrame(unsigned int index) const;
-	const sf::IntRect& getCurrentFrame() const;
-	float getDuration() const;
-	bool getLoop() const;
-	unsigned int getSize() const;
+	void setFrames(const std::vector<sf::IntRect>& frames);
 	void addFrame(const sf::IntRect& frame);
 	void removeFrame(unsigned int index);
 
-	bool update(float deltaTime);
-	void resetTime();
+	float getDuration() const;
+	void setDuration(float duration);
+
+	bool getLoop() const;
+	void setLoop(bool loop);
+
+	const sf::IntRect& getCurrentFrame() const;
+	int getCurrentFrameIndex() const;
 
 	void saveAnimation(const std::string& filename) const;
 	void loadAnimation(const std::string& filename);
 
+	unsigned int getSize() const;
+	void resetTime();
+	bool update(float deltaTime);
 };

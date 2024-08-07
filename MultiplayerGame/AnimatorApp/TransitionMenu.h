@@ -1,4 +1,5 @@
 #pragma once
+
 #include "SFML/Graphics.hpp"
 #include "Animator.h"
 #include "ConditionUI.h"

@@ -19,7 +19,6 @@ void Animation::setDuration(float duration) {
 void Animation::setLoop(bool loop) {
 	this->loop = loop;
 }
-
 int Animation::getCurrentFrameIndex() const {
 	float relativeTime = fmod(time, duration);
 	return (int)(relativeTime / duration * frames.size());
@@ -39,15 +38,13 @@ bool Animation::getLoop() const {
 unsigned int Animation::getSize() const {
 	return frames.size();
 }
-
 void Animation::addFrame(const IntRect& frame) {
 	frames.push_back(frame);
 }
 void Animation::removeFrame(unsigned int index) {
-	if(index < frames.size())
+	if (index < frames.size())
 		frames.erase(frames.begin() + index);
 }
-
 bool Animation::update(float deltaTime) {
 	int frame = getCurrentFrameIndex();
 	time += deltaTime;
@@ -58,7 +55,6 @@ bool Animation::update(float deltaTime) {
 void Animation::resetTime() {
 	time = 0;
 }
-
 void Animation::saveAnimation(const string& filename) const {
 	ofstream file(filename, ios::binary);
 	if (file.is_open()) {
@@ -92,22 +88,14 @@ void Animation::loadAnimation(const string& filename) {
 		}
 		file.close();
 
-		cout << "HHIHAIDHASDH\n";
+		cout << filename << ":\n";
+		cout << size << " " << duration << " " << loop << "\n";
 
-		cout<<filename<<":\n";
-		cout<<size<<" "<<duration<<" "<<loop<<"\n";
-
-		//if this is the running animation, change the duration to 0.5 and save
-		/*if (filename == "Resources/Animations/PlayerRun.anim") {
-			duration = 0.5;
-			saveAnimation("Resources/Animations/PlayerRun.anim");
-		}*/
-
-		for(int i=0; i<frames.size(); i++)
+		for (int i = 0; i < frames.size(); i++)
 			cout << frames[i].left << " " << frames[i].top << " " << frames[i].width << " " << frames[i].height << "\n";
 	}
 	else {
-		cout<<"Failed to open file for reading\n";
-		cout<<filename<<"\n";
+		cout << "Failed to open file for reading\n";
+		cout << filename << "\n";
 	}
 }

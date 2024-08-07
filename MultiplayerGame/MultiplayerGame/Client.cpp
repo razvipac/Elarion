@@ -34,8 +34,10 @@ void parseData(char* data) {
 
 	if (strlen(data) < 1) // STRLEN poate cauza probleme
 		return;
+
 	char messageType = data[0];
 	cout << "Message type: " << messageType << "\n";
+
 	if (messageType == '1') {
 		int id;
 		float x, y;
@@ -46,6 +48,7 @@ void parseData(char* data) {
 			cout << "Moving the player\n";
 		}
 	}
+
 	else if (messageType == '2') {
 		int id;
 		float x, y;
@@ -59,6 +62,7 @@ void parseData(char* data) {
 			playerMap[id]->setPosition(Vector2f(x, y));
 		}
 	}
+
 	else if (messageType == '3') {
 		int id;
 		float x, y;
@@ -71,6 +75,7 @@ void parseData(char* data) {
 		cout << "Asta e CLIENTID: " << CLIENTID << "\n";
 		cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 	}
+
 	else if (messageType == '4') {
 		int id;
 		float x, y;
@@ -81,6 +86,7 @@ void parseData(char* data) {
 			playerMap.erase(id);
 		}
 	}
+
 	else {
 		cout << "Unknown message type: " << messageType << "\n";
 	}
@@ -99,47 +105,28 @@ void msgLoop(ENetHost* client) {
 }
 
 int main() {
-	cout<<"Starting\n";
+	cout << "Starting\n";
 	srand(time(NULL));
 
 	TextureManager::getInstance().loadTexture("PlayerIdle", "Resources/Sunnyside_World_Assets/Characters/Human/IDLE/base_idle_strip9.png");
 	TextureManager::getInstance().loadTexture("PlayerWalk", "Resources/Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png");
 	TextureManager::getInstance().loadTexture("PlayerRun", "Resources/Sunnyside_World_Assets/Characters/Human/RUN/base_run_strip8.png");
-	//Player p(-1);
 
 	PerlinNoise noise;
 	noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
 
 	//RenderWindow window2(VideoMode(1024, 1024), "Noise");
 
-	//Texture noiseTexture;
-	//noiseTexture.loadFromFile("Resources/Textures/PerlinNoise.png");
-	//Sprite noiseSprite(noiseTexture);
-
-	//get the default view
-	//View defaultView = window2.getDefaultView();
 	Vector2f lastMousePos;
-
-	/*Tile waterTile(0, true, "Resources/Textures/WaterTile.png");
-	Tile sandTile(1, false, "Resources/Textures/SandTile.png");
-	Tile grassTile(2, false, "Resources/Textures/GrassTile.png");
-	Tile snowTile(3, false, "Resources/Textures/SnowTile.png");*/
 
 	const int width = 256;
 	const int height = 256;
 	int tileSize = 62;
-	cout<<"Creating noise\n";
 	int level[width * height];
 	noise.get2DNoiseColored(level);
-	/*for (int i = 0; i < width * height; i++) {
-		cout<<level[i]<<" ";
-		if(i % width == 0)
-			cout<<"\n";
-	}*/
-	cout<<"Got noise\n";
 	TileMap map;
 	if (!map.load("Resources/Textures/TileSet.png", Vector2u(tileSize, tileSize), level, width, height)) {
-		cout<<"Failed to load map\n";
+		cout << "Failed to load map\n";
 		return EXIT_FAILURE;
 	}
 
@@ -263,8 +250,9 @@ int main() {
 	ENetEvent event;
 	ENetPeer* peer;
 
-	// 127.0.0.1:8080
-	enet_address_set_host(&address, "172.205.150.168"); // 172.205.150.168
+	// enet_address_set_host(&address, "127.0.0.1:8080");
+	enet_address_set_host(&address, "172.205.150.168");
+
 	address.port = 8080;
 	peer = enet_host_connect(client, &address, 1, 0);
 
@@ -281,10 +269,9 @@ int main() {
 		return EXIT_SUCCESS;
 	}
 
-
-	/////////////////////////////////////////////////
-
-
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	ItemSlot::loadItems();
 
@@ -306,7 +293,9 @@ int main() {
 	while (window.isOpen()) {
 		currentTime = deltaClock.restart();
 		Event event;
-		while (window.pollEvent(event)) {
+
+		while (window.pollEvent(event))
+		{
 			if (event.type == Event::Closed)
 				window.close();
 			player.handleEvent(event);
@@ -349,10 +338,8 @@ int main() {
 		window.display();
 	}
 
-	cout << "hatz";
 	enet_peer_disconnect(peer, 0);
-	cout << "dorian";
-
+	cout << "Peer disconnected..." << "\n";
 
 	while (enet_host_service(client, &event, 3000) > 0) {
 		if (event.type == ENET_EVENT_TYPE_RECEIVE)
@@ -360,7 +347,6 @@ int main() {
 		else if (event.type == ENET_EVENT_TYPE_DISCONNECT)
 			cout << "Disconnection succeeded.\n";
 	}
-	cout << "popa";
 
 	return EXIT_SUCCESS;
 }

@@ -8,11 +8,13 @@ InputField::InputField(const Vector2f& size, const Vector2f& position, const str
 	shape.setFillColor(Color::White);
 	shape.setOutlineColor(Color::Black);
 	shape.setOutlineThickness(1);
+
 	this->text.setFont(font);
 	this->text.setString(text);
 	this->text.setCharacterSize(17);
 	this->text.setFillColor(Color::Black);
 	this->text.setPosition(position.x + 6, position.y + 6);
+
 	isSelected = false;
 }
 void InputField::draw(RenderWindow& window) const
@@ -34,7 +36,7 @@ void InputField::handleEvent(const Event& event)
 		{
 			isSelected = false;
 			shape.setOutlineColor(Color::Black);
-			if(onFinishEdit != nullptr)
+			if (onFinishEdit != nullptr)
 				onFinishEdit(text.getString());
 		}
 	}
@@ -57,7 +59,7 @@ void InputField::handleEvent(const Event& event)
 	{
 		isSelected = false;
 		shape.setOutlineColor(Color::Black);
-		if(onFinishEdit != nullptr)
+		if (onFinishEdit != nullptr)
 			onFinishEdit(text.getString());
 	}
 }
@@ -73,15 +75,12 @@ void InputField::setOnFinishEdit(const function<void(const std::string&)>& onFin
 {
 	this->onFinishEdit = onFinishEdit;
 }
-
 void InputField::setPosition(const Vector2f& position)
 {
 	shape.setPosition(position);
 	text.setPosition(position.x + 6, position.y + 6);
 }
-
 std::string InputField::getValue() const {
-	cout << "hihi" << this << "hiha" << "\n";
 	cout << isSelected << "\n";
 	string str = "1sngffgbndsf";
 	String str2 = text.getString();

@@ -1,6 +1,8 @@
 #include "Button.h"
+
 using namespace std;
 using namespace sf;
+
 Button::Button(const Vector2f& size, const Vector2f& position, const string& text, const function<void()>& onClick) : onClick(onClick)
 {
 	shape.setSize(size);
@@ -34,12 +36,10 @@ void Button::setText(const string& text)
 {
 	this->text.setString(text);
 }
-
 void Button::setOnClick(const function<void()>& onClick)
 {
 	this->onClick = onClick;
 }
-
 void Button::setPosition(const Vector2f& position)
 {
 	shape.setPosition(position);

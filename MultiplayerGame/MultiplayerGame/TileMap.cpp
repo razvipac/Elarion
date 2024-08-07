@@ -13,7 +13,6 @@ void TileMap::draw(RenderTarget& target, RenderStates states) const {
 	// Draw the vertex array
 	target.draw(vertices, states);
 }
-
 bool TileMap::load(const string& tilesetPath, Vector2u tileSize, const int* tiles, int width, int height) {
 	// Load the tileset texture
 	if (!tileset.loadFromFile(tilesetPath))
@@ -27,7 +26,6 @@ bool TileMap::load(const string& tilesetPath, Vector2u tileSize, const int* tile
 
 	return true;
 }
-
 void TileMap::update(const int* tiles, Vector2u tileSize, int width, int height) {
 	// Populate the vertex array, with one quad per tile
 	for (unsigned int i = 0; i < width; ++i)
