@@ -6,6 +6,7 @@ using namespace sf;
 using namespace std;
 
 extern int CLIENTID;
+extern int tps;
 
 Player::Player(int id) : playerAnimator(player) {
 	player.setSize(Vector2f(16, 16));
@@ -102,36 +103,54 @@ void Player::update(float deltaTime) {
         }
     }
     else {
-        timeSinceLastPacket += deltaTime;
-        Vector2f currentPosition = player.getPosition();
-        Vector2f direction = targetPosition - currentPosition;
-        float distance = sqrt(direction.x * direction.x + direction.y * direction.y);
-        if (distance < 1) {
-            player.setPosition(targetPosition);
-            timeSinceLastPacket = 0;
-        }
-        else {
-			//walking = true;
-			Vector2f unitVector = direction / distance;
-			Vector2f movement = unitVector * currentSpeed * deltaTime;
-			if (movement.x > 0 && currentPosition.x + movement.x > targetPosition.x)
-				player.setPosition(targetPosition);
-			else if (movement.x < 0 && currentPosition.x + movement.x < targetPosition.x)
-				player.setPosition(targetPosition);
-			else if (movement.y > 0 && currentPosition.y + movement.y > targetPosition.y)
-				player.setPosition(targetPosition);
-			else if (movement.y < 0 && currentPosition.y + movement.y < targetPosition.y)
-				player.setPosition(targetPosition);
-			else
-				player.move(movement);
-
-            //if the player moved to the right and the player's scale is negative, flip the player
-            if (movement.x > 0 && player.getScale().x < 0)
-				player.setScale(-player.getScale().x, player.getScale().y);
-            //if the player moved to the left and the player's scale is positive, flip the player
-			else if (movement.x < 0 && player.getScale().x > 0)
-                player.setScale(-player.getScale().x, player.getScale().y);
+        // when time since last packet is 1 / tps, the player will be at the target position
+        float timeLeft = 1.0f / tps - timeSinceLastPacket;
+        if (timeLeft < deltaTime) {
+			player.setPosition(targetPosition);
+			timeSinceLastPacket = 0;
 		}
+		else {
+			Vector2f currentPosition = player.getPosition();
+			Vector2f direction = targetPosition - currentPosition;
+            Vector2f directionPerSecond = direction / timeLeft;
+            Vector2f newPosition = currentPosition + directionPerSecond * deltaTime;
+            player.setPosition(newPosition);
+            timeSinceLastPacket += deltaTime;
+            currentSpeed = sqrt(directionPerSecond.x * directionPerSecond.x + directionPerSecond.y * directionPerSecond.y);
+            animatorSpeed = currentSpeed;
+        }
+        //timeSinceLastPacket += deltaTime;
+        
+
+  //      Vector2f currentPosition = player.getPosition();
+  //      Vector2f direction = targetPosition - currentPosition;
+  //      float distance = sqrt(direction.x * direction.x + direction.y * direction.y);
+  //      if (distance < 1) {
+  //          player.setPosition(targetPosition);
+  //          timeSinceLastPacket = 0;
+  //      }
+  //      else {
+		//	//walking = true;
+		//	Vector2f unitVector = direction / distance;
+		//	Vector2f movement = unitVector * currentSpeed * deltaTime;
+		//	if (movement.x > 0 && currentPosition.x + movement.x > targetPosition.x)
+		//		player.setPosition(targetPosition);
+		//	else if (movement.x < 0 && currentPosition.x + movement.x < targetPosition.x)
+		//		player.setPosition(targetPosition);
+		//	else if (movement.y > 0 && currentPosition.y + movement.y > targetPosition.y)
+		//		player.setPosition(targetPosition);
+		//	else if (movement.y < 0 && currentPosition.y + movement.y < targetPosition.y)
+		//		player.setPosition(targetPosition);
+		//	else
+		//		player.move(movement);
+
+  //          //if the player moved to the right and the player's scale is negative, flip the player
+  //          if (movement.x > 0 && player.getScale().x < 0)
+		//		player.setScale(-player.getScale().x, player.getScale().y);
+  //          //if the player moved to the left and the player's scale is positive, flip the player
+		//	else if (movement.x < 0 && player.getScale().x > 0)
+  //              player.setScale(-player.getScale().x, player.getScale().y);
+		//}
     }
 
     // Update animations based on movement state

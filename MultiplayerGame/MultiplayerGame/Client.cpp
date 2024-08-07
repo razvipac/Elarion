@@ -19,6 +19,7 @@ using namespace sf;
 map<int, Player*> playerMap;
 Player* playerPointer;
 int CLIENTID = -1;
+int tps = 10;
 
 void sendPacket(ENetPeer* peer, const char* data, bool reliable = true) {
 	ENetPacket* packet;
@@ -300,6 +301,7 @@ int main() {
 	Clock deltaClock;
 	Time currentTime = deltaClock.getElapsedTime();
 	float packageTimeCounter = 0.0f;
+	float timeBetweenPackets = 1.f / tps;
 
 	while (window.isOpen()) {
 		currentTime = deltaClock.restart();
@@ -330,7 +332,7 @@ int main() {
 		}
 
 		packageTimeCounter += currentTime.asSeconds();
-		if (packageTimeCounter >= 0.1f) {
+		if (packageTimeCounter >= timeBetweenPackets) {
 			char message[13];
 			packData(message, '1', CLIENTID, player.getPosition().x, player.getPosition().y);
 			sendPacket(peer, message);
