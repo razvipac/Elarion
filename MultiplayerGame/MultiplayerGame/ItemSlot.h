@@ -31,6 +31,6 @@ public:
 	int getDurability();
 	void setDurability(int durability);
 
-	void drawSlot(sf::RenderWindow& window);
+	void drawSlot(sf::RenderWindow& window) const;
 	void changeSlotOutlineColor(sf::Color color);
 };

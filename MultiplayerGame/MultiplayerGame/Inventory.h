@@ -25,6 +25,6 @@ public:
 	int getDurability(int slot);
 	void setDurability(int slot, int durability);
 
-	void drawInventory(sf::RenderWindow& window);
+	void drawInventory(sf::RenderWindow& window) const;
 	void handleEvent(sf::Event event);
 };

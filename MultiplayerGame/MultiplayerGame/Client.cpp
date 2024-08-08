@@ -21,6 +21,9 @@ Player* playerPointer;
 int CLIENTID = -1;
 int tps = 10;
 
+Vector2f mousePosInWorld;
+Vector2f mousePosInUI;
+
 void sendPacket(ENetPeer* peer, const char* data, bool reliable = true) {
 	ENetPacket* packet;
 	if (reliable)
@@ -102,6 +105,11 @@ void msgLoop(ENetHost* client) {
 		else if (event.type == ENET_EVENT_TYPE_DISCONNECT)
 			cout << "Disconnection succeeded.\n";
 	}
+}
+
+void makeCameraFollowPlayer(View& view, Player& player, float deltaTime, float cameraSpeed) {
+	Vector2f targetPosition = (player.getPosition() - view.getCenter()) * deltaTime * cameraSpeed + view.getCenter();
+	view.setCenter(targetPosition);
 }
 
 int main() {
@@ -250,8 +258,8 @@ int main() {
 	ENetEvent event;
 	ENetPeer* peer;
 
-	// enet_address_set_host(&address, "127.0.0.1:8080");
-	enet_address_set_host(&address, "172.205.150.168");
+	enet_address_set_host(&address, "127.0.0.1");
+	//enet_address_set_host(&address, "172.205.150.168");
 
 	address.port = 8080;
 	peer = enet_host_connect(client, &address, 1, 0);
@@ -290,7 +298,14 @@ int main() {
 	float packageTimeCounter = 0.0f;
 	float timeBetweenPackets = 1.f / tps;
 
+	View defaultView = window.getDefaultView();
+	View uiView = window.getDefaultView();
+
+	float cameraSpeed = 2.f;
+
 	while (window.isOpen()) {
+		mousePosInWorld = window.mapPixelToCoords(Mouse::getPosition(window));
+		mousePosInUI = window.mapPixelToCoords(Mouse::getPosition(window), uiView);
 		currentTime = deltaClock.restart();
 		Event event;
 
@@ -304,9 +319,7 @@ int main() {
 			}
 			if (event.type == Event::MouseButtonPressed) {
 				if (event.mouseButton.button == Mouse::Left) {
-					Vector2i mousePos = Mouse::getPosition(window);
-					Vector2f worldPos = window.mapPixelToCoords(mousePos);
-					if (waterTileShape.getGlobalBounds().contains(worldPos) && player.getSelectedItemId() == ItemNames::CUP_EMPTY) {
+					if (waterTileShape.getGlobalBounds().contains(mousePosInWorld) && player.getSelectedItemId() == ItemNames::CUP_EMPTY) {
 						player.setSelectedItemId(ItemNames::CUP_WATER);
 					}
 				}
@@ -320,6 +333,8 @@ int main() {
 			p.second->update(currentTime.asSeconds());
 		}
 
+		makeCameraFollowPlayer(defaultView, player, currentTime.asSeconds(), cameraSpeed);
+
 		packageTimeCounter += currentTime.asSeconds();
 		if (packageTimeCounter >= timeBetweenPackets) {
 			char message[13];
@@ -332,9 +347,11 @@ int main() {
 		window.draw(map);
 		window.draw(waterTileShape);
 		player.drawPlayer(window);
-		for (auto& p : playerMap) {
+		for (auto& p : playerMap)
 			p.second->drawPlayer(window);
-		}
+		window.setView(uiView);
+		player.drawInventory(window);
+		window.setView(defaultView);
 		window.display();
 	}
 

@@ -103,7 +103,7 @@ void Inventory::setSelectedSlot(int slot) {
 	selectedSlot = slot;
 	slots[selectedSlot].changeSlotOutlineColor(Color::Green);
 }
-void Inventory::drawInventory(RenderWindow& window) {
+void Inventory::drawInventory(RenderWindow& window) const  {
 	//window.draw(inventory);
 	for (int i = 0; i < slots.size(); i++) {
 		slots[i].drawSlot(window);

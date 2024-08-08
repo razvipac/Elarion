@@ -119,13 +119,14 @@ void Player::update(float deltaTime) {
 
 			playerAnimator.setFloat("Speed", animatorSpeed);
 		}
-		playerAnimator.update(deltaTime);
-		player.setTextureRect(playerAnimator.getFrame());
 	}
+	playerAnimator.update(deltaTime);
+	player.setTextureRect(playerAnimator.getFrame());
 }
-void Player::drawPlayer(RenderWindow& window) {
+void Player::drawPlayer(RenderWindow& window) const {
 	window.draw(player);
-
+}
+void Player::drawInventory(RenderWindow& window) const {
 	if (id == CLIENTID) {
 		inventory.drawInventory(window);
 	}

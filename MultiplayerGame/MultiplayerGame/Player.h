@@ -19,7 +19,8 @@ public:
 	Player(int id);
 	void setPosition(sf::Vector2f position);
 	void setTargetPosition(sf::Vector2f position);
-	void drawPlayer(sf::RenderWindow& window);
+	void drawPlayer(sf::RenderWindow& window) const;
+	void drawInventory(sf::RenderWindow& window) const;
 	void update(float deltaTime);
 	void setSpeed(float speed);
 	void setId(int id);

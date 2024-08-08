@@ -56,7 +56,7 @@ int ItemSlot::getQuantity() {
 int ItemSlot::getDurability() {
 	return durability;
 }
-void ItemSlot::drawSlot(RenderWindow& window) {
+void ItemSlot::drawSlot(RenderWindow& window) const {
 	window.draw(slot);
 	window.draw(itemIcon);
 }
