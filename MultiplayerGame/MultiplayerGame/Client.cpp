@@ -39,16 +39,16 @@ void parseData(char* data) {
 		return;
 
 	char messageType = data[0];
-	cout << "Message type: " << messageType << "\n";
+	//cout << "Message type: " << messageType << "\n";
 
 	if (messageType == '1') {
 		int id;
 		float x, y;
 		unpackData(data, messageType, id, x, y);
-		cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
+		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 		if (id != CLIENTID && playerMap.find(id) != playerMap.end()) {
 			playerMap[id]->setTargetPosition(Vector2f(x, y));
-			cout << "Moving the player\n";
+			//cout << "Moving the player\n";
 		}
 	}
 
@@ -58,8 +58,8 @@ void parseData(char* data) {
 		unpackData(data, messageType, id, x, y);
 		for (int i = 0; i < 13; i++)
 			cout << data << " ";
-		cout << "\n";
-		cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
+		//cout << "\n";
+		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 		if (id != CLIENTID) {
 			playerMap[id] = new Player(id);
 			playerMap[id]->setPosition(Vector2f(x, y));
@@ -76,14 +76,14 @@ void parseData(char* data) {
 			cout << "am intrat" << "\n";
 		}
 		cout << "Asta e CLIENTID: " << CLIENTID << "\n";
-		cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
+		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 	}
 
 	else if (messageType == '4') {
 		int id;
 		float x, y;
 		unpackData(data, messageType, id, x, y);
-		cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
+		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 		if (id != CLIENTID) {
 			delete playerMap[id];
 			playerMap.erase(id);
@@ -119,6 +119,8 @@ int main() {
 	TextureManager::getInstance().loadTexture("PlayerIdle", "Resources/Sunnyside_World_Assets/Characters/Human/IDLE/base_idle_strip9.png");
 	TextureManager::getInstance().loadTexture("PlayerWalk", "Resources/Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png");
 	TextureManager::getInstance().loadTexture("PlayerRun", "Resources/Sunnyside_World_Assets/Characters/Human/RUN/base_run_strip8.png");
+	TextureManager::getInstance().loadTexture("PlayerAttack", "Resources/Sunnyside_World_Assets/Characters/Human/ATTACK/base_attack_strip10.png");
+	TextureManager::getInstance().loadTexture("PlayerHurt", "Resources/Sunnyside_World_Assets/Characters/Human/HURT/base_hurt_strip8.png");
 
 	PerlinNoise noise;
 	noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
@@ -313,9 +315,9 @@ int main() {
 		{
 			if (event.type == Event::Closed)
 				window.close();
-			player.handleEvent(event);
+			player.handleEvent(event, window);
 			for (auto& p : playerMap) {
-				p.second->handleEvent(event);
+				p.second->handleEvent(event, window);
 			}
 			if (event.type == Event::MouseButtonPressed) {
 				if (event.mouseButton.button == Mouse::Left) {

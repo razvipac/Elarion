@@ -1,30 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\",
+  "WorkspaceRootPath": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Animation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Animation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\State.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\State.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Animation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Animation.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Animator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Animator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Inventory.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\AnimatorApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|solutionrelative:AnimatorApp\\AnimatorApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\State.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|solutionrelative:AnimatorApp\\State.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\TransitionMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|solutionrelative:AnimatorApp\\TransitionMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\ConditionUI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|solutionrelative:AnimatorApp\\ConditionUI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\StateMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|solutionrelative:AnimatorApp\\StateMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\Transition.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|solutionrelative:AnimatorApp\\Transition.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\Button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{982EFED3-9D79-4A74-8CFE-8AE20EF8058B}|AnimatorApp\\AnimatorApp.vcxproj|solutionrelative:AnimatorApp\\Button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\TextureManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\TextureManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,88 +58,166 @@
       "DocumentGroups": [
         {
           "DockedWidth": 235,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Inventory.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp",
+              "RelativeDocumentMoniker": "MultiplayerGame\\Inventory.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp",
+              "RelativeToolTip": "MultiplayerGame\\Inventory.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T15:24:58.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Animation.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Animation.cpp",
+              "RelativeDocumentMoniker": "MultiplayerGame\\Animation.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Animation.cpp",
+              "RelativeToolTip": "MultiplayerGame\\Animation.cpp",
+              "ViewState": "AQIAACUAAAAAAAAAAAAAAD0AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T15:24:53.207Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Animation.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Animation.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Animation.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Animation.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Animation.cpp",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "Client.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
+              "RelativeDocumentMoniker": "MultiplayerGame\\Client.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
+              "RelativeToolTip": "MultiplayerGame\\Client.cpp",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAHoAAACIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-08T14:11:36.79Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "State.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\State.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\State.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\State.cpp",
-              "RelativeToolTip": "MultiplayerGame\\State.cpp",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-08T14:11:27.486Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Animator.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Animator.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Animator.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Animator.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Animator.cpp",
-              "ViewState": "AQIAAKsAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-08T14:11:10.926Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Inventory.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Inventory.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Inventory.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Inventory.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-08T14:03:56.462Z",
+              "WhenOpened": "2024-08-09T11:32:59.616Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Player.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Player.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\Player.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Player.cpp",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAAAHkAAAABAAAA",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\Player.cpp*",
+              "RelativeToolTip": "MultiplayerGame\\Player.cpp*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-08T13:57:39.053Z",
+              "WhenOpened": "2024-08-09T11:25:27.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Client.cpp",
-              "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
-              "RelativeDocumentMoniker": "MultiplayerGame\\Client.cpp",
-              "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
-              "RelativeToolTip": "MultiplayerGame\\Client.cpp",
-              "ViewState": "AQIAAGoAAAAAAAAAAAAAAHMAAAAWAAAA",
+              "DocumentIndex": 7,
+              "Title": "ConditionUI.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\ConditionUI.cpp",
+              "RelativeDocumentMoniker": "AnimatorApp\\ConditionUI.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\ConditionUI.cpp",
+              "RelativeToolTip": "AnimatorApp\\ConditionUI.cpp",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABAAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-07T13:21:02.686Z",
+              "WhenOpened": "2024-08-09T10:24:14.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TransitionMenu.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\TransitionMenu.cpp",
+              "RelativeDocumentMoniker": "AnimatorApp\\TransitionMenu.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\TransitionMenu.cpp",
+              "RelativeToolTip": "AnimatorApp\\TransitionMenu.cpp",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAACYAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T10:23:57.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Transition.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\Transition.cpp",
+              "RelativeDocumentMoniker": "AnimatorApp\\Transition.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\Transition.cpp",
+              "RelativeToolTip": "AnimatorApp\\Transition.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T10:19:55.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StateMenu.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\StateMenu.cpp",
+              "RelativeDocumentMoniker": "AnimatorApp\\StateMenu.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\StateMenu.cpp",
+              "RelativeToolTip": "AnimatorApp\\StateMenu.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T10:19:39.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "State.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\State.cpp",
+              "RelativeDocumentMoniker": "AnimatorApp\\State.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\State.cpp",
+              "RelativeToolTip": "AnimatorApp\\State.cpp",
+              "ViewState": "AQIAAJoAAAAAAAAAAAAMwKgAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T10:19:31.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Button.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\Button.cpp",
+              "RelativeDocumentMoniker": "AnimatorApp\\Button.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\Button.cpp",
+              "RelativeToolTip": "AnimatorApp\\Button.cpp",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T10:19:03.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TextureManager.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\TextureManager.cpp",
+              "RelativeDocumentMoniker": "MultiplayerGame\\TextureManager.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\MultiplayerGame\\TextureManager.cpp",
+              "RelativeToolTip": "MultiplayerGame\\TextureManager.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T10:16:57.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AnimatorApp.cpp",
+              "DocumentMoniker": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\AnimatorApp.cpp",
+              "RelativeDocumentMoniker": "AnimatorApp\\AnimatorApp.cpp",
+              "ToolTip": "C:\\Users\\razva.POTATO-REAPER\\Desktop\\Hatz\\MultiplayerGame\\AnimatorApp\\AnimatorApp.cpp",
+              "RelativeToolTip": "AnimatorApp\\AnimatorApp.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-09T09:55:53.55Z",
               "EditorCaption": ""
             }
           ]

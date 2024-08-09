@@ -37,9 +37,7 @@ void TransitionMenu::draw(RenderWindow& window) const
 {
 	window.draw(shape);
 	for (int i = 0; i < conditionUIs.size(); i++)
-	{
 		conditionUIs[i]->draw(window);
-	}
 	addConditionButton.draw(window);
 }
 void TransitionMenu::handleEvent(const Event& event)

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <iostream>	
 #include "TextureManager.h"
+#include <cmath>
 
 using namespace sf;
 using namespace std;
@@ -9,13 +10,23 @@ extern int CLIENTID;
 extern int tps;
 
 Player::Player(int id) : playerAnimator(player) {
-	player.setSize(Vector2f(16, 16));
+	player.setSize(Vector2f(65, 16));
 	player.setScale(3, 3);
 	player.setOrigin(8, 8);
 	player.setPosition(Vector2f(0, 0));
 	speed = 150.f;
 	this->id = id;
 	timeSinceLastPacket = 0;
+
+	//playerHurt.addFrame(IntRect());
+
+	/*playerHurt.loadAnimation("PlayerAttack.anim");
+	playerHurt.setDuration(0.4f);
+	playerHurt.saveAnimation("PlayerAttack.anim");*/
+
+	/*playerHurt.loadAnimation("Resources/Animations/PlayerHurt.anim");
+	playerHurt.setDuration(0.4f);
+	playerHurt.saveAnimation("Resources/Animations/PlayerHurt.anim");*/
 
 	//Load animator
 	playerAnimator.loadAnimator("Resources/Animations/Player.animator");
@@ -24,7 +35,7 @@ Player::Player(int id) : playerAnimator(player) {
 	player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));
 
 	player.setOutlineColor(Color::Red);
-	player.setOutlineThickness(3);
+	player.setOutlineThickness(1);
 }
 void Player::setPosition(Vector2f position) {
 	player.setPosition(position);
@@ -45,9 +56,10 @@ void Player::setSpeed(float speed) {
 void Player::setColor(Color color) {
 	player.setFillColor(color);
 }
-void Player::handleEvent(Event event) {
+void Player::handleEvent(Event event, RenderWindow& window) {
 	if (id == CLIENTID) {
 		inventory.handleEvent(event);
+		handleMouseClick(event, window);
 	}
 }
 void Player::update(float deltaTime) {
@@ -142,4 +154,21 @@ int Player::getSelectedItemId() {
 }
 void Player::setSelectedItemId(int itemId) {
 	inventory.changeItem(inventory.getSelectedSlot(), itemId, 1);
+}
+
+void Player::handleMouseClick(Event event, RenderWindow& window) {
+	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+		Vector2f clickPosition = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
+		Vector2f playerPosition = player.getPosition();
+		float distance = static_cast<float>(sqrt(pow(clickPosition.x - playerPosition.x, 2) + pow(clickPosition.y - playerPosition.y, 2)));
+
+		/*cout << "Click Position: (" << clickPosition.x << ", " << clickPosition.y << ")" << endl;
+		cout << "Player Position: (" << playerPosition.x << ", " << playerPosition.y << ")" << endl;
+		cout << "Distance: " << distance << endl;
+
+		cout << "This is the player's x position " << player.getScale().x << "\n";*/
+
+		if (distance <= 75.0f)
+			cout << "Click is in range distance from the player." << endl;
+	}
 }

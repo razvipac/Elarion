@@ -56,7 +56,8 @@ void Animation::resetTime() {
 	time = 0;
 }
 void Animation::saveAnimation(const string& filename) const {
-	ofstream file(filename, ios::binary);
+	string path = "Resources/Animations/" + filename;
+	ofstream file(path, ios::binary);
 	if (file.is_open()) {
 		unsigned int size = frames.size();
 		file.write((char*)&size, sizeof(size));

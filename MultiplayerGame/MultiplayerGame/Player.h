@@ -15,6 +15,7 @@ private:
 	float timeSinceLastPacket;
 	Inventory inventory;
 	Animator playerAnimator;
+	Animation playerHurt;
 public:
 	Player(int id);
 	void setPosition(sf::Vector2f position);
@@ -27,7 +28,8 @@ public:
 	void setColor(sf::Color color);
 	sf::Vector2f getPosition();
 	int getId();
-	void handleEvent(sf::Event event);
+	void handleEvent(sf::Event event, sf::RenderWindow& window);
 	int getSelectedItemId();
 	void setSelectedItemId(int itemId);
+	void handleMouseClick(sf::Event event, sf::RenderWindow& window);
 };

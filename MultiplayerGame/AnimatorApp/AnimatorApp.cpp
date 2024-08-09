@@ -14,6 +14,11 @@ bool isAddingTransition = false;
 
 int main()
 {
+	if (!font.loadFromFile("Resources/Roboto-Black.ttf"))
+	{
+		cout << "Error loading font" << endl;
+	}
+
 	RenderWindow window(VideoMode(1280, 720), "[Multiplayer Java Game] Animator Tool");
 	Animator animator;
 	StateMenu& stateMenu = StateMenu::getInstance();
