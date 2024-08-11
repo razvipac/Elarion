@@ -63,6 +63,9 @@
     <ClCompile Include="Transition.cpp">
       <Filter>Source Files\Animator</Filter>
     </ClCompile>
+    <ClCompile Include="EntityStats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -106,6 +109,12 @@
     </ClInclude>
     <ClInclude Include="Transition.h">
       <Filter>Header Files\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="IDamageable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityStats.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

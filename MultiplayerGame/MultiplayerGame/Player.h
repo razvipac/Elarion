@@ -9,13 +9,18 @@ class Player
 {
 private:
 	sf::RectangleShape player;
+	Animator playerAnimator;
 	float speed;
 	int id;
 	sf::Vector2f targetPosition;
 	float timeSinceLastPacket;
 	Inventory inventory;
-	Animator playerAnimator;
-	Animation playerHurt;
+	Animation playerAnimation;
+	float attackCooldown;
+	float timeSinceLastAttack;
+
+	sf::RectangleShape item;
+	Animator itemAnimator;
 public:
 	Player(int id);
 	void setPosition(sf::Vector2f position);

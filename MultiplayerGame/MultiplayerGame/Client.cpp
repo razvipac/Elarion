@@ -121,6 +121,13 @@ int main() {
 	TextureManager::getInstance().loadTexture("PlayerRun", "Resources/Sunnyside_World_Assets/Characters/Human/RUN/base_run_strip8.png");
 	TextureManager::getInstance().loadTexture("PlayerAttack", "Resources/Sunnyside_World_Assets/Characters/Human/ATTACK/base_attack_strip10.png");
 	TextureManager::getInstance().loadTexture("PlayerHurt", "Resources/Sunnyside_World_Assets/Characters/Human/HURT/base_hurt_strip8.png");
+	
+	TextureManager::getInstance().loadTexture("ItemIdle", "Resources/Sunnyside_World_Assets/Characters/Human/IDLE/tools_idle_strip9.png");
+	TextureManager::getInstance().loadTexture("ItemWalk", "Resources/Sunnyside_World_Assets/Characters/Human/WALKING/tools_walk_strip8.png");
+	TextureManager::getInstance().loadTexture("ItemRun", "Resources/Sunnyside_World_Assets/Characters/Human/RUN/tools_run_strip8.png");
+	TextureManager::getInstance().loadTexture("ItemAttack", "Resources/Sunnyside_World_Assets/Characters/Human/ATTACK/tools_attack_strip10.png");
+	TextureManager::getInstance().loadTexture("ItemHurt", "Resources/Sunnyside_World_Assets/Characters/Human/HURT/tools_hurt_strip8.png");
+
 
 	PerlinNoise noise;
 	noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");

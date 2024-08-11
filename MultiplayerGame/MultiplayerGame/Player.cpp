@@ -9,33 +9,46 @@ using namespace std;
 extern int CLIENTID;
 extern int tps;
 
-Player::Player(int id) : playerAnimator(player) {
-	player.setSize(Vector2f(65, 16));
+Player::Player(int id) : playerAnimator(player), itemAnimator(item) {
+	player.setSize(Vector2f(96, 64));
 	player.setScale(3, 3);
-	player.setOrigin(8, 8);
+	player.setOrigin(player.getSize() / 2.f);
 	player.setPosition(Vector2f(0, 0));
 	speed = 150.f;
 	this->id = id;
 	timeSinceLastPacket = 0;
+	attackCooldown = 0.5f;
+	timeSinceLastAttack = 0;
 
-	//playerHurt.addFrame(IntRect());
+	/*playerAnimation.createAnimation("PlayerIdle", 0.7f, true);
+	playerAnimation.createAnimation("PlayerWalk", 0.7f, true);
+	playerAnimation.createAnimation("PlayerRun", 0.7f, true);
+	playerAnimation.createAnimation("PlayerHurt", 0.7f, false);
+	playerAnimation.createAnimation("PlayerAttack", 0.5f, false);*/
 
-	/*playerHurt.loadAnimation("PlayerAttack.anim");
-	playerHurt.setDuration(0.4f);
-	playerHurt.saveAnimation("PlayerAttack.anim");*/
+	item.setSize(player.getSize());
+	item.setScale(player.getScale());
+	item.setOrigin(player.getOrigin());
+	item.setPosition(player.getPosition());
 
-	/*playerHurt.loadAnimation("Resources/Animations/PlayerHurt.anim");
-	playerHurt.setDuration(0.4f);
-	playerHurt.saveAnimation("Resources/Animations/PlayerHurt.anim");*/
+	//playerAnimation.createAnimation("ItemIdle", 0.7f, true);
+	//playerAnimation.createAnimation("ItemWalk", 0.7f, true);
+	//playerAnimation.createAnimation("ItemRun", 0.7f, true);
+	//playerAnimation.createAnimation("ItemHurt", 0.7f, false);
+	//playerAnimation.createAnimation("ItemAttack", 0.5f, false);
 
 	//Load animator
 	playerAnimator.loadAnimator("Resources/Animations/Player.animator");
+	itemAnimator.loadAnimator("Resources/Animations/Item.animator");
 
 	player.setTextureRect(playerAnimator.getFrame());
 	player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));
 
-	player.setOutlineColor(Color::Red);
-	player.setOutlineThickness(1);
+	item.setTextureRect(itemAnimator.getFrame());
+	item.setTexture(&TextureManager::getInstance().getRef("ItemIdle"));
+
+	//player.setOutlineColor(Color::Red);
+	//player.setOutlineThickness(1);
 }
 void Player::setPosition(Vector2f position) {
 	player.setPosition(position);
@@ -63,13 +76,22 @@ void Player::handleEvent(Event event, RenderWindow& window) {
 	}
 }
 void Player::update(float deltaTime) {
+	timeSinceLastAttack += deltaTime;
 	float currentSpeed = speed;
 	float animatorSpeed = 0.0f;
+	bool isAttacking = false;
 
 	// Movement logic
 	if (id == CLIENTID) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
 			currentSpeed *= 1.5f;
+		}
+
+		if (Mouse::isButtonPressed(Mouse::Left)) {
+			if (timeSinceLastAttack >= attackCooldown) {
+				timeSinceLastAttack = 0;
+				isAttacking = true;
+			}
 		}
 
 		Vector2f movementVector(0, 0);
@@ -86,21 +108,34 @@ void Player::update(float deltaTime) {
 			movementVector.x -= currentSpeed * deltaTime;
 			animatorSpeed = currentSpeed;
 			if (player.getScale().x > 0)
+			{
 				player.setScale(-player.getScale().x, player.getScale().y);
+				item.setScale(-item.getScale().x, item.getScale().y);
+			}
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 			movementVector.x += currentSpeed * deltaTime;
 			animatorSpeed = currentSpeed;
 			if (player.getScale().x < 0)
+			{
 				player.setScale(-player.getScale().x, player.getScale().y);
+				item.setScale(-item.getScale().x, item.getScale().y);
+			}
 		}
 		if (movementVector.x != 0 || movementVector.y != 0)
 		{
 			float distance = sqrt(movementVector.x * movementVector.x + movementVector.y * movementVector.y);
 			movementVector = movementVector / distance;
 			player.move(movementVector * currentSpeed * deltaTime);
+			item.setPosition(player.getPosition());
 		}
 		playerAnimator.setFloat("Speed", animatorSpeed);
+		itemAnimator.setFloat("Speed", animatorSpeed);
+		if (isAttacking || timeSinceLastAttack >= attackCooldown)
+		{
+			playerAnimator.setBool("Attack", isAttacking);
+			itemAnimator.setBool("Attack", isAttacking);
+		}
 	}
 	else {
 		// when time since last packet is 1 / tps, the player will be at the target position
@@ -117,7 +152,7 @@ void Player::update(float deltaTime) {
 			Vector2f newPosition = currentPosition + directionPerSecond * deltaTime;
 
 			player.setPosition(newPosition);
-			timeSinceLastPacket += deltaTime;
+			timeSinceLastPacket += deltaTime; // might need to increase it beforehand
 
 			currentSpeed = sqrt(directionPerSecond.x * directionPerSecond.x + directionPerSecond.y * directionPerSecond.y);
 			animatorSpeed = currentSpeed;
@@ -134,9 +169,12 @@ void Player::update(float deltaTime) {
 	}
 	playerAnimator.update(deltaTime);
 	player.setTextureRect(playerAnimator.getFrame());
+	itemAnimator.update(deltaTime);
+	item.setTextureRect(itemAnimator.getFrame());
 }
 void Player::drawPlayer(RenderWindow& window) const {
 	window.draw(player);
+	window.draw(item);
 }
 void Player::drawInventory(RenderWindow& window) const {
 	if (id == CLIENTID) {

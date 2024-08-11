@@ -1,6 +1,7 @@
 #include "Animation.h"
 #include <fstream>
 #include <iostream>
+#include "TextureManager.h"
 
 using namespace std;
 using namespace sf;
@@ -45,6 +46,9 @@ void Animation::removeFrame(unsigned int index) {
 	if (index < frames.size())
 		frames.erase(frames.begin() + index);
 }
+void Animation::removeAllFrames() {
+	frames.clear();
+}
 bool Animation::update(float deltaTime) {
 	int frame = getCurrentFrameIndex();
 	time += deltaTime;
@@ -54,6 +58,21 @@ bool Animation::update(float deltaTime) {
 }
 void Animation::resetTime() {
 	time = 0;
+}
+void Animation::createAnimation(const string& name, float duration, bool isLooped, int height, int width) {
+	removeAllFrames();
+	Texture& texture = TextureManager::getInstance().getRef(name);
+	Vector2u size = texture.getSize();
+	int framesX = size.x / width;
+	int framesY = size.y / height;
+	for (int y = 0; y < framesY; ++y) {
+		for (int x = 0; x < framesX; ++x) {
+			addFrame(IntRect(x * width, y * height, width, height));
+		}
+	}
+	setDuration(duration);
+	setLoop(isLooped);
+	saveAnimation(name + ".anim");
 }
 void Animation::saveAnimation(const string& filename) const {
 	string path = "Resources/Animations/" + filename;

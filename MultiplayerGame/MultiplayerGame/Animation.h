@@ -16,6 +16,7 @@ public:
 	void setFrames(const std::vector<sf::IntRect>& frames);
 	void addFrame(const sf::IntRect& frame);
 	void removeFrame(unsigned int index);
+	void removeAllFrames();
 
 	float getDuration() const;
 	void setDuration(float duration);
@@ -26,6 +27,7 @@ public:
 	const sf::IntRect& getCurrentFrame() const;
 	int getCurrentFrameIndex() const;
 
+	void createAnimation(const std::string& name, float duration, bool isLooped,int height = 64, int width = 96);
 	void saveAnimation(const std::string& filename) const;
 	void loadAnimation(const std::string& filename);
 

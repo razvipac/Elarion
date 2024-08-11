@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="EntityStats.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemSlot.cpp" />
@@ -152,6 +153,8 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
+    <ClInclude Include="EntityStats.h" />
+    <ClInclude Include="IDamageable.h" />
     <ClInclude Include="Interactable.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
