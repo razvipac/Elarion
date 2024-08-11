@@ -58,6 +58,8 @@ ConditionUI::ConditionUI(const Vector2f& position, int index) : position(positio
 		valueString = value;
 		updateCondition();
 		});
+
+	this->index = index;
 }
 int ConditionUI::getTypeFromOperator(const string& operatorString) const {
 	if (operatorString == "!=")
@@ -157,13 +159,13 @@ void ConditionUI::updateCondition() const
 		try {
 			float value = 0;
 			value = stof(valueString);
-			TransitionMenu::getCurrentTransition()->modifyCondition(0, nameString, type, FloatingBool(value));
+			TransitionMenu::getCurrentTransition()->modifyCondition(index, nameString, type, FloatingBool(value));
 		}
 		catch (...) {
 			bool value = false;
 			if (valueString == "true")
 				value = true;
-			TransitionMenu::getCurrentTransition()->modifyCondition(0, nameString, type, FloatingBool(value));
+			TransitionMenu::getCurrentTransition()->modifyCondition(index, nameString, type, FloatingBool(value));
 		}
 	}
 }

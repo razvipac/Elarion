@@ -19,6 +19,8 @@ private:
 	InputField typeInputField;
 	Button removeButton;
 
+	int index;
+
 	std::string nameString;
 	std::string operatorString;
 	std::string valueString;
