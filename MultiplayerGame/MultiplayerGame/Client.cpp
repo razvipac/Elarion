@@ -312,6 +312,8 @@ int main() {
 
 	float cameraSpeed = 2.f;
 
+	playerMap[-20] = new Player(-20);
+
 	while (window.isOpen()) {
 		mousePosInWorld = window.mapPixelToCoords(Mouse::getPosition(window));
 		mousePosInUI = window.mapPixelToCoords(Mouse::getPosition(window), uiView);
@@ -355,9 +357,9 @@ int main() {
 		window.clear();
 		window.draw(map);
 		window.draw(waterTileShape);
-		player.drawPlayer(window);
+		player.draw(window);
 		for (auto& p : playerMap)
-			p.second->drawPlayer(window);
+			p.second->draw(window);
 		window.setView(uiView);
 		player.drawInventory(window);
 		window.setView(defaultView);

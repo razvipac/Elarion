@@ -14,7 +14,7 @@ Inventory::Inventory() {
 	slots[selectedSlot].changeSlotOutlineColor(Color::Green);
 
 }
-int Inventory::getSelectedSlot() {
+int Inventory::getSelectedSlot() const {
 	return selectedSlot;
 }
 void Inventory::addItem(int itemID, int quantity) {
@@ -76,12 +76,12 @@ void Inventory::setQuantity(int slot, int quantity) {
 		slot = 0;
 	slots[slot].setQuantity(quantity);
 }
-int Inventory::getQuantity(int slot) {
+int Inventory::getQuantity(int slot) const {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	return slots[slot].getQuantity();
 }
-int Inventory::getItemID(int slot) {
+int Inventory::getItemID(int slot) const {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	return slots[slot].getItemID();
@@ -91,7 +91,7 @@ void Inventory::setDurability(int slot, int durability) {
 		slot = 0;
 	slots[slot].setDurability(durability);
 }
-int Inventory::getDurability(int slot) {
+int Inventory::getDurability(int slot) const {
 	if (slot < 0 || slot >= slots.size())
 		slot = 0;
 	return slots[slot].getDurability();
@@ -109,7 +109,7 @@ void Inventory::drawInventory(RenderWindow& window) const  {
 		slots[i].drawSlot(window);
 	}
 }
-void Inventory::handleEvent(Event event) {
+void Inventory::handleEvent(Event& event) {
 	if (event.type == Event::KeyPressed) {
 		if (event.key.code == Keyboard::Num1)
 			setSelectedSlot(0);

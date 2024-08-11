@@ -2,23 +2,26 @@
 #include <iostream>	
 #include "TextureManager.h"
 #include <cmath>
+#include <map>
 
 using namespace sf;
 using namespace std;
 
 extern int CLIENTID;
 extern int tps;
+extern Vector2f mousePosInWorld;
+extern map<int, Player*> playerMap;
 
-Player::Player(int id) : playerAnimator(player), itemAnimator(item) {
-	player.setSize(Vector2f(96, 64));
+Player::Player(int id) : Entity("Resources/Animations/Player.animator"), itemAnimator(item) {
+	this->id = id;
+	timeSinceLastPacket = 0;
+	/*player.setSize(Vector2f(96, 64));
 	player.setScale(3, 3);
 	player.setOrigin(player.getSize() / 2.f);
 	player.setPosition(Vector2f(0, 0));
 	speed = 150.f;
-	this->id = id;
-	timeSinceLastPacket = 0;
 	attackCooldown = 0.5f;
-	timeSinceLastAttack = 0;
+	timeSinceLastAttack = 0;*/
 
 	/*playerAnimation.createAnimation("PlayerIdle", 0.7f, true);
 	playerAnimation.createAnimation("PlayerWalk", 0.7f, true);
@@ -26,10 +29,10 @@ Player::Player(int id) : playerAnimator(player), itemAnimator(item) {
 	playerAnimation.createAnimation("PlayerHurt", 0.7f, false);
 	playerAnimation.createAnimation("PlayerAttack", 0.5f, false);*/
 
-	item.setSize(player.getSize());
-	item.setScale(player.getScale());
-	item.setOrigin(player.getOrigin());
-	item.setPosition(player.getPosition());
+	item.setSize(entity.getSize());
+	item.setScale(entity.getScale());
+	item.setOrigin(entity.getOrigin());
+	item.setPosition(entity.getPosition());
 
 	//playerAnimation.createAnimation("ItemIdle", 0.7f, true);
 	//playerAnimation.createAnimation("ItemWalk", 0.7f, true);
@@ -38,11 +41,11 @@ Player::Player(int id) : playerAnimator(player), itemAnimator(item) {
 	//playerAnimation.createAnimation("ItemAttack", 0.5f, false);
 
 	//Load animator
-	playerAnimator.loadAnimator("Resources/Animations/Player.animator");
+	//playerAnimator.loadAnimator("Resources/Animations/Player.animator");
 	itemAnimator.loadAnimator("Resources/Animations/Item.animator");
 
-	player.setTextureRect(playerAnimator.getFrame());
-	player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));
+	/*player.setTextureRect(playerAnimator.getFrame());
+	player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));*/
 
 	item.setTextureRect(itemAnimator.getFrame());
 	item.setTexture(&TextureManager::getInstance().getRef("ItemIdle"));
@@ -50,34 +53,34 @@ Player::Player(int id) : playerAnimator(player), itemAnimator(item) {
 	//player.setOutlineColor(Color::Red);
 	//player.setOutlineThickness(1);
 }
-void Player::setPosition(Vector2f position) {
-	player.setPosition(position);
-}
-void Player::setTargetPosition(Vector2f position) {
+//void Player::setPosition(Vector2f position) {
+//	player.setPosition(position);
+//}
+void Player::setTargetPosition(const Vector2f& position) {
 	targetPosition = position;
 	timeSinceLastPacket = 0;
 	// if the target position is within one unit of the player's position, set the animator's speed to 0
-	if (abs(targetPosition.x - player.getPosition().x) < 1 && abs(targetPosition.y - player.getPosition().y) < 1)
-		playerAnimator.setFloat("Speed", 0.0f);
+	if (abs(targetPosition.x - entity.getPosition().x) < 1 && abs(targetPosition.y - entity.getPosition().y) < 1)
+		entityAnimator.setFloat("Speed", 0.0f);
 }
 void Player::setId(int id) {
 	this->id = id;
 }
-void Player::setSpeed(float speed) {
-	this->speed = speed;
-}
-void Player::setColor(Color color) {
-	player.setFillColor(color);
-}
-void Player::handleEvent(Event event, RenderWindow& window) {
+//void Player::setSpeed(float speed) {
+//	this->speed = speed;
+//}
+//void Player::setColor(Color color) {
+//	player.setFillColor(color);
+//}
+void Player::handleEvent(Event& event, RenderWindow& window) {
 	if (id == CLIENTID) {
 		inventory.handleEvent(event);
-		handleMouseClick(event, window);
+		//handleMouseClick(event, window);
 	}
 }
-void Player::update(float deltaTime) {
-	timeSinceLastAttack += deltaTime;
-	float currentSpeed = speed;
+void Player::derivedUpdate(float deltaTime) {
+	//timeSinceLastAttack += deltaTime;
+	float currentSpeed = baseSpeed;
 	float animatorSpeed = 0.0f;
 	bool isAttacking = false;
 
@@ -88,7 +91,19 @@ void Player::update(float deltaTime) {
 		}
 
 		if (Mouse::isButtonPressed(Mouse::Left)) {
-			if (timeSinceLastAttack >= attackCooldown) {
+			if (timeSinceLastAttack >= baseAttackCooldown) {
+				//Handle the attack
+				for (auto& p : playerMap) {
+					if (p.first != id) {
+						if (p.second->entity.getGlobalBounds().contains(mousePosInWorld)) {
+							cout << "Mouse in bounds.\n";
+							attack(p.second);
+							break;
+						}
+					}
+				}
+
+				//Handle the visual
 				timeSinceLastAttack = 0;
 				isAttacking = true;
 			}
@@ -107,18 +122,18 @@ void Player::update(float deltaTime) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 			movementVector.x -= currentSpeed * deltaTime;
 			animatorSpeed = currentSpeed;
-			if (player.getScale().x > 0)
+			if (entity.getScale().x > 0)
 			{
-				player.setScale(-player.getScale().x, player.getScale().y);
+				entity.setScale(-entity.getScale().x, entity.getScale().y);
 				item.setScale(-item.getScale().x, item.getScale().y);
 			}
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 			movementVector.x += currentSpeed * deltaTime;
 			animatorSpeed = currentSpeed;
-			if (player.getScale().x < 0)
+			if (entity.getScale().x < 0)
 			{
-				player.setScale(-player.getScale().x, player.getScale().y);
+				entity.setScale(-entity.getScale().x, entity.getScale().y);
 				item.setScale(-item.getScale().x, item.getScale().y);
 			}
 		}
@@ -126,14 +141,14 @@ void Player::update(float deltaTime) {
 		{
 			float distance = sqrt(movementVector.x * movementVector.x + movementVector.y * movementVector.y);
 			movementVector = movementVector / distance;
-			player.move(movementVector * currentSpeed * deltaTime);
-			item.setPosition(player.getPosition());
+			entity.move(movementVector * currentSpeed * deltaTime);
+			item.setPosition(entity.getPosition());
 		}
-		playerAnimator.setFloat("Speed", animatorSpeed);
+		entityAnimator.setFloat("Speed", animatorSpeed);
 		itemAnimator.setFloat("Speed", animatorSpeed);
-		if (isAttacking || timeSinceLastAttack >= attackCooldown)
+		if (isAttacking || timeSinceLastAttack >= baseAttackCooldown)
 		{
-			playerAnimator.setBool("Attack", isAttacking);
+			entityAnimator.setBool("Attack", isAttacking);
 			itemAnimator.setBool("Attack", isAttacking);
 		}
 	}
@@ -142,38 +157,38 @@ void Player::update(float deltaTime) {
 		float timeLeft = 1.0f / tps - timeSinceLastPacket;
 
 		if (timeLeft < deltaTime) {
-			player.setPosition(targetPosition);
+			entity.setPosition(targetPosition);
 			timeSinceLastPacket = 0;
 		}
-		else if (!(abs(targetPosition.x - player.getPosition().x) < 1 && abs(targetPosition.y - player.getPosition().y) < 1)) {
-			Vector2f currentPosition = player.getPosition();
+		else if (!(abs(targetPosition.x - entity.getPosition().x) < 1 && abs(targetPosition.y - entity.getPosition().y) < 1)) {
+			Vector2f currentPosition = entity.getPosition();
 			Vector2f direction = targetPosition - currentPosition;
 			Vector2f directionPerSecond = direction / timeLeft;
 			Vector2f newPosition = currentPosition + directionPerSecond * deltaTime;
 
-			player.setPosition(newPosition);
+			entity.setPosition(newPosition);
 			timeSinceLastPacket += deltaTime; // might need to increase it beforehand
 
 			currentSpeed = sqrt(directionPerSecond.x * directionPerSecond.x + directionPerSecond.y * directionPerSecond.y);
 			animatorSpeed = currentSpeed;
 
 			// if we move the player to the right and the player's scale is negative, flip the player
-			if (directionPerSecond.x > 0 && player.getScale().x < 0)
-				player.setScale(-player.getScale().x, player.getScale().y);
+			if (directionPerSecond.x > 0 && entity.getScale().x < 0)
+				entity.setScale(-entity.getScale().x, entity.getScale().y);
 			// if we move the player to the left and the player's scale is positive, flip the player
-			else if (directionPerSecond.x < 0 && player.getScale().x > 0)
-				player.setScale(-player.getScale().x, player.getScale().y);
+			else if (directionPerSecond.x < 0 && entity.getScale().x > 0)
+				entity.setScale(-entity.getScale().x, entity.getScale().y);
 
-			playerAnimator.setFloat("Speed", animatorSpeed);
+			entityAnimator.setFloat("Speed", animatorSpeed);
 		}
 	}
-	playerAnimator.update(deltaTime);
-	player.setTextureRect(playerAnimator.getFrame());
+	//entityAnimator.update(deltaTime);
+	//entity.setTextureRect(entityAnimator.getFrame());
 	itemAnimator.update(deltaTime);
 	item.setTextureRect(itemAnimator.getFrame());
 }
-void Player::drawPlayer(RenderWindow& window) const {
-	window.draw(player);
+void Player::draw(RenderWindow& window) const {
+	window.draw(entity); //Player is still being drawn after dying
 	window.draw(item);
 }
 void Player::drawInventory(RenderWindow& window) const {
@@ -181,32 +196,32 @@ void Player::drawInventory(RenderWindow& window) const {
 		inventory.drawInventory(window);
 	}
 }
-Vector2f Player::getPosition() {
-	return player.getPosition();
-}
-int Player::getId() {
+//Vector2f Player::getPosition() {
+//	return player.getPosition();
+//}
+int Player::getId() const {
 	return id;
 }
-int Player::getSelectedItemId() {
+int Player::getSelectedItemId() const {
 	return inventory.getItemID(inventory.getSelectedSlot());
 }
 void Player::setSelectedItemId(int itemId) {
 	inventory.changeItem(inventory.getSelectedSlot(), itemId, 1);
 }
 
-void Player::handleMouseClick(Event event, RenderWindow& window) {
-	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
-		Vector2f clickPosition = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
-		Vector2f playerPosition = player.getPosition();
-		float distance = static_cast<float>(sqrt(pow(clickPosition.x - playerPosition.x, 2) + pow(clickPosition.y - playerPosition.y, 2)));
-
-		/*cout << "Click Position: (" << clickPosition.x << ", " << clickPosition.y << ")" << endl;
-		cout << "Player Position: (" << playerPosition.x << ", " << playerPosition.y << ")" << endl;
-		cout << "Distance: " << distance << endl;
-
-		cout << "This is the player's x position " << player.getScale().x << "\n";*/
-
-		if (distance <= 75.0f)
-			cout << "Click is in range distance from the player." << endl;
-	}
-}
+//void Player::handleMouseClick(Event event, RenderWindow& window) {
+//	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+//		Vector2f clickPosition = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
+//		Vector2f playerPosition = player.getPosition();
+//		float distance = static_cast<float>(sqrt(pow(clickPosition.x - playerPosition.x, 2) + pow(clickPosition.y - playerPosition.y, 2)));
+//
+//		/*cout << "Click Position: (" << clickPosition.x << ", " << clickPosition.y << ")" << endl;
+//		cout << "Player Position: (" << playerPosition.x << ", " << playerPosition.y << ")" << endl;
+//		cout << "Distance: " << distance << endl;
+//
+//		cout << "This is the player's x position " << player.getScale().x << "\n";*/
+//
+//		if (distance <= 75.0f)
+//			cout << "Click is in range distance from the player." << endl;
+//	}
+//}

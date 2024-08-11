@@ -21,14 +21,14 @@ private:
 public:
 	ItemSlot(sf::Vector2f position);
 	static Item& getItem(int itemID);
-	int getItemID();
+	int getItemID() const;
 	void setItem(int itemID);
 	static void loadItems();
 
-	int getQuantity();
+	int getQuantity() const;
 	void setQuantity(int quantity);
 	
-	int getDurability();
+	int getDurability() const;
 	void setDurability(int durability);
 
 	void drawSlot(sf::RenderWindow& window) const;

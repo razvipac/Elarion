@@ -256,6 +256,9 @@ void Animator::loadAnimator(const string& path) {
 
 	cout << "Default state index: " << defaultStateIndex << endl;
 
+	if(states.size() > 0 && defaultStateIndex >= 0 && defaultStateIndex < states.size())
+		currentState = states[defaultStateIndex];
+
 	file.close();
 }
 Animator::~Animator() {

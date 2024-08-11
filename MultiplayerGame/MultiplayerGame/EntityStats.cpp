@@ -9,6 +9,8 @@ EntityStats::EntityStats() {
 	baseHealthRegen = 1;
 	timeBeforeRegenStarts = 5;
 
+	invulnerabilityTimeAfterHit = 0.7f;
+
 	baseSpeed = 150;
 
 	baseAttackCooldown = 0.5;
@@ -16,12 +18,14 @@ EntityStats::EntityStats() {
 	baseDamage = 10;
 }
 
-EntityStats::EntityStats(float health, float armor, float healthRegen, float timeBeforeRegenStarts, float speed, float attackCooldown, float attackRange, float damage) {
+EntityStats::EntityStats(float health, float armor, float healthRegen, float timeBeforeRegenStarts, float invulnerability, float speed, float attackCooldown, float attackRange, float damage) {
 	this->health = health;
 	baseMaxHealth = health;
 	baseArmor = armor;
 	baseHealthRegen = healthRegen;
 	this->timeBeforeRegenStarts = timeBeforeRegenStarts;
+
+	invulnerabilityTimeAfterHit = invulnerability;
 
 	baseSpeed = speed;
 
@@ -95,6 +99,9 @@ void EntityStats::setDamage(float damage) {
 }
 
 void EntityStats::takeDamage(float damage) {
+	float damageMultiplier = 1 - baseArmor / 100;
+	damage *= damageMultiplier;
+
 	health -= damage;
 	if (health <= 0) {
 		die();

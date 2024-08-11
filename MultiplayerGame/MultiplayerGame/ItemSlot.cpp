@@ -47,13 +47,13 @@ void ItemSlot::setDurability(int durability) {
 		this->durability = 0;
 	}
 }
-int ItemSlot::getItemID() {
+int ItemSlot::getItemID() const {
 	return itemID;
 }
-int ItemSlot::getQuantity() {
+int ItemSlot::getQuantity() const {
 	return quantity;
 }
-int ItemSlot::getDurability() {
+int ItemSlot::getDurability() const {
 	return durability;
 }
 void ItemSlot::drawSlot(RenderWindow& window) const {

@@ -11,20 +11,20 @@ private:
 	int selectedSlot;
 public:
 	Inventory();
-	int getSelectedSlot();
+	int getSelectedSlot() const;
 	void setSelectedSlot(int slot);
 
-	int getQuantity(int slot);
+	int getQuantity(int slot) const;
 	void setQuantity(int slot, int quantity);
 
 	void addItem(int itemID, int quantity);
 	void changeItem(int slot, int itemID, int quantity);
 	void removeItem(int itemID, int quantity);
-	int getItemID(int slot);
+	int getItemID(int slot) const;
 
-	int getDurability(int slot);
+	int getDurability(int slot) const;
 	void setDurability(int slot, int durability);
 
 	void drawInventory(sf::RenderWindow& window) const;
-	void handleEvent(sf::Event event);
+	void handleEvent(sf::Event& event);
 };

@@ -9,6 +9,8 @@ protected:
 	float baseHealthRegen;
 	float timeBeforeRegenStarts;
 
+	float invulnerabilityTimeAfterHit;
+
 	float baseSpeed;
 
 	float baseAttackCooldown;
@@ -16,7 +18,7 @@ protected:
 	float baseDamage;
 public:
 	EntityStats();
-	EntityStats(float health, float armor, float healthRegen, float timeBeforeRegenStarts, float speed, float attackCooldown, float attackRange, float damage);
+	EntityStats(float health, float armor, float healthRegen, float timeBeforeRegenStarts, float invulnerability, float speed, float attackCooldown, float attackRange, float damage);
 	float getHealth() const;
 	float getMaxHealth() const;
 	float getArmor() const;
@@ -35,8 +37,10 @@ public:
 	void setAttackRange(float attackRange);
 	void setDamage(float damage);
 
-	void takeDamage(float damage);
+	virtual void takeDamage(float damage);
 	void heal(float health);
 	void die();
 	void resetStats();
+
+	virtual ~EntityStats() {}
 };
