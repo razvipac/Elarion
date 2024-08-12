@@ -39,7 +39,7 @@ public:
 
 	virtual void takeDamage(float damage);
 	void heal(float health);
-	void die();
+	virtual void die();
 	void resetStats();
 
 	virtual ~EntityStats() {}

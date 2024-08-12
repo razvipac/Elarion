@@ -9,7 +9,7 @@ EntityStats::EntityStats() {
 	baseHealthRegen = 1;
 	timeBeforeRegenStarts = 5;
 
-	invulnerabilityTimeAfterHit = 0.7f;
+	invulnerabilityTimeAfterHit = 0.4f;
 
 	baseSpeed = 150;
 

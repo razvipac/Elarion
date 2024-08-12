@@ -21,8 +21,15 @@ void Animation::setLoop(bool loop) {
 	this->loop = loop;
 }
 int Animation::getCurrentFrameIndex() const {
-	float relativeTime = fmod(time, duration);
-	return (int)(relativeTime / duration * frames.size());
+	if (loop) {
+		float relativeTime = fmod(time, duration);
+		return (int)(relativeTime / duration * frames.size());
+	}
+	int index = (int)(time / duration * frames.size());
+	if (index >= frames.size()) {
+		index = frames.size() - 1;
+	}
+	return index;
 }
 const IntRect& Animation::getFrame(unsigned int index) const {
 	return frames[index];

@@ -11,51 +11,37 @@ extern int CLIENTID;
 extern int tps;
 extern Vector2f mousePosInWorld;
 extern map<int, Player*> playerMap;
+extern Font font;
 
-Player::Player(int id) : Entity("Resources/Animations/Player.animator"), itemAnimator(item) {
-	this->id = id;
+Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), itemAnimator(item) {
 	timeSinceLastPacket = 0;
-	/*player.setSize(Vector2f(96, 64));
-	player.setScale(3, 3);
-	player.setOrigin(player.getSize() / 2.f);
-	player.setPosition(Vector2f(0, 0));
-	speed = 150.f;
-	attackCooldown = 0.5f;
-	timeSinceLastAttack = 0;*/
-
-	/*playerAnimation.createAnimation("PlayerIdle", 0.7f, true);
-	playerAnimation.createAnimation("PlayerWalk", 0.7f, true);
-	playerAnimation.createAnimation("PlayerRun", 0.7f, true);
-	playerAnimation.createAnimation("PlayerHurt", 0.7f, false);
-	playerAnimation.createAnimation("PlayerAttack", 0.5f, false);*/
 
 	item.setSize(entity.getSize());
 	item.setScale(entity.getScale());
 	item.setOrigin(entity.getOrigin());
 	item.setPosition(entity.getPosition());
 
-	//playerAnimation.createAnimation("ItemIdle", 0.7f, true);
-	//playerAnimation.createAnimation("ItemWalk", 0.7f, true);
-	//playerAnimation.createAnimation("ItemRun", 0.7f, true);
-	//playerAnimation.createAnimation("ItemHurt", 0.7f, false);
-	//playerAnimation.createAnimation("ItemAttack", 0.5f, false);
+
+	/*Animation playerAnimation;
+	playerAnimation.createAnimation("PlayerAttack", 0.5f, true);
+	playerAnimation.createAnimation("ItemAttack", 0.5f, true);*/
 
 	//Load animator
-	//playerAnimator.loadAnimator("Resources/Animations/Player.animator");
 	itemAnimator.loadAnimator("Resources/Animations/Item.animator");
 
-	/*player.setTextureRect(playerAnimator.getFrame());
-	player.setTexture(&TextureManager::getInstance().getRef("PlayerIdle"));*/
 
 	item.setTextureRect(itemAnimator.getFrame());
 	item.setTexture(&TextureManager::getInstance().getRef("ItemIdle"));
 
-	//player.setOutlineColor(Color::Red);
-	//player.setOutlineThickness(1);
+
+	healthText.setFont(font);
+	healthText.setCharacterSize(20);
+	healthText.setFillColor(Color::White);
+	healthText.setOutlineColor(Color::Black);
+	healthText.setOutlineThickness(1);
+	healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+	healthText.setString(to_string((int)health));
 }
-//void Player::setPosition(Vector2f position) {
-//	player.setPosition(position);
-//}
 void Player::setTargetPosition(const Vector2f& position) {
 	targetPosition = position;
 	timeSinceLastPacket = 0;
@@ -63,22 +49,23 @@ void Player::setTargetPosition(const Vector2f& position) {
 	if (abs(targetPosition.x - entity.getPosition().x) < 1 && abs(targetPosition.y - entity.getPosition().y) < 1)
 		entityAnimator.setFloat("Speed", 0.0f);
 }
-void Player::setId(int id) {
-	this->id = id;
-}
-//void Player::setSpeed(float speed) {
-//	this->speed = speed;
-//}
-//void Player::setColor(Color color) {
-//	player.setFillColor(color);
-//}
 void Player::handleEvent(Event& event, RenderWindow& window) {
 	if (id == CLIENTID) {
 		inventory.handleEvent(event);
-		//handleMouseClick(event, window);
 	}
 }
 void Player::derivedUpdate(float deltaTime) {
+
+	if(health <= 0)
+	{
+		itemAnimator.update(deltaTime);
+		item.setTextureRect(itemAnimator.getFrame());
+		return;
+	}
+
+	if (timeSinceLastHit >= invulnerabilityTimeAfterHit)
+		itemAnimator.setBool("Hurt", false);
+
 	//timeSinceLastAttack += deltaTime;
 	float currentSpeed = baseSpeed;
 	float animatorSpeed = 0.0f;
@@ -143,6 +130,7 @@ void Player::derivedUpdate(float deltaTime) {
 			movementVector = movementVector / distance;
 			entity.move(movementVector * currentSpeed * deltaTime);
 			item.setPosition(entity.getPosition());
+			healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
 		}
 		entityAnimator.setFloat("Speed", animatorSpeed);
 		itemAnimator.setFloat("Speed", animatorSpeed);
@@ -158,6 +146,8 @@ void Player::derivedUpdate(float deltaTime) {
 
 		if (timeLeft < deltaTime) {
 			entity.setPosition(targetPosition);
+			item.setPosition(targetPosition);
+			healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
 			timeSinceLastPacket = 0;
 		}
 		else if (!(abs(targetPosition.x - entity.getPosition().x) < 1 && abs(targetPosition.y - entity.getPosition().y) < 1)) {
@@ -167,40 +157,65 @@ void Player::derivedUpdate(float deltaTime) {
 			Vector2f newPosition = currentPosition + directionPerSecond * deltaTime;
 
 			entity.setPosition(newPosition);
+			item.setPosition(newPosition);
+			healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
 			timeSinceLastPacket += deltaTime; // might need to increase it beforehand
 
 			currentSpeed = sqrt(directionPerSecond.x * directionPerSecond.x + directionPerSecond.y * directionPerSecond.y);
 			animatorSpeed = currentSpeed;
 
 			// if we move the player to the right and the player's scale is negative, flip the player
-			if (directionPerSecond.x > 0 && entity.getScale().x < 0)
+			if (directionPerSecond.x > 0 && entity.getScale().x < 0) {
 				entity.setScale(-entity.getScale().x, entity.getScale().y);
+				item.setScale(-item.getScale().x, item.getScale().y);
+			}
 			// if we move the player to the left and the player's scale is positive, flip the player
 			else if (directionPerSecond.x < 0 && entity.getScale().x > 0)
+			{
 				entity.setScale(-entity.getScale().x, entity.getScale().y);
+				item.setScale(-item.getScale().x, item.getScale().y);
+			}
 
 			entityAnimator.setFloat("Speed", animatorSpeed);
+
+			if (timeSinceLastAttack >= baseAttackCooldown)
+			{
+				entityAnimator.setBool("Attack", false);
+				itemAnimator.setBool("Attack", false);
+			}
 		}
 	}
-	//entityAnimator.update(deltaTime);
-	//entity.setTextureRect(entityAnimator.getFrame());
 	itemAnimator.update(deltaTime);
 	item.setTextureRect(itemAnimator.getFrame());
 }
+
+void Player::attackVisual() {
+	itemAnimator.setBool("Attack", true);
+	Entity::attackVisual();
+}
+
+void Player::takeDamage(float damage) {
+	if (timeSinceLastHit >= invulnerabilityTimeAfterHit)
+	{
+		cout << "Taking damage " << endl;
+		entityAnimator.setBool("Hurt", true);
+		itemAnimator.setBool("Hurt", true);
+		timeSinceLastHit = 0;
+
+		EntityStats::takeDamage(damage);
+	}
+}
+
 void Player::draw(RenderWindow& window) const {
 	window.draw(entity); //Player is still being drawn after dying
 	window.draw(item);
+	if (health > 0)
+		window.draw(healthText);
 }
 void Player::drawInventory(RenderWindow& window) const {
 	if (id == CLIENTID) {
 		inventory.drawInventory(window);
 	}
-}
-//Vector2f Player::getPosition() {
-//	return player.getPosition();
-//}
-int Player::getId() const {
-	return id;
 }
 int Player::getSelectedItemId() const {
 	return inventory.getItemID(inventory.getSelectedSlot());
@@ -209,19 +224,7 @@ void Player::setSelectedItemId(int itemId) {
 	inventory.changeItem(inventory.getSelectedSlot(), itemId, 1);
 }
 
-//void Player::handleMouseClick(Event event, RenderWindow& window) {
-//	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
-//		Vector2f clickPosition = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
-//		Vector2f playerPosition = player.getPosition();
-//		float distance = static_cast<float>(sqrt(pow(clickPosition.x - playerPosition.x, 2) + pow(clickPosition.y - playerPosition.y, 2)));
-//
-//		/*cout << "Click Position: (" << clickPosition.x << ", " << clickPosition.y << ")" << endl;
-//		cout << "Player Position: (" << playerPosition.x << ", " << playerPosition.y << ")" << endl;
-//		cout << "Distance: " << distance << endl;
-//
-//		cout << "This is the player's x position " << player.getScale().x << "\n";*/
-//
-//		if (distance <= 75.0f)
-//			cout << "Click is in range distance from the player." << endl;
-//	}
-//}
+void Player::die() {
+	itemAnimator.setBool("Death", true);
+	Entity::die();
+}

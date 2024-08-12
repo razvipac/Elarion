@@ -11,14 +11,15 @@
 class Entity : public EntityStats
 {
 protected:
+	int id;
 	float timeSinceLastAttack;
 	float timeSinceLastRegen;
 	float timeSinceLastHit;
 	sf::RectangleShape entity;
 	Animator entityAnimator;
 public:
-	Entity(const std::string& animatorPath);
-	Entity(const std::string& animatorPath, float health, float armor, float healthRegen, float timeBeforeRegenStarts, float invulnerability, float speed, float attackCooldown, float attackRange, float damage);
+	Entity(const std::string& animatorPath, int id);
+	Entity(const std::string& animatorPath, int id, float health, float armor, float healthRegen, float timeBeforeRegenStarts, float invulnerability, float speed, float attackCooldown, float attackRange, float damage);
 	
 	// Update method is called every frame
 	virtual void update(float deltaTime);
@@ -28,6 +29,9 @@ public:
 
 	virtual void draw(sf::RenderWindow& window) const;
 
+	void setId(int id);
+	int getId() const;
+
 	void move(float x, float y);
 	void move(sf::Vector2f direction);
 
@@ -36,8 +40,11 @@ public:
 	const sf::Vector2f& getPosition() const;
 
 	void attack(Entity* target);
+	virtual void attackVisual();
 
 	virtual void takeDamage(float damage);
+
+	void die() override;
 
 	~Entity() {}
 };

@@ -7,25 +7,25 @@ using namespace std;
 
 map<int, int*> clientsMap;
 
-void broadcastPacket(ENetHost* server, const char* data, bool reliable = true) {
+void broadcastPacket(ENetHost* server, const char* data, int dataSize, bool reliable = true) {
 	ENetPacket* packet;
 	if (reliable)
-		packet = enet_packet_create(data, strlen(data), ENET_PACKET_FLAG_RELIABLE);
+		packet = enet_packet_create(data, dataSize, ENET_PACKET_FLAG_RELIABLE);
 	else
-		packet = enet_packet_create(data, 13, 0);
+		packet = enet_packet_create(data, dataSize, 0);
 	enet_host_broadcast(server, 0, packet);
 }
 
-void SendPacket(ENetPeer* peer, const char* data, bool reliable = true) {
+void SendPacket(ENetPeer* peer, const char* data, int dataSize, bool reliable = true) {
 	ENetPacket* packet;
 	if (reliable)
-		packet = enet_packet_create(data, 13, ENET_PACKET_FLAG_RELIABLE);
+		packet = enet_packet_create(data, dataSize, ENET_PACKET_FLAG_RELIABLE);
 	else
-		packet = enet_packet_create(data, 13, 0);
+		packet = enet_packet_create(data, dataSize, 0);
 	enet_peer_send(peer, 0, packet);
 }
 
-void parseData(ENetHost* server, int id, char* data) {
+void parseData(ENetHost* server, int id, char* data, int dataSize) {
 	cout << "Parse: " << data << "\n";
 
 	char dataType;
@@ -33,14 +33,11 @@ void parseData(ENetHost* server, int id, char* data) {
 	cout << "Asta e dataType: " << dataType << "\n";
 
 	switch (dataType) {
-	case '1': {
-		broadcastPacket(server, data);
-		break;
-	}
-	case '2': {
-		broadcastPacket(server, data);
-		break;
-	}
+		case 1:
+		case 2:
+		case 5:
+			broadcastPacket(server, data, dataSize);
+			break;
 	}
 }
 
@@ -83,22 +80,22 @@ int main() {
 
 				for (auto const& x : clientsMap) {
 					char message[13];
-					packData(message, '2', x.first, 50, 20);
-					int id;
+					packMovementData(message, 2, x.first, 50, 20);
+					/*int id;
 					float x1, y;
 					char c;
-					unpackData(message, c, id, x1, y);
+					unpackMovementData(message, c, id, x1, y);
 					cout << "Message: " << message << "\n";
 					cout << "x.first: " << x.first << "\n";
 					cout << "id: " << id << "\n";
 					cout << "x1: " << x1 << "\n";
-					cout << "y: " << y << "\n";
+					cout << "y: " << y << "\n";*/
 
-					for (int i = 0; i < 13; i++)
+					/*for (int i = 0; i < 13; i++)
 						cout << message[i] << " ";
-					cout << "\n";
+					cout << "\n";*/
 
-					SendPacket(event.peer, message);
+					SendPacket(event.peer, message, 13);
 				}
 
 				newPlayerId++;
@@ -106,11 +103,11 @@ int main() {
 				event.peer->data = clientsMap[newPlayerId];
 
 				char message[13];
-				packData(message, '3', newPlayerId, 0, 0);
-				SendPacket(event.peer, message);
+				packMovementData(message, 3, newPlayerId, 0, 0);
+				SendPacket(event.peer, message, 13);
 
-				packData(message, '2', newPlayerId, 50, 20);
-				broadcastPacket(server, message);
+				packMovementData(message, 2, newPlayerId, 50, 20);
+				broadcastPacket(server, message, 13);
 
 			}
 			else if (event.type == ENET_EVENT_TYPE_RECEIVE) {
@@ -120,17 +117,17 @@ int main() {
 					<< "on IP " << event.peer->address.host
 					<< ":" << event.peer->address.port
 					<< "on channel " << event.channelID << "\n";
-				parseData(server, *((int*)event.peer->data), (char*)event.packet->data);
+				parseData(server, *((int*)event.peer->data), (char*)event.packet->data, event.packet->dataLength);
 				enet_packet_destroy(event.packet);
 			}
 			else if (event.type == ENET_EVENT_TYPE_DISCONNECT) {
 				cout << event.peer->address.host << event.peer->address.port << " disconnected.\n";
 				char message[13];
 				int id = *((int*)event.peer->data);
-				packData(message, '4', id, 0, 0);
+				packMovementData(message, 4, id, 0, 0);
 				//char disconnectedData[126] = { '\0' };
 				//sprintf_s(disconnectedData, "4|%d", *((int*)event.peer->data));
-				broadcastPacket(server, message);
+				broadcastPacket(server, message, 13);
 				clientsMap.erase(id);
 				event.peer->data = NULL;
 			}

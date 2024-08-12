@@ -148,7 +148,7 @@ void Animator::checkTransitions() {
 			}
 			if (canTransition)
 			{
-				cout << "Transitioning to " << transition->getArrivalState().getPath() << endl;
+				//cout << "Transitioning to " << transition->getArrivalState().getPath() << endl;
 				currentState = &transition->getArrivalState();
 				currentState->resetAnimation();
 				string name = currentState->getPath();

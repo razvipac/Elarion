@@ -1,10 +1,12 @@
 #include "Entity.h"
 #include "TextureManager.h"
+#include "NetworkManager.h"
+#include "Utility.h"
 
 using namespace std;
 using namespace sf;
 
-Entity::Entity(const string& animatorPath) : entityAnimator(entity)
+Entity::Entity(const string& animatorPath, int id) : entityAnimator(entity)
 {
 	entity.setSize(Vector2f(96, 64));
 	entity.setScale(3, 3);
@@ -22,9 +24,11 @@ Entity::Entity(const string& animatorPath) : entityAnimator(entity)
 	timeSinceLastAttack = baseAttackCooldown;
 	timeSinceLastRegen = timeBeforeRegenStarts;
 	timeSinceLastHit = invulnerabilityTimeAfterHit;
+
+	this->id = id;
 }
 
-Entity::Entity(const string& animatorPath, float health, float armor, float healthRegen, float timeBeforeRegenStarts, float invulnerability, float speed, float attackCooldown, float attackRange, float damage) : EntityStats(health, armor, healthRegen, timeBeforeRegenStarts, invulnerability, speed, attackCooldown, attackRange, damage), entityAnimator(entity)
+Entity::Entity(const string& animatorPath, int id, float health, float armor, float healthRegen, float timeBeforeRegenStarts, float invulnerability, float speed, float attackCooldown, float attackRange, float damage) : EntityStats(health, armor, healthRegen, timeBeforeRegenStarts, invulnerability, speed, attackCooldown, attackRange, damage), entityAnimator(entity)
 {
 	entity.setSize(Vector2f(96, 64));
 	entity.setScale(3, 3);
@@ -38,12 +42,18 @@ Entity::Entity(const string& animatorPath, float health, float armor, float heal
 	timeSinceLastAttack = baseAttackCooldown;
 	timeSinceLastRegen = timeBeforeRegenStarts;
 	timeSinceLastHit = invulnerabilityTimeAfterHit;
+
+	this->id = id;
 }
 
 void Entity::update(float deltaTime)
 {
-	if (health <= 0)
+	if (health <= 0) {
+		entityAnimator.update(deltaTime);
+		entity.setTextureRect(entityAnimator.getFrame());
+		derivedUpdate(deltaTime);
 		return;
+	}
 
 	timeSinceLastAttack += deltaTime;
 	timeSinceLastRegen += deltaTime;
@@ -63,6 +73,15 @@ void Entity::draw(RenderWindow& window) const
 	if(health <= 0)
 		return;
 	window.draw(entity);
+}
+
+void Entity::setId(int id)
+{
+	this->id = id;
+}
+int Entity::getId() const
+{
+	return id;
 }
 
 void Entity::move(float x, float y)
@@ -96,18 +115,36 @@ void Entity::attack(Entity* target)
 		{
 			cout<<"Attacking "<<endl;
 			target->takeDamage(baseDamage);
-			timeSinceLastAttack = 0;
+
+			char buffer[13];
+			packHitData(buffer, 5, id, target->getId(), baseDamage);
+			NetworkManager::getInstance().sendPacket(buffer, 13);
+
+			attackVisual();
 		}
 	}
+}
+
+void Entity::attackVisual()
+{
+	entityAnimator.setBool("Attack", true);
+	timeSinceLastAttack = 0;
 }
 
 void Entity::takeDamage(float damage)
 {
 	if (timeSinceLastHit >= invulnerabilityTimeAfterHit)
 	{
+		cout<<"Taking damage "<<endl;
 		entityAnimator.setBool("Hurt", true);
 		timeSinceLastHit = 0;
 
 		EntityStats::takeDamage(damage);
 	}
+}
+
+void Entity::die()
+{
+	health = 0;
+	entityAnimator.setBool("Death", true);
 }
