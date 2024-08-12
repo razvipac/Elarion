@@ -12,7 +12,7 @@ extern Player* playerPointer;
 
 NetworkManager::NetworkManager()
 {
-	local = true;
+	local = false;
 
 
 	serverIP = "172.205.150.168";
@@ -96,6 +96,7 @@ void NetworkManager::parseData(char* data, int dataSize)
 		//cout << "\n";
 		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 		if (id != CLIENTID) {
+			cout<<"ADDING NEW PLAYER WITH ID: "<<id<<endl;
 			playerMap[id] = new Player(id);
 			playerMap[id]->setPosition(Vector2f(x, y));
 		}
@@ -108,6 +109,7 @@ void NetworkManager::parseData(char* data, int dataSize)
 		CLIENTID = id;
 		if (playerPointer) {
 			playerPointer->setId(id);
+			playerMap[id] = playerPointer;
 			cout << "am intrat" << "\n";
 		}
 		cout << "Asta e CLIENTID: " << CLIENTID << "\n";
@@ -129,7 +131,7 @@ void NetworkManager::parseData(char* data, int dataSize)
 		int currentId, targetId;
 		float damage;
 		unpackHitData(data, messageType, currentId, targetId, damage);
-		cout<<"Current ID: "<<currentId<<" Target ID: "<<targetId<<" Damage: "<<damage<<endl;
+		cout<<"Current ID: "<<currentId<<" Target ID: "<<targetId<<" Damage: "<<damage<<" CLIENTID:P " << CLIENTID << endl;
 		if (playerMap.find(targetId) != playerMap.end() && currentId != CLIENTID) {
 			cout << "Player " << targetId << " took " << damage << " damage from player " << currentId << "\n";
 			playerMap[targetId]->takeDamage(damage);

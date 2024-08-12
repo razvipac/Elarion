@@ -63,6 +63,8 @@ void Player::derivedUpdate(float deltaTime) {
 		return;
 	}
 
+	healthText.setString(to_string((int)health));
+
 	if (timeSinceLastHit >= invulnerabilityTimeAfterHit)
 		itemAnimator.setBool("Hurt", false);
 
@@ -177,12 +179,11 @@ void Player::derivedUpdate(float deltaTime) {
 			}
 
 			entityAnimator.setFloat("Speed", animatorSpeed);
-
-			if (timeSinceLastAttack >= baseAttackCooldown)
-			{
-				entityAnimator.setBool("Attack", false);
-				itemAnimator.setBool("Attack", false);
-			}
+		}
+		if (timeSinceLastAttack >= baseAttackCooldown)
+		{
+			entityAnimator.setBool("Attack", false);
+			itemAnimator.setBool("Attack", false);
 		}
 	}
 	itemAnimator.update(deltaTime);
@@ -203,6 +204,7 @@ void Player::takeDamage(float damage) {
 		timeSinceLastHit = 0;
 
 		EntityStats::takeDamage(damage);
+		healthText.setString(to_string((int)health));
 	}
 }
 

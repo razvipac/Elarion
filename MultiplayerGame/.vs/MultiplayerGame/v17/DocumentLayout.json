@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\NetworkManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\NetworkManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -15,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\EntityStats.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\EntityStats.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\NetworkManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|solutionrelative:MultiplayerGame\\NetworkManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{32B68A60-FCE8-4D5B-A129-CA30170C2E62}|MultiplayerGame\\MultiplayerGame.vcxproj|D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -109,13 +109,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "NetworkManager.cpp",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\NetworkManager.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\NetworkManager.cpp",
               "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\NetworkManager.cpp",
               "RelativeToolTip": "MultiplayerGame\\NetworkManager.cpp",
-              "ViewState": "AQIAAHQAAAAAAAAAAAAAAIYAAAAiAAAA",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAAAIsAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-12T13:33:20.468Z",
               "EditorCaption": ""
@@ -165,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Player.h",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.h",
               "RelativeDocumentMoniker": "MultiplayerGame\\Player.h",
@@ -184,14 +184,14 @@
               "RelativeDocumentMoniker": "MultiplayerGame\\Player.cpp",
               "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Player.cpp",
               "RelativeToolTip": "MultiplayerGame\\Player.cpp",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAAAIQAAABUAAAA",
+              "ViewState": "AQIAAKMAAAAAAAAAAAAAALoAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-11T19:04:59.574Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "EntityStats.cpp",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\EntityStats.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\EntityStats.cpp",
@@ -217,13 +217,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Entity.cpp",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Entity.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\Entity.cpp",
               "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Entity.cpp",
               "RelativeToolTip": "MultiplayerGame\\Entity.cpp",
-              "ViewState": "AQIAACwAAAAAAAAAAAAUwEEAAAAoAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAUwDkAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-11T18:58:56.661Z",
               "EditorCaption": ""
@@ -243,13 +243,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Client.cpp",
               "DocumentMoniker": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
               "RelativeDocumentMoniker": "MultiplayerGame\\Client.cpp",
               "ToolTip": "D:\\C\u002B\u002B Codes\\Visual Studio\\MultiplayerGame\\Multiplayer-Java-Game\\MultiplayerGame\\MultiplayerGame\\Client.cpp",
               "RelativeToolTip": "MultiplayerGame\\Client.cpp",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEYAAAAAAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAE4AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-11T18:46:21.999Z",
               "EditorCaption": ""

@@ -105,7 +105,7 @@ int main() {
 		{
 			if (event.type == Event::Closed)
 				window.close();
-			player.handleEvent(event, window);
+			//player.handleEvent(event, window);
 			for (auto& p : playerMap) {
 				p.second->handleEvent(event, window);
 			}
@@ -120,7 +120,7 @@ int main() {
 
 		networkManager.msgLoop();
 
-		player.update(currentTime.asSeconds());
+		//player.update(currentTime.asSeconds());
 		for (auto& p : playerMap) {
 			p.second->update(currentTime.asSeconds());
 		}
@@ -138,7 +138,7 @@ int main() {
 		window.clear();
 		window.draw(map);
 		window.draw(waterTileShape);
-		player.draw(window);
+		//player.draw(window);
 		for (auto& p : playerMap)
 			p.second->draw(window);
 		window.setView(uiView);
