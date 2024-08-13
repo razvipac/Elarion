@@ -93,7 +93,7 @@ int main() {
 
 	float cameraSpeed = 2.f;
 
-	//playerMap[-20] = new Player(-20);
+	playerMap[-20] = new Player(-20);
 
 	while (window.isOpen()) {
 		mousePosInWorld = window.mapPixelToCoords(Mouse::getPosition(window));

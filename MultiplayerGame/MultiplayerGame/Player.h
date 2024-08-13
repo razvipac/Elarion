@@ -13,7 +13,8 @@ private:
 	sf::RectangleShape item;
 	Animator itemAnimator;
 
-	sf::Text healthText;
+	//sf::Text healthText;
+	//Bar healthBar;
 public:
 	Player(int id);
 	void setTargetPosition(const sf::Vector2f& position);

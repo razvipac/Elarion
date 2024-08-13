@@ -2,6 +2,7 @@
 #include "EntityStats.h"
 #include "SFML/Graphics.hpp"
 #include "Animator.h"
+#include "Bar.h"
 #include <iostream>
 
 // #include "IDamageable.h" //EntityStats contains all the methods from IDamageable, so it might be useless
@@ -17,6 +18,7 @@ protected:
 	float timeSinceLastHit;
 	sf::RectangleShape entity;
 	Animator entityAnimator;
+	Bar healthBar;
 public:
 	Entity(const std::string& animatorPath, int id);
 	Entity(const std::string& animatorPath, int id, float health, float armor, float healthRegen, float timeBeforeRegenStarts, float invulnerability, float speed, float attackCooldown, float attackRange, float damage);

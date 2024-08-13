@@ -34,13 +34,13 @@ Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), ite
 	item.setTexture(&TextureManager::getInstance().getRef("ItemIdle"));
 
 
-	healthText.setFont(font);
-	healthText.setCharacterSize(20);
+	//healthText.setFont(font);
+	/*healthText.setCharacterSize(20);
 	healthText.setFillColor(Color::White);
 	healthText.setOutlineColor(Color::Black);
 	healthText.setOutlineThickness(1);
 	healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
-	healthText.setString(to_string((int)health));
+	healthText.setString(to_string((int)health));*/
 }
 void Player::setTargetPosition(const Vector2f& position) {
 	targetPosition = position;
@@ -63,7 +63,7 @@ void Player::derivedUpdate(float deltaTime) {
 		return;
 	}
 
-	healthText.setString(to_string((int)health));
+	//healthText.setString(to_string((int)health));
 
 	if (timeSinceLastHit >= invulnerabilityTimeAfterHit)
 		itemAnimator.setBool("Hurt", false);
@@ -132,7 +132,7 @@ void Player::derivedUpdate(float deltaTime) {
 			movementVector = movementVector / distance;
 			entity.move(movementVector * currentSpeed * deltaTime);
 			item.setPosition(entity.getPosition());
-			healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
 		}
 		entityAnimator.setFloat("Speed", animatorSpeed);
 		itemAnimator.setFloat("Speed", animatorSpeed);
@@ -149,7 +149,7 @@ void Player::derivedUpdate(float deltaTime) {
 		if (timeLeft < deltaTime) {
 			entity.setPosition(targetPosition);
 			item.setPosition(targetPosition);
-			healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
 			timeSinceLastPacket = 0;
 		}
 		else if (!(abs(targetPosition.x - entity.getPosition().x) < 1 && abs(targetPosition.y - entity.getPosition().y) < 1)) {
@@ -160,7 +160,7 @@ void Player::derivedUpdate(float deltaTime) {
 
 			entity.setPosition(newPosition);
 			item.setPosition(newPosition);
-			healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
 			timeSinceLastPacket += deltaTime; // might need to increase it beforehand
 
 			currentSpeed = sqrt(directionPerSecond.x * directionPerSecond.x + directionPerSecond.y * directionPerSecond.y);
@@ -204,15 +204,15 @@ void Player::takeDamage(float damage) {
 		timeSinceLastHit = 0;
 
 		EntityStats::takeDamage(damage);
-		healthText.setString(to_string((int)health));
+		//healthText.setString(to_string((int)health));
 	}
 }
 
 void Player::draw(RenderWindow& window) const {
 	window.draw(entity); //Player is still being drawn after dying
 	window.draw(item);
-	if (health > 0)
-		window.draw(healthText);
+	if(health > 0)
+		healthBar.draw(window);
 }
 void Player::drawInventory(RenderWindow& window) const {
 	if (id == CLIENTID) {

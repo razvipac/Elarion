@@ -12,7 +12,7 @@ extern Player* playerPointer;
 
 NetworkManager::NetworkManager()
 {
-	local = false;
+	local = true;
 
 
 	serverIP = "172.205.150.168";

@@ -55,6 +55,10 @@ void Entity::update(float deltaTime)
 		return;
 	}
 
+	healthBar.setValue(health);
+	healthBar.setPosition(entity.getPosition() - Vector2f(healthBar.getSize().x / 2, entity.getSize().y / 2 + 10));
+	healthBar.update(deltaTime);
+
 	timeSinceLastAttack += deltaTime;
 	timeSinceLastRegen += deltaTime;
 	timeSinceLastHit += deltaTime;
@@ -73,6 +77,7 @@ void Entity::draw(RenderWindow& window) const
 	if(health <= 0)
 		return;
 	window.draw(entity);
+	healthBar.draw(window);
 }
 
 void Entity::setId(int id)
@@ -87,19 +92,23 @@ int Entity::getId() const
 void Entity::move(float x, float y)
 {
 	entity.move(x, y);
+	healthBar.setPosition(entity.getPosition() - Vector2f(healthBar.getSize().x / 2, entity.getSize().y / 2 + 10));
 }
 void Entity::move(Vector2f direction)
 {
 	entity.move(direction);
+	healthBar.setPosition(entity.getPosition() - Vector2f(healthBar.getSize().x / 2, entity.getSize().y / 2 + 10));
 }
 
 void Entity::setPosition(const Vector2f& position)
 {
 	entity.setPosition(position);
+	healthBar.setPosition(entity.getPosition() - Vector2f(healthBar.getSize().x / 2, entity.getSize().y / 2 + 10));
 }
 void Entity::setPosition(float x, float y)
 {
 	entity.setPosition(x, y);
+	healthBar.setPosition(entity.getPosition() - Vector2f(healthBar.getSize().x / 2, entity.getSize().y / 2 + 10));
 }
 const Vector2f& Entity::getPosition() const
 {
@@ -140,6 +149,8 @@ void Entity::takeDamage(float damage)
 		timeSinceLastHit = 0;
 
 		EntityStats::takeDamage(damage);
+
+		//healthBar.setValue(health);
 	}
 }
 
