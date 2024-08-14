@@ -55,8 +55,4 @@ State::~State() {
 	{
 		delete transitions[i];
 	}
-	for (int i = 0; i < incomingTransitions.size(); i++)
-	{
-		delete incomingTransitions[i];
-	}
 }

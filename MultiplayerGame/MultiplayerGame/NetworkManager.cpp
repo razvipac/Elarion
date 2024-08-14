@@ -81,7 +81,7 @@ void NetworkManager::parseData(char* data, int dataSize)
 		float x, y;
 		unpackMovementData(data, messageType, id, x, y);
 		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
-		if (id != CLIENTID && playerMap.find(id) != playerMap.end()) {
+		if (id != CLIENTID && playerMap.find(id) != playerMap.end() && playerMap[id]) {
 			playerMap[id]->setTargetPosition(Vector2f(x, y));
 			//cout << "Moving the player\n";
 		}
@@ -96,7 +96,7 @@ void NetworkManager::parseData(char* data, int dataSize)
 		//cout << "\n";
 		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
 		if (id != CLIENTID) {
-			cout<<"ADDING NEW PLAYER WITH ID: "<<id<<endl;
+			cout << "ADDING NEW PLAYER WITH ID: " << id << endl;
 			playerMap[id] = new Player(id);
 			playerMap[id]->setPosition(Vector2f(x, y));
 		}
@@ -106,6 +106,8 @@ void NetworkManager::parseData(char* data, int dataSize)
 		int id;
 		float x, y;
 		unpackMovementData(data, messageType, id, x, y);
+		if(playerMap.find(CLIENTID) != playerMap.end())
+			playerMap.erase(CLIENTID);
 		CLIENTID = id;
 		if (playerPointer) {
 			playerPointer->setId(id);
@@ -121,8 +123,10 @@ void NetworkManager::parseData(char* data, int dataSize)
 		float x, y;
 		unpackMovementData(data, messageType, id, x, y);
 		//cout << "ID: " << id << " X: " << x << " Y: " << y << "\n";
-		if (id != CLIENTID) {
-			delete playerMap[id];
+		if (id != CLIENTID && playerMap.find(id) != playerMap.end()) {
+			if (playerMap[id] != nullptr)
+				delete playerMap[id];
+			playerMap[id] = nullptr;
 			playerMap.erase(id);
 		}
 	}
@@ -131,12 +135,12 @@ void NetworkManager::parseData(char* data, int dataSize)
 		int currentId, targetId;
 		float damage;
 		unpackHitData(data, messageType, currentId, targetId, damage);
-		cout<<"Current ID: "<<currentId<<" Target ID: "<<targetId<<" Damage: "<<damage<<" CLIENTID:P " << CLIENTID << endl;
+		cout << "Current ID: " << currentId << " Target ID: " << targetId << " Damage: " << damage << " CLIENTID:P " << CLIENTID << endl;
 		if (playerMap.find(targetId) != playerMap.end() && currentId != CLIENTID) {
 			cout << "Player " << targetId << " took " << damage << " damage from player " << currentId << "\n";
 			playerMap[targetId]->takeDamage(damage);
 		}
-		if(playerMap.find(currentId) != playerMap.end() && currentId != CLIENTID)
+		if (playerMap.find(currentId) != playerMap.end() && currentId != CLIENTID)
 			playerMap[currentId]->attackVisual();
 	}
 

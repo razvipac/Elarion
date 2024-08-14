@@ -3,6 +3,7 @@
 #include "TextureManager.h"
 #include <cmath>
 #include <map>
+#include "TileMap.h"
 
 using namespace sf;
 using namespace std;
@@ -12,6 +13,7 @@ extern int tps;
 extern Vector2f mousePosInWorld;
 extern map<int, Player*> playerMap;
 extern Font font;
+extern TileMap tileMap;
 
 Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), itemAnimator(item) {
 	timeSinceLastPacket = 0;
@@ -52,12 +54,20 @@ void Player::setTargetPosition(const Vector2f& position) {
 void Player::handleEvent(Event& event, RenderWindow& window) {
 	if (id == CLIENTID) {
 		inventory.handleEvent(event);
+		if (event.type == Event::MouseButtonPressed)
+		{
+			if (event.mouseButton.button == Mouse::Left)
+			{
+				interact();
+			}
+		}
 	}
 }
 void Player::derivedUpdate(float deltaTime) {
 
-	if(health <= 0)
+	if (health <= 0)
 	{
+		itemAnimator.setBool("Death", true);
 		itemAnimator.update(deltaTime);
 		item.setTextureRect(itemAnimator.getFrame());
 		return;
@@ -191,6 +201,7 @@ void Player::derivedUpdate(float deltaTime) {
 }
 
 void Player::attackVisual() {
+	itemAnimator.setBool("Hurt", false);
 	itemAnimator.setBool("Attack", true);
 	Entity::attackVisual();
 }
@@ -199,10 +210,12 @@ void Player::takeDamage(float damage) {
 	if (timeSinceLastHit >= invulnerabilityTimeAfterHit)
 	{
 		cout << "Taking damage " << endl;
-		entityAnimator.setBool("Hurt", true);
-		itemAnimator.setBool("Hurt", true);
+		if (!entityAnimator.getBool("Attack"))
+		{
+			entityAnimator.setBool("Hurt", true);
+			itemAnimator.setBool("Hurt", true);
+		}
 		timeSinceLastHit = 0;
-
 		EntityStats::takeDamage(damage);
 		//healthText.setString(to_string((int)health));
 	}
@@ -211,7 +224,7 @@ void Player::takeDamage(float damage) {
 void Player::draw(RenderWindow& window) const {
 	window.draw(entity); //Player is still being drawn after dying
 	window.draw(item);
-	if(health > 0)
+	if (health > 0)
 		healthBar.draw(window);
 }
 void Player::drawInventory(RenderWindow& window) const {
@@ -226,7 +239,22 @@ void Player::setSelectedItemId(int itemId) {
 	inventory.changeItem(inventory.getSelectedSlot(), itemId, 1);
 }
 
+void Player::interact() {
+	// find what tile we are hovering over
+	Vector2i tilePos = Vector2i(mousePosInWorld / (float)tileMap.getTileSize());
+	// find the tile id of the tile we are hovering over
+	int tileId = tileMap.getTile(tilePos.x, tilePos.y);
+	// if the tile is a tree, chop it down
+	if (tileId == 1) {
+		tileMap.setTile(tilePos.x, tilePos.y, 0);
+		setSelectedItemId(2);
+	}
+}
+
 void Player::die() {
+	itemAnimator.setBool("Hurt", false);
+	itemAnimator.setBool("Attack", false);
+	itemAnimator.setFloat("Speed", 0);
 	itemAnimator.setBool("Death", true);
 	Entity::die();
 }

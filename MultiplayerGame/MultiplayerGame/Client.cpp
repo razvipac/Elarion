@@ -22,6 +22,7 @@ Player* playerPointer;
 int CLIENTID = -1;
 int tps = 10;
 Font font;
+TileMap tileMap;
 
 Vector2f mousePosInWorld;
 Vector2f mousePosInUI;
@@ -55,16 +56,20 @@ int main() {
 	//RenderWindow window2(VideoMode(1024, 1024), "Noise");
 
 	Vector2f lastMousePos;
-
-	const int width = 256;
-	const int height = 256;
-	int tileSize = 62;
-	int level[width * height];
-	noise.get2DNoiseColored(level);
-	TileMap map;
-	if (!map.load("Resources/Textures/TileSet.png", Vector2u(tileSize, tileSize), level, width, height)) {
+	
+	if (!tileMap.load("Resources/Textures/TileSet.png")) {
 		cout << "Failed to load map\n";
 		return EXIT_FAILURE;
+	}
+
+	{
+		int* level = new int[tileMap.getWidth() * tileMap.getHeight()];
+		for (int i = 0; i < tileMap.getWidth() * tileMap.getHeight(); i++) {
+			level[i] = tileMap.getTile(i % tileMap.getWidth(), i / tileMap.getWidth());
+		}
+		noise.get2DNoiseColored(level);
+		tileMap.setLevel(level);
+		delete[] level;
 	}
 
 	font.loadFromFile("Resources/Roboto-Black.ttf");
@@ -74,14 +79,15 @@ int main() {
 	ItemSlot::loadItems();
 
 	RenderWindow window(VideoMode(800, 600), "Client");
-	Player player(CLIENTID);
-	playerPointer = &player;
+	/*Player player(CLIENTID);*/
+	Player *player = new Player(CLIENTID);
+	playerPointer = player;
 	cout << CLIENTID << "\n";
 
-	Tile waterTile(1, true, "Resources/Textures/WaterTile.png");
-	RectangleShape waterTileShape(Vector2f(50, 50));
-	waterTileShape.setTexture(waterTile.getTexture());
-	waterTileShape.setPosition(Vector2f(100, 100));
+	//Tile waterTile(1, true, "Resources/Textures/WaterTile.png");
+	//RectangleShape waterTileShape(Vector2f(50, 50));
+	//waterTileShape.setTexture(waterTile.getTexture());
+	//waterTileShape.setPosition(Vector2f(100, 100));
 
 	Clock deltaClock;
 	Time currentTime = deltaClock.getElapsedTime();
@@ -109,13 +115,13 @@ int main() {
 			for (auto& p : playerMap) {
 				p.second->handleEvent(event, window);
 			}
-			if (event.type == Event::MouseButtonPressed) {
-				if (event.mouseButton.button == Mouse::Left) {
-					if (waterTileShape.getGlobalBounds().contains(mousePosInWorld) && player.getSelectedItemId() == ItemNames::CUP_EMPTY) {
-						player.setSelectedItemId(ItemNames::CUP_WATER);
-					}
-				}
-			}
+			//if (event.type == Event::MouseButtonPressed) {
+			//	if (event.mouseButton.button == Mouse::Left) {
+			//		/*if (waterTileShape.getGlobalBounds().contains(mousePosInWorld) && player.getSelectedItemId() == ItemNames::CUP_EMPTY) {
+			//			player.setSelectedItemId(ItemNames::CUP_WATER);
+			//		}*/
+			//	}
+			//}
 		}
 
 		networkManager.msgLoop();
@@ -125,24 +131,24 @@ int main() {
 			p.second->update(currentTime.asSeconds());
 		}
 
-		makeCameraFollowPlayer(defaultView, player, currentTime.asSeconds(), cameraSpeed);
+		makeCameraFollowPlayer(defaultView, *player, currentTime.asSeconds(), cameraSpeed);
 
 		packageTimeCounter += currentTime.asSeconds();
 		if (packageTimeCounter >= timeBetweenPackets) {
 			char message[13];
-			packMovementData(message, 1, CLIENTID, player.getPosition().x, player.getPosition().y);
+			packMovementData(message, 1, CLIENTID, player->getPosition().x, player->getPosition().y);
 			networkManager.sendPacket(message, 13, false);
 			packageTimeCounter = 0.0f;
 		}
 
 		window.clear();
-		window.draw(map);
-		window.draw(waterTileShape);
+		window.draw(tileMap);
+		//window.draw(waterTileShape);
 		//player.draw(window);
 		for (auto& p : playerMap)
 			p.second->draw(window);
 		window.setView(uiView);
-		player.drawInventory(window);
+		player->drawInventory(window);
 		window.setView(defaultView);
 		window.display();
 	}

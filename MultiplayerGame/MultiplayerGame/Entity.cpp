@@ -49,6 +49,7 @@ Entity::Entity(const string& animatorPath, int id, float health, float armor, fl
 void Entity::update(float deltaTime)
 {
 	if (health <= 0) {
+		entityAnimator.setBool("Death", true);
 		entityAnimator.update(deltaTime);
 		entity.setTextureRect(entityAnimator.getFrame());
 		derivedUpdate(deltaTime);
@@ -126,7 +127,8 @@ void Entity::attack(Entity* target)
 			target->takeDamage(baseDamage);
 
 			char buffer[13];
-			packHitData(buffer, 5, id, target->getId(), baseDamage);
+			//packHitData(buffer, 5, id, target->getId(), baseDamage);
+			packHitData(buffer, 5, -20, id, baseDamage);
 			NetworkManager::getInstance().sendPacket(buffer, 13);
 
 			attackVisual();
@@ -136,6 +138,7 @@ void Entity::attack(Entity* target)
 
 void Entity::attackVisual()
 {
+	entityAnimator.setBool("Hurt", false);
 	entityAnimator.setBool("Attack", true);
 	timeSinceLastAttack = 0;
 }
@@ -156,6 +159,9 @@ void Entity::takeDamage(float damage)
 
 void Entity::die()
 {
+	entityAnimator.setBool("Hurt", false);
+	entityAnimator.setBool("Attack", false);
+	entityAnimator.setFloat("Speed", 0);
 	health = 0;
 	entityAnimator.setBool("Death", true);
 }

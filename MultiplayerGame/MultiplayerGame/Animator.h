@@ -18,6 +18,9 @@ public:
 	const std::vector<State*>& getStates() const;
 	State* getCurrentState();
 
+	float getFloat(const std::string& name) const;
+	bool getBool(const std::string& name) const;
+
 	void setVariable(const std::string& name, const FloatingBool& value);
 	void setFloat(const std::string& name, float value);
 	void setBool(const std::string& name, bool value);

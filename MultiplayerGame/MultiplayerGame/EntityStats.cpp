@@ -14,7 +14,7 @@ EntityStats::EntityStats() {
 	baseSpeed = 150;
 
 	baseAttackCooldown = 0.5;
-	baseAttackRange = 50;
+	baseAttackRange = 100;
 	baseDamage = 10;
 }
 

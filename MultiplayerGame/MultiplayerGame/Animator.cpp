@@ -15,6 +15,22 @@ const vector<State*>& Animator::getStates() const {
 State* Animator::getCurrentState() {
 	return currentState;
 }
+float Animator::getFloat(const string& name) const {
+	if (variables.find(name) != variables.end())
+	{
+		if (variables.at(name).isFloat)
+			return variables.at(name).floatValue;
+	}
+	return 0;
+}
+bool Animator::getBool(const string& name) const {
+	if (variables.find(name) != variables.end())
+	{
+		if (!variables.at(name).isFloat)
+			return variables.at(name).boolValue;
+	}
+	return false;
+}
 void Animator::checkTransitions() {
 	if (currentState) {
 		for (int i = 0; i < currentState->getTransitions().size(); i++)
@@ -148,7 +164,8 @@ void Animator::checkTransitions() {
 			}
 			if (canTransition)
 			{
-				//cout << "Transitioning to " << transition->getArrivalState().getPath() << endl;
+				cout << "Transitioning to " << transition->getArrivalState().getPath() << endl;
+				cout << "Transitioning from " << currentState->getPath() << endl;
 				currentState = &transition->getArrivalState();
 				currentState->resetAnimation();
 				string name = currentState->getPath();

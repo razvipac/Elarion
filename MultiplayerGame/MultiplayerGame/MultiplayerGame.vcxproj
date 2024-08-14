@@ -170,7 +170,7 @@
     <ClInclude Include="State.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Tile.h" />
-    <ClInclude Include="Tilemap.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
