@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include <fstream>
 
 class TileMap : public sf::Drawable, public sf::Transformable {
 private:
@@ -25,6 +26,12 @@ public:
 
 	bool load(const std::string& tilesetPath);
 	void update();
+
+	void saveMapInfo(const std::string& path);
+	void loadMapInfo(const std::string& path);
+
+	void saveMapInfo(std::ofstream& stream);
+	void loadMapInfo(std::ifstream& stream);
 
 	~TileMap();
 };

@@ -1,11 +1,17 @@
 #include "Tilemap.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 using namespace sf;
 
-TileMap::TileMap() : width(256), height(256), tileSize(62) {
+TileMap::TileMap() : width(64), height(64), tileSize(16) {
 	level = new int[width * height];
+	setScale(3, 3);
+	if (!load("Resources/Sunnyside_World_Assets/Tileset/spr_tileset_sunnysideworld_16px.png")) {
+		cout << "Failed to load map\n";
+	}
+	//loadMapInfo("Resources/Maps/Map1.map");
 }
 void TileMap::draw(RenderTarget& target, RenderStates states) const {
 	// Apply the transform
@@ -90,6 +96,31 @@ void TileMap::update() {
 			quad[3].texCoords = Vector2f(tu * tileSize, (tv + 1) * tileSize);
 		}
 }
+
+void TileMap::loadMapInfo(const string& path) {
+	ifstream file(path);
+	if (!file.is_open()) {
+		cout << "Failed to open file\n";
+		return;
+	}
+	delete[] level;
+	level = new int[width * height];
+	for (int i = 0; i < width * height; i++) {
+		file >> level[i];
+	}
+	file.close();
+	update();
+}
+
+void TileMap::loadMapInfo(ifstream& stream) {
+	delete[] level;
+	level = new int[width * height];
+	for (int i = 0; i < width * height; i++) {
+		stream >> level[i];
+	}
+	update();
+}
+
 TileMap::~TileMap() {
 	delete[] level;
 }

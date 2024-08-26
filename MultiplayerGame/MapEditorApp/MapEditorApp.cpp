@@ -10,6 +10,9 @@ Font font;
 Vector2f mousePosInWorld;
 Vector2f mousePosInUI;
 int indexOfSelectedTile = 65;
+bool blockClick;
+bool blockScroll;
+int selectedLayer;
 
 int main()
 {
@@ -33,12 +36,21 @@ int main()
 	square.setOutlineColor(Color::White);
 	square.setOutlineThickness(1);
 
-
 	Clock clock;
 	float deltaTime;
 
+	Text layerText;
+	layerText.setFont(font);
+	layerText.setCharacterSize(24);
+	layerText.setFillColor(Color::White);
+	layerText.setPosition(350, 10);
+	layerText.setString("Layer: 0");
+	layerText.setOutlineColor(Color::Black);
+	layerText.setOutlineThickness(1);
+
 	while (window.isOpen())
 	{
+		blockClick = blockScroll = false;
 		mousePosInWorld = window.mapPixelToCoords(Mouse::getPosition(window), worldView);
 		mousePosInUI = window.mapPixelToCoords(Mouse::getPosition(window), uiView);
 		deltaTime = clock.restart().asSeconds();
@@ -46,13 +58,13 @@ int main()
 
 		while (window.pollEvent(event))
 		{
-			mapEditor.handleEvent(event);
 			tilesEditor.handleEvent(event);
+			mapEditor.handleEvent(event);
 			if (event.type == Event::Closed)
 			{
 				window.close();
 			}
-			if (event.type == Event::MouseWheelScrolled)
+			if (event.type == Event::MouseWheelScrolled && !blockScroll)
 			{
 				if (event.mouseWheelScroll.wheel == Mouse::VerticalWheel)
 				{
@@ -66,6 +78,12 @@ int main()
 					}
 				}
 			}
+			// if L is pressed then change the layer to 0
+			if (event.type == Event::KeyReleased && event.key.code == Keyboard::L)
+			{
+				selectedLayer = 1 - selectedLayer;
+				layerText.setString("Layer: " + to_string(selectedLayer));
+			}
 		}
 
 		if (Mouse::isButtonPressed(Mouse::Right)) {
@@ -74,6 +92,7 @@ int main()
 		}
 		lastMousePos = Vector2f(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
 
+		tilesEditor.update(deltaTime);
 		mapEditor.update(deltaTime);
 
 		window.clear(Color(89, 89, 89));
@@ -82,6 +101,7 @@ int main()
 		mapEditor.draw(window);
 		window.setView(uiView);
 		tilesEditor.draw(window);
+		window.draw(layerText);
 		window.display();
 	}
 }

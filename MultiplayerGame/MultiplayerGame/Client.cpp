@@ -23,6 +23,7 @@ int CLIENTID = -1;
 int tps = 10;
 Font font;
 TileMap tileMap;
+TileMap tileMap2;
 
 Vector2f mousePosInWorld;
 Vector2f mousePosInUI;
@@ -50,26 +51,33 @@ int main() {
 	TextureManager::getInstance().loadTexture("ItemHurt", "Resources/Sunnyside_World_Assets/Characters/Human/HURT/tools_hurt_strip8.png");
 	TextureManager::getInstance().loadTexture("ItemDeath", "Resources/Sunnyside_World_Assets/Characters/Human/DEATH/tools_death_strip13.png");
 
-	PerlinNoise noise;
-	noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
+	//PerlinNoise noise;
+	//noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
 
 	//RenderWindow window2(VideoMode(1024, 1024), "Noise");
 
 	Vector2f lastMousePos;
 	
-	if (!tileMap.load("Resources/Textures/TileSet.png")) {
+	/*if (!tileMap.load("Resources/Sunnyside_World_Assets/Tileset/spr_tileset_sunnysideworld_16px.png")) {
 		cout << "Failed to load map\n";
 		return EXIT_FAILURE;
-	}
+	}*/
+
+//	{
+//		int* level = new int[tileMap.getWidth() * tileMap.getHeight()];
+//		for (int i = 0; i < tileMap.getWidth() * tileMap.getHeight(); i++) {
+//			level[i] = tileMap.getTile(i % tileMap.getWidth(), i / tileMap.getWidth());
+//		}
+//		noise.get2DNoiseColored(level);
+//		tileMap.setLevel(level);
+//		delete[] level;
+//	}
 
 	{
-		int* level = new int[tileMap.getWidth() * tileMap.getHeight()];
-		for (int i = 0; i < tileMap.getWidth() * tileMap.getHeight(); i++) {
-			level[i] = tileMap.getTile(i % tileMap.getWidth(), i / tileMap.getWidth());
-		}
-		noise.get2DNoiseColored(level);
-		tileMap.setLevel(level);
-		delete[] level;
+		ifstream file("Resources/Maps/Map1.map");
+		tileMap.loadMapInfo(file);
+		tileMap2.loadMapInfo(file);
+		file.close();
 	}
 
 	font.loadFromFile("Resources/Roboto-Black.ttf");
@@ -143,6 +151,7 @@ int main() {
 
 		window.clear();
 		window.draw(tileMap);
+		window.draw(tileMap2);
 		//window.draw(waterTileShape);
 		//player.draw(window);
 		for (auto& p : playerMap)

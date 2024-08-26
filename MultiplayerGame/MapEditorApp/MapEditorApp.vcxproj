@@ -135,12 +135,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileSelection.cpp" />
     <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="MapEditorApp.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TilesEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileSelection.h" />
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TilesEditor.h" />

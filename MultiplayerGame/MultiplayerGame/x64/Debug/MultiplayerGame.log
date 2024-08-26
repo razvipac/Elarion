@@ -1,3 +1,88 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MultiplayerGame.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Player.cpp
+  Entity.cpp
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Entity.cpp(123,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  TileMap.cpp
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(74,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(75,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,48): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,48): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,48): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,48): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,48): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,34): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,34): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,34): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,34): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(87,34): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,54): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,54): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,54): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,54): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,54): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,40): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,40): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,40): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,40): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(88,40): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,60): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,60): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,60): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,60): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,60): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,40): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,40): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,40): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,40): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(89,40): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,54): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,54): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,54): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,54): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,54): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,34): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,34): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,34): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,34): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(90,34): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,51): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,51): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,51): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,51): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,51): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,36): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,36): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,36): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(93,36): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,57): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,57): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,57): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,57): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,42): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,42): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,42): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(94,42): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,63): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,63): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,63): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,63): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,42): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,42): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,42): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(95,42): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,57): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,57): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,57): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,57): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,36): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,36): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,36): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\TileMap.cpp(96,36): warning C4244:         ]
+  Generating Code...
   MultiplayerGame.vcxproj -> C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\x64\Debug\Client.exe

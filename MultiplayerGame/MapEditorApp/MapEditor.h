@@ -5,7 +5,8 @@
 class MapEditor
 {
 private:
-	TileMap tileMap;
+	TileMap underneathLayer;
+	TileMap onTopLayer;
 	bool pressedLastFrame = false;
 	sf::Vector2f lastMousePos;
 public:

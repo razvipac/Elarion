@@ -1,10 +1,11 @@
 #include "Tilemap.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 using namespace sf;
 
-TileMap::TileMap() : width(256), height(256), tileSize(16) {
+TileMap::TileMap() : width(64), height(64), tileSize(16) {
 	level = new int[width * height];
 	for (int i = 0; i < width * height; i++) {
 		level[i] = 71;
@@ -93,6 +94,49 @@ void TileMap::update() {
 			quad[3].texCoords = Vector2f(tu * tileSize, (tv + 1) * tileSize);
 		}
 }
+
+void TileMap::saveMapInfo(const string& path) {
+	ofstream file(path);
+	if (file.is_open()) {
+		for (int i = 0; i < width * height; i++) {
+			file << level[i] << " ";
+		}
+		file.close();
+	}
+}
+
+void TileMap::loadMapInfo(const string& path) {
+	ifstream file(path);
+	if (file.is_open()) {
+		delete[] level;
+		level = new int[width * height];
+		for (int i = 0; i < width * height; i++) {
+			file >> level[i];
+		}
+		file.close();
+		update();
+	}
+}
+
+void TileMap::saveMapInfo(ofstream& stream) {
+	if (stream.is_open()) {
+		for (int i = 0; i < width * height; i++) {
+			stream << level[i] << " ";
+		}
+	}
+}
+
+void TileMap::loadMapInfo(ifstream& stream) {
+	if (stream.is_open()) {
+		delete[] level;
+		level = new int[width * height];
+		for (int i = 0; i < width * height; i++) {
+			stream >> level[i];
+		}
+		update();
+	}
+}
+
 TileMap::~TileMap() {
 	delete[] level;
 }
