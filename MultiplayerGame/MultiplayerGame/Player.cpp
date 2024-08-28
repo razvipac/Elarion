@@ -14,6 +14,7 @@ extern Vector2f mousePosInWorld;
 extern map<int, Player*> playerMap;
 extern Font font;
 extern TileMap tileMap;
+extern TileMap tileMap2;
 
 Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), itemAnimator(item) {
 	timeSinceLastPacket = 0;
@@ -31,10 +32,8 @@ Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), ite
 	//Load animator
 	itemAnimator.loadAnimator("Resources/Animations/Item.animator");
 
-
 	item.setTextureRect(itemAnimator.getFrame());
 	item.setTexture(&TextureManager::getInstance().getRef("ItemIdle"));
-
 
 	//healthText.setFont(font);
 	/*healthText.setCharacterSize(20);
@@ -43,6 +42,14 @@ Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), ite
 	healthText.setOutlineThickness(1);
 	healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
 	healthText.setString(to_string((int)health));*/
+
+	// generate a random position on the map, but make sure there is not a tile in the tileMap2
+	Vector2f position;
+	do {
+		position = Vector2f(rand() % (int) (tileMap.getWidth() * tileMap.getTileSize() * tileMap.getScale().x), rand() % (int) (tileMap.getHeight() * tileMap.getTileSize() * tileMap.getScale().y));
+	} while (tileMap2.getTile(position.x / tileMap.getTileSize() / tileMap.getScale().x, position.y / tileMap.getTileSize() / tileMap.getScale().y) != 0);
+	entity.setPosition(position);
+	item.setPosition(position);
 }
 void Player::setTargetPosition(const Vector2f& position) {
 	targetPosition = position;
@@ -143,6 +150,31 @@ void Player::derivedUpdate(float deltaTime) {
 			entity.move(movementVector * currentSpeed * deltaTime);
 			item.setPosition(entity.getPosition());
 			//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			// dont let the player go out of bounds
+			if (entity.getPosition().x < 16)
+			{
+				entity.setPosition(16, entity.getPosition().y);
+				item.setPosition(entity.getPosition());
+				//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			}
+			if (entity.getPosition().y < 40)
+			{
+				entity.setPosition(entity.getPosition().x, 40);
+				item.setPosition(entity.getPosition());
+				//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			}
+			if (entity.getPosition().x > tileMap.getWidth() * tileMap.getTileSize() * tileMap.getScale().x - 16)
+			{
+				entity.setPosition(tileMap.getWidth() * tileMap.getTileSize() * tileMap.getScale().x - 16, entity.getPosition().y);
+				item.setPosition(entity.getPosition());
+				//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			}
+			if (entity.getPosition().y > tileMap.getHeight() * tileMap.getTileSize() * tileMap.getScale().y - 16)
+			{
+				entity.setPosition(entity.getPosition().x, tileMap.getHeight() * tileMap.getTileSize() * tileMap.getScale().y - 16);
+				item.setPosition(entity.getPosition());
+				//healthText.setPosition(entity.getPosition().x - 30, entity.getPosition().y - 50);
+			}
 		}
 		entityAnimator.setFloat("Speed", animatorSpeed);
 		itemAnimator.setFloat("Speed", animatorSpeed);

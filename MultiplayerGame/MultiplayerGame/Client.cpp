@@ -31,6 +31,19 @@ Vector2f mousePosInUI;
 void makeCameraFollowPlayer(View& view, Player& player, float deltaTime, float cameraSpeed) {
 	Vector2f targetPosition = (player.getPosition() - view.getCenter()) * deltaTime * cameraSpeed + view.getCenter();
 	view.setCenter(targetPosition);
+	// if the camera is too far to the margin of the map, it will stop following the player
+	if (view.getCenter().x - view.getSize().x / 2 < 0) {
+		view.setCenter(view.getSize().x / 2, view.getCenter().y);
+	}
+	if (view.getCenter().y - view.getSize().y / 2 < 0) {
+		view.setCenter(view.getCenter().x, view.getSize().y / 2);
+	}
+	if (view.getCenter().x + view.getSize().x / 2 > tileMap.getWidth() * tileMap.getTileSize() * tileMap.getScale().x) {
+		view.setCenter(tileMap.getWidth() * tileMap.getTileSize() * tileMap.getScale().x - view.getSize().x / 2, view.getCenter().y);
+	}
+	if (view.getCenter().y + view.getSize().y / 2 > tileMap.getHeight() * tileMap.getTileSize() * tileMap.getScale().y) {
+		view.setCenter(view.getCenter().x, tileMap.getHeight() * tileMap.getTileSize() * tileMap.getScale().y - view.getSize().y / 2);
+	}
 }
 
 int main() {
@@ -43,7 +56,7 @@ int main() {
 	TextureManager::getInstance().loadTexture("PlayerAttack", "Resources/Sunnyside_World_Assets/Characters/Human/ATTACK/base_attack_strip10.png");
 	TextureManager::getInstance().loadTexture("PlayerHurt", "Resources/Sunnyside_World_Assets/Characters/Human/HURT/base_hurt_strip8.png");
 	TextureManager::getInstance().loadTexture("PlayerDeath", "Resources/Sunnyside_World_Assets/Characters/Human/DEATH/base_death_strip13.png");
-	
+
 	TextureManager::getInstance().loadTexture("ItemIdle", "Resources/Sunnyside_World_Assets/Characters/Human/IDLE/tools_idle_strip9.png");
 	TextureManager::getInstance().loadTexture("ItemWalk", "Resources/Sunnyside_World_Assets/Characters/Human/WALKING/tools_walk_strip8.png");
 	TextureManager::getInstance().loadTexture("ItemRun", "Resources/Sunnyside_World_Assets/Characters/Human/RUN/tools_run_strip8.png");
@@ -57,24 +70,24 @@ int main() {
 	//RenderWindow window2(VideoMode(1024, 1024), "Noise");
 
 	Vector2f lastMousePos;
-	
+
 	/*if (!tileMap.load("Resources/Sunnyside_World_Assets/Tileset/spr_tileset_sunnysideworld_16px.png")) {
 		cout << "Failed to load map\n";
 		return EXIT_FAILURE;
 	}*/
 
-//	{
-//		int* level = new int[tileMap.getWidth() * tileMap.getHeight()];
-//		for (int i = 0; i < tileMap.getWidth() * tileMap.getHeight(); i++) {
-//			level[i] = tileMap.getTile(i % tileMap.getWidth(), i / tileMap.getWidth());
-//		}
-//		noise.get2DNoiseColored(level);
-//		tileMap.setLevel(level);
-//		delete[] level;
-//	}
+	//	{
+	//		int* level = new int[tileMap.getWidth() * tileMap.getHeight()];
+	//		for (int i = 0; i < tileMap.getWidth() * tileMap.getHeight(); i++) {
+	//			level[i] = tileMap.getTile(i % tileMap.getWidth(), i / tileMap.getWidth());
+	//		}
+	//		noise.get2DNoiseColored(level);
+	//		tileMap.setLevel(level);
+	//		delete[] level;
+	//	}
 
 	{
-		ifstream file("Resources/Maps/Map1.map");
+		ifstream file("Resources/Maps/Blueprint.map");
 		tileMap.loadMapInfo(file);
 		tileMap2.loadMapInfo(file);
 		file.close();
@@ -88,7 +101,7 @@ int main() {
 
 	RenderWindow window(VideoMode(800, 600), "Client");
 	/*Player player(CLIENTID);*/
-	Player *player = new Player(CLIENTID);
+	Player* player = new Player(CLIENTID);
 	playerPointer = player;
 	cout << CLIENTID << "\n";
 
