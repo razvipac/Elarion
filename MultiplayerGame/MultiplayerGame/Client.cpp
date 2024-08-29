@@ -13,6 +13,7 @@
 #include "TextureManager.h"
 #include "Animator.h"
 #include "NetworkManager.h"
+#include "Plant.h"
 
 using namespace std;
 using namespace sf;
@@ -24,6 +25,7 @@ int tps = 10;
 Font font;
 TileMap tileMap;
 TileMap tileMap2;
+vector<IntRect> Plant::growthStages;
 
 Vector2f mousePosInWorld;
 Vector2f mousePosInUI;
@@ -64,10 +66,17 @@ int main() {
 	TextureManager::getInstance().loadTexture("ItemHurt", "Resources/Sunnyside_World_Assets/Characters/Human/HURT/tools_hurt_strip8.png");
 	TextureManager::getInstance().loadTexture("ItemDeath", "Resources/Sunnyside_World_Assets/Characters/Human/DEATH/tools_death_strip13.png");
 
-	//PerlinNoise noise;
-	//noise.saveNoise2DColored("Resources/Textures/PerlinNoise.png");
+	TextureManager::getInstance().loadTexture("TextureAtlas", "Resources/Sunnyside_World_Assets/Tileset/spr_tileset_sunnysideworld_16px.png");
 
-	//RenderWindow window2(VideoMode(1024, 1024), "Noise");
+	vector<IntRect> growthStages;
+	growthStages.push_back(IntRect(816, 192, 16, 16));
+	growthStages.push_back(IntRect(816, 208, 16, 16));
+	growthStages.push_back(IntRect(816, 224, 16, 32));
+	growthStages.push_back(IntRect(816, 256, 16, 32));
+	Plant::setGrowthStages(growthStages);
+
+	Plant* plant = new Plant(3);
+	plant->setPosition(168, 168);
 
 	Vector2f lastMousePos;
 
@@ -130,6 +139,8 @@ int main() {
 
 		while (window.pollEvent(event))
 		{
+			if(plant)
+				plant->handleEvent(event, player->getPosition());
 			if (event.type == Event::Closed)
 				window.close();
 			//player.handleEvent(event, window);
@@ -146,6 +157,8 @@ int main() {
 		}
 
 		networkManager.msgLoop();
+		if(plant)
+			plant->update(currentTime.asSeconds());
 
 		//player.update(currentTime.asSeconds());
 		for (auto& p : playerMap) {
@@ -165,6 +178,8 @@ int main() {
 		window.clear();
 		window.draw(tileMap);
 		window.draw(tileMap2);
+		if(plant)
+			plant->draw(window);
 		//window.draw(waterTileShape);
 		//player.draw(window);
 		for (auto& p : playerMap)
@@ -173,6 +188,11 @@ int main() {
 		player->drawInventory(window);
 		window.setView(defaultView);
 		window.display();
+
+		if(plant && plant->isMarkedForDeletion()) {
+			delete plant;
+			plant = nullptr;
+		}
 	}
 
 	return EXIT_SUCCESS;
