@@ -21,4 +21,6 @@ public:
 	static void setGrowthStages(std::vector<sf::IntRect>& growthStages);
 	bool isMarkedForDeletion() { return markedForDeletion; }
 	void markForDeletion() { markedForDeletion = true; }
+	int getPlantType();
+	sf::Vector2f getPosition();
 };

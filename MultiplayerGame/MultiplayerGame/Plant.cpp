@@ -41,7 +41,7 @@ void Plant::grow() {
 		currentStage++;
 		plant.setTextureRect(growthStages[currentStage] + IntRect(16 * plantType, 0, 0, 0));
 		plant.setSize(sf::Vector2f(growthStages[currentStage].width, growthStages[currentStage].height));
-		if(currentStage == 2) plant.setOrigin(plant.getSize().x / 2, plant.getSize().y * 0.75f);
+		if (currentStage == 2) plant.setOrigin(plant.getSize().x / 2, plant.getSize().y * 0.75f);
 		cout << plant.getSize().y << endl;
 	}
 }
@@ -69,4 +69,12 @@ void Plant::handleEvent(sf::Event& event, Vector2f playerPosition) {
 
 void Plant::setGrowthStages(std::vector<sf::IntRect>& growthStages) {
 	Plant::growthStages = growthStages;
+}
+
+int Plant::getPlantType() {
+	return plantType;
+}
+
+Vector2f Plant::getPosition() {
+	return plant.getPosition();
 }

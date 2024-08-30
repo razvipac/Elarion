@@ -54,13 +54,30 @@ void Inventory::changeItem(int slot, int itemID, int quantity) {
 	slots[slot].setQuantity(quantity);
 }
 void Inventory::removeItem(int itemID, int quantity) {
+	if (slots[selectedSlot].getItemID() == itemID)
+	{
+		if (slots[selectedSlot].getQuantity() - quantity <= 0)
+		{
+			quantity -= slots[selectedSlot].getQuantity();
+			slots[selectedSlot].setQuantity(0);
+			slots[selectedSlot].setDurability(0);
+			slots[selectedSlot].setItem(0);
+		}
+		else
+		{
+			slots[selectedSlot].setQuantity(slots[selectedSlot].getQuantity() - quantity);
+			return;
+		}
+	}
 	for (int i = 0; i < slots.size(); i++) {
 		if (slots[i].getItemID() == itemID) {
+			cout << "na quantity " << slots[i].getQuantity() << " " << quantity << endl;
 			if (slots[i].getQuantity() - quantity <= 0) {
+				quantity -= slots[i].getQuantity();
 				slots[i].setQuantity(0);
 				slots[i].setDurability(0);
 				slots[i].setItem(0);
-				quantity -= slots[i].getQuantity();
+				
 			}
 			else {
 				slots[i].setQuantity(slots[i].getQuantity() - quantity);
@@ -134,10 +151,10 @@ void Inventory::handleEvent(Event& event) {
 
 		// if we pressed t change the selected item to an empty cup
 		if (event.key.code == Keyboard::T)
-			changeItem(selectedSlot, 1, 1);
+			changeItem(selectedSlot, 1, 20);
 		// if we pressed y change the selected item to a full cup
 		if (event.key.code == Keyboard::Y)
-			changeItem(selectedSlot, 2, 1);
+			changeItem(selectedSlot, 2, 2);
 	}
 	if (event.type == Event::MouseWheelScrolled) {
 		if (event.mouseWheelScroll.delta > 0) {

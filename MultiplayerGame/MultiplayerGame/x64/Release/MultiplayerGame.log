@@ -1,9 +1,40 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (MultiplayerGame.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Client.cpp
-C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Client.cpp(53,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Player.cpp
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,113): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,113): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,113): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,113): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,113): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,30): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,30): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,30): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,30): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(51,30): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,122): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,122): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,122): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,122): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,122): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,63): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,63): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,63): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,63): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(52,63): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,127): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,127): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,127): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,127): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,127): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,83): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,83): warning C4244:         with
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,83): warning C4244:         [
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,83): warning C4244:             T=float
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(292,83): warning C4244:         ]
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(299,104): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\MultiplayerGame\Player.cpp(299,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating code
-  4 of 1129 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
-    2 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+  3 of 1203 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    4 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   MultiplayerGame.vcxproj -> C:\Users\razva.POTATO-REAPER\Desktop\Hatz\MultiplayerGame\x64\Release\Client.exe

@@ -31,6 +31,8 @@ public:
 	int getSelectedItemId() const;
 	void setSelectedItemId(int itemId);
 
+	void addItems(int itemID, int quantity);
+
 	void interact();
 	void die() override;
 };

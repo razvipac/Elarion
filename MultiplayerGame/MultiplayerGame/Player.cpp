@@ -4,6 +4,7 @@
 #include <cmath>
 #include <map>
 #include "TileMap.h"
+#include "Plant.h"
 
 using namespace sf;
 using namespace std;
@@ -15,6 +16,7 @@ extern map<int, Player*> playerMap;
 extern Font font;
 extern TileMap tileMap;
 extern TileMap tileMap2;
+extern vector<Plant*> plants;
 
 Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), itemAnimator(item) {
 	timeSinceLastPacket = 0;
@@ -46,10 +48,13 @@ Player::Player(int id) : Entity("Resources/Animations/Player.animator", id), ite
 	// generate a random position on the map, but make sure there is not a tile in the tileMap2
 	Vector2f position;
 	do {
-		position = Vector2f(rand() % (int) (tileMap.getWidth() * tileMap.getTileSize() * tileMap.getScale().x), rand() % (int) (tileMap.getHeight() * tileMap.getTileSize() * tileMap.getScale().y));
+		position = Vector2f(rand() % (int)(tileMap.getWidth() * tileMap.getTileSize() * tileMap.getScale().x), rand() % (int)(tileMap.getHeight() * tileMap.getTileSize() * tileMap.getScale().y));
 	} while (tileMap2.getTile(position.x / tileMap.getTileSize() / tileMap.getScale().x, position.y / tileMap.getTileSize() / tileMap.getScale().y) != 0);
 	entity.setPosition(position);
 	item.setPosition(position);
+
+	// give the player a random seed
+	inventory.addItem(2, 1);
 }
 void Player::setTargetPosition(const Vector2f& position) {
 	targetPosition = position;
@@ -268,19 +273,34 @@ int Player::getSelectedItemId() const {
 	return inventory.getItemID(inventory.getSelectedSlot());
 }
 void Player::setSelectedItemId(int itemId) {
-	inventory.changeItem(inventory.getSelectedSlot(), itemId, 1);
+	inventory.changeItem(inventory.getSelectedSlot(), itemId, 2);
 }
 
 void Player::interact() {
 	// find what tile we are hovering over
-	Vector2i tilePos = Vector2i(mousePosInWorld / (float)tileMap.getTileSize());
+	Vector2i tilePos = Vector2i(mousePosInWorld / (float)tileMap.getTileSize() / 3.f);
+	// if we are too far away from the tile, return
+	if (abs(entity.getPosition().x - tilePos.x * tileMap.getTileSize() * 3 - 24) > 72 || abs(entity.getPosition().y - tilePos.y * tileMap.getTileSize() * 3 - 32) > 72)
+		return;
 	// find the tile id of the tile we are hovering over
 	int tileId = tileMap.getTile(tilePos.x, tilePos.y);
-	// if the tile is a tree, chop it down
-	if (tileId == 1) {
-		tileMap.setTile(tilePos.x, tilePos.y, 0);
-		setSelectedItemId(2);
+	int selectedItem = getSelectedItemId();
+	if (tileId == 67 && selectedItem % 2 == 0 && selectedItem > 0 && selectedItem < 23)
+	{
+		bool ok = true;
+		for(int i = 0; i < plants.size(); i++)
+			if (plants[i]->getPosition() == Vector2f(tilePos.x * tileMap.getTileSize() * 3 + 24, tilePos.y * tileMap.getTileSize() * 3 + 32))
+				ok = false;
+		if (!ok)
+			return;
+
+		// if the tile is a plant and the selected item is a seed, plant the seed
+		Plant* plant = new Plant((selectedItem - 1) / 2);
+		plant->setPosition(tilePos.x * tileMap.getTileSize() * 3 + 24, tilePos.y * tileMap.getTileSize() * 3 + 32);
+		plants.push_back(plant);
+		inventory.removeItem(selectedItem, 1);
 	}
+	cout << "TileId: " << tileId << endl;
 }
 
 void Player::die() {
@@ -289,4 +309,8 @@ void Player::die() {
 	itemAnimator.setFloat("Speed", 0);
 	itemAnimator.setBool("Death", true);
 	Entity::die();
+}
+
+void Player::addItems(int itemID, int quantity) {
+	inventory.addItem(itemID, quantity);
 }

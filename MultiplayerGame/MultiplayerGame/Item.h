@@ -3,15 +3,15 @@
 #include <iostream>
 class Item {
 private:
+	sf::IntRect textureRect;
 	std::string name;
-	sf::Texture texture;
 	int maxStackSize;
 	int maxDurability;
 	int transformationId;
 public:
-	Item(std::string name, std::string texturePath, int maxStackSize, int maxDurability, int transformationId);
+	Item(std::string name, sf::IntRect textureRect, int maxStackSize, int maxDurability, int transformationId);
 	std::string getName();
-	sf::Texture* getTexture();
+	sf::IntRect& getTexture();
 	int getMaxStackSize();
 	int getMaxDurability();
 	int getTransformationId();

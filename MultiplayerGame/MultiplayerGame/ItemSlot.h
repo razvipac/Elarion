@@ -5,8 +5,28 @@
 
 enum ItemNames {
 	EMPTY,
-	CUP_EMPTY,
-	CUP_WATER
+	CARROT,
+	CARROT_SEED,
+	CAULIFLOWER,
+	CAULIFLOWER_SEED,
+	PUMPKIN,
+	PUMPKIN_SEED,
+	SUNFLOWER,
+	SUNFLOWER_SEED,
+	RADISH,
+	RADISH_SEED,
+	PARSNIP,
+	PARSNIP_SEED,
+	POTATO,
+	POTATO_SEED,
+	TURNIP,
+	TURNIP_SEED,
+	BEET,
+	BEET_SEED,
+	WHEAT,
+	WHEAT_SEED,
+	CABBAGE,
+	CABBAGE_SEED
 };
 
 class ItemSlot {
@@ -14,6 +34,7 @@ private:
 	int itemID;
 	int quantity;
 	int durability;
+	sf::Text quantityText;
 
 	static std::vector<Item> items;
 	sf::RectangleShape slot;

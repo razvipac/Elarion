@@ -26,6 +26,7 @@ Font font;
 TileMap tileMap;
 TileMap tileMap2;
 vector<IntRect> Plant::growthStages;
+vector<Plant*> plants;
 
 Vector2f mousePosInWorld;
 Vector2f mousePosInUI;
@@ -74,9 +75,6 @@ int main() {
 	growthStages.push_back(IntRect(816, 224, 16, 32));
 	growthStages.push_back(IntRect(816, 256, 16, 32));
 	Plant::setGrowthStages(growthStages);
-
-	Plant* plant = new Plant(3);
-	plant->setPosition(168, 168);
 
 	Vector2f lastMousePos;
 
@@ -139,26 +137,21 @@ int main() {
 
 		while (window.pollEvent(event))
 		{
-			if(plant)
-				plant->handleEvent(event, player->getPosition());
+			for (auto& plant : plants)
+				if (plant)
+					plant->handleEvent(event, player->getPosition());
 			if (event.type == Event::Closed)
 				window.close();
 			//player.handleEvent(event, window);
 			for (auto& p : playerMap) {
 				p.second->handleEvent(event, window);
 			}
-			//if (event.type == Event::MouseButtonPressed) {
-			//	if (event.mouseButton.button == Mouse::Left) {
-			//		/*if (waterTileShape.getGlobalBounds().contains(mousePosInWorld) && player.getSelectedItemId() == ItemNames::CUP_EMPTY) {
-			//			player.setSelectedItemId(ItemNames::CUP_WATER);
-			//		}*/
-			//	}
-			//}
 		}
 
 		networkManager.msgLoop();
-		if(plant)
-			plant->update(currentTime.asSeconds());
+		for (auto& plant : plants)
+			if (plant)
+				plant->update(currentTime.asSeconds());
 
 		//player.update(currentTime.asSeconds());
 		for (auto& p : playerMap) {
@@ -178,8 +171,9 @@ int main() {
 		window.clear();
 		window.draw(tileMap);
 		window.draw(tileMap2);
-		if(plant)
-			plant->draw(window);
+		for (auto& plant : plants)
+			if (plant)
+				plant->draw(window);
 		//window.draw(waterTileShape);
 		//player.draw(window);
 		for (auto& p : playerMap)
@@ -189,10 +183,16 @@ int main() {
 		window.setView(defaultView);
 		window.display();
 
-		if(plant && plant->isMarkedForDeletion()) {
-			delete plant;
-			plant = nullptr;
-		}
+		for (int i=0; i<plants.size(); i++)
+			if (plants[i] && plants[i]->isMarkedForDeletion()) {
+				int plantType = plants[i]->getPlantType();
+				delete plants[i];
+				plants[i] = nullptr;
+				plants.erase(plants.begin() + i);
+				player->addItems(plantType * 2 + 1, 1);
+				int seedAmount = rand() % 3 + 1;
+				player->addItems(plantType * 2 + 2, seedAmount);
+			}
 	}
 
 	return EXIT_SUCCESS;
