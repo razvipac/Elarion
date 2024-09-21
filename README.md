@@ -20,10 +20,10 @@ Being a multiplayer game, it is split into 2 applications: a server and a client
 
 The game also features the ability to farm crops on certain tiles and a camera which smoothly follows the player around.
 
+## Installation
+The repository contains a total of 4 MSVS projects, for the game and its tools. Installation is simple, by just cloning the repository, but it does require Microsoft Visual Studio with the C++ add-ons to work.
+
 ## Team
 The project was created by 2 people:
 - [Alex Turculet](https://github.com/Androidus2)
 - [Razvan Paraschiv](https://github.com/razvipac)
-
-## Installation
-The repository contains a total of 4 MSVS projects, for the game and its tools. Installation is simple, by just cloning the repository, but it does require Microsoft Visual Studio with the C++ add-ons to work.
