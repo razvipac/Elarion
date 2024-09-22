@@ -1,7 +1,7 @@
 # Elarion
 Elarion is an engaging 2D online multiplayer game developed using ENet for networking and SFML for rendering. The game combines multiplayer functionalities with farming mechanics and smooth animations, aiming for a pleasent experience while also enjoying the full potential of the gameplay. The repository includes powerful tools, namely a custom animator and map editor, which allow for straightforward modifications and/or extensions of the game's content. These services were built by trying to mimick the ones offered by Unity, the intention behind being to provide flexibility and ease of use.
 
-# Features at first glance
+## Features at first glance
 - *Multiplayer*: Seamless online play with server-client architecture.
 - *Custom Tools*: Integrates a map editor and an animator app to create, modify and fine-tune the game's assets.
 - *Smooth Player Experience*: With synchronized animations and interpolated movement, the gameplay remains visually untroubled and reactive.
