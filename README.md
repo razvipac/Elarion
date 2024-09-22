@@ -42,4 +42,5 @@ To install:
 The project was created by:
 - [Alex Turculet](https://github.com/Androidus2)
 - [Razvan Paraschiv](https://github.com/razvipac)
+
 Together we have designed this game and its accompanying utility tools from the ground up.
